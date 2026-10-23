@@ -1,0 +1,78 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Global Safety Net: default deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function isValidUserProfile(data) {
+      return data.keys().hasAll(['uid', 'updatedAt'])
+        && data.keys().hasOnly(['uid', 'email', 'displayName', 'syncCode', 'updatedAt'])
+        && data.uid == request.auth.uid
+        && data.uid is string
+        && data.updatedAt is string;
+    }
+
+    function isValidSyncState(data, userId) {
+      return data.keys().hasAll(['userId', 'progressJson', 'statsJson', 'updatedAt'])
+        && data.keys().hasOnly(['userId', 'progressJson', 'statsJson', 'settingsJson', 'streak', 'learnedCount', 'updatedAt', 'device'])
+        && data.userId == userId
+        && data.progressJson is string
+        && data.progressJson.size() <= 1048576
+        && data.statsJson is string
+        && data.statsJson.size() <= 262144
+        && data.updatedAt is string;
+    }
+
+    function isValidPairingCode(data) {
+      return data.keys().hasAll(['code', 'userId', 'createdAt', 'expiresAt'])
+        && data.keys().hasOnly(['code', 'userId', 'createdAt', 'expiresAt'])
+        && data.userId == request.auth.uid
+        && data.code is string
+        && data.code.size() <= 32
+        && data.createdAt is string
+        && data.expiresAt is string;
+    }
+
+    // Users Collection
+    match /users/{userId} {
+      allow get: if isValidId(userId) && isOwner(userId);
+      allow list: if false;
+      allow create: if isValidId(userId) && isOwner(userId) && isValidUserProfile(request.resource.data);
+      allow update: if isValidId(userId) && isOwner(userId) && isValidUserProfile(request.resource.data);
+      allow delete: if isValidId(userId) && isOwner(userId);
+
+      // Synced learning state
+      match /sync/{documentId} {
+        allow get: if isValidId(userId) && isOwner(userId);
+        allow list: if isValidId(userId) && isOwner(userId);
+        allow create, update: if isValidId(userId) && isOwner(userId) && isValidSyncState(request.resource.data, userId);
+        allow delete: if isValidId(userId) && isOwner(userId);
+      }
+    }
+
+    // Device Pairing Codes (for quick PC <-> Android linking)
+    match /pairingCodes/{code} {
+      allow get: if isSignedIn() && isValidId(code);
+      allow list: if false;
+      allow create: if isSignedIn() && isValidId(code) && isValidPairingCode(request.resource.data);
+      allow update: if false;
+      allow delete: if isSignedIn() && isValidId(code) && resource.data.userId == request.auth.uid;
+    }
+  }
+}

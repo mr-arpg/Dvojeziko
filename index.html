@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <script>
+      // Neutralize Vite HMR WebSocket reconnection in Cloud Run preview iframe
+      (function() {
+        const OriginalWebSocket = window.WebSocket;
+        if (OriginalWebSocket) {
+          window.WebSocket = function(url, protocols) {
+            const isViteHMR =
+              (typeof protocols === 'string' && protocols.includes('vite-hmr')) ||
+              (Array.isArray(protocols) && protocols.includes('vite-hmr')) ||
+              (typeof url === 'string' && (url.includes('vite-hmr') || url.includes('@vite/client')));
+
+            if (isViteHMR) {
+              const stub = new EventTarget();
+              stub.readyState = 1;
+              stub.binaryType = 'blob';
+              stub.send = function() {};
+              stub.close = function() {};
+              return stub;
+            }
+            return new OriginalWebSocket(url, protocols);
+          };
+          window.WebSocket.prototype = OriginalWebSocket.prototype;
+          window.WebSocket.CONNECTING = OriginalWebSocket.CONNECTING;
+          window.WebSocket.OPEN = OriginalWebSocket.OPEN;
+          window.WebSocket.CLOSING = OriginalWebSocket.CLOSING;
+          window.WebSocket.CLOSED = OriginalWebSocket.CLOSED;
+        }
+
+        const origError = console.error;
+        console.error = function(...args) {
+          const msg = args.map(a => (a && a.message) || String(a)).join(' ');
+          if (msg.includes('WebSocket')) return;
+          origError.apply(console, args);
+        };
+        const origWarn = console.warn;
+        console.warn = function(...args) {
+          const msg = args.map(a => (a && a.message) || String(a)).join(' ');
+          if (msg.includes('WebSocket')) return;
+          origWarn.apply(console, args);
+        };
+        window.addEventListener('error', function(event) {
+          if (event && (event.message || '').includes('WebSocket')) {
+            event.stopImmediatePropagation();
+            event.preventDefault();
+          }
+        }, true);
+        window.addEventListener('unhandledrejection', function(event) {
+          if (event && event.reason && String(event.reason.message || event.reason).includes('WebSocket')) {
+            event.stopImmediatePropagation();
+            event.preventDefault();
+          }
+        }, true);
+      })();
+    </script>
+    <title>Dvojeziko - Slovenian 1,000 Words & Spaced Repetition</title>
+    <meta name="description" content="Master the 1,000 most common Slovenian words with 5-minute daily lessons, Leitner spaced repetition, and an intelligent self-sustaining sentence engine." />
+    <meta property="og:title" content="Dvojeziko - Slovenian 1,000 Words & Spaced Repetition" />
+    <meta property="og:description" content="Master the 1,000 most common Slovenian words with 5-minute daily lessons, Leitner spaced repetition, and an intelligent self-sustaining sentence engine." />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#0f766e" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="Dvojeziko" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Dvojeziko" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <link rel="shortcut icon" href="/favicon.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/pwa-512x512.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/pwa-192x192.png" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  </head>
+  <body class="bg-slate-50 dark:bg-zinc-950 text-slate-900 dark:text-zinc-100 antialiased selection:bg-emerald-500/20">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

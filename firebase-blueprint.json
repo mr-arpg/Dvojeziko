@@ -1,0 +1,59 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "User Profile",
+      "description": "User profile and sync metadata",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "The user's Firebase Auth UID" },
+        "email": { "type": "string", "description": "User email address" },
+        "displayName": { "type": "string", "description": "User display name" },
+        "syncCode": { "type": "string", "description": "Short code to link mobile device to this account" },
+        "updatedAt": { "type": "string", "description": "ISO timestamp of last update" }
+      },
+      "required": ["uid", "updatedAt"]
+    },
+    "SyncState": {
+      "title": "User Sync State",
+      "description": "Full synchronized learning progress, stats, and settings payload",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "Owner UID" },
+        "progressJson": { "type": "string", "description": "Serialized word progress map JSON string" },
+        "statsJson": { "type": "string", "description": "Serialized user stats and streak JSON string" },
+        "settingsJson": { "type": "string", "description": "Serialized settings JSON string" },
+        "streak": { "type": "number", "description": "Current learning streak count" },
+        "learnedCount": { "type": "number", "description": "Number of mastered words" },
+        "updatedAt": { "type": "string", "description": "ISO timestamp of last synchronization" },
+        "device": { "type": "string", "description": "Device name or platform (e.g. PC Chrome, Android PWA)" }
+      },
+      "required": ["userId", "progressJson", "statsJson", "updatedAt"]
+    },
+    "PairingCode": {
+      "title": "Device Pairing Code",
+      "description": "Temporary 6-digit pairing code to link Android app to PC account",
+      "type": "object",
+      "properties": {
+        "code": { "type": "string", "description": "6-character alphanumeric pairing code" },
+        "userId": { "type": "string", "description": "Target user UID to pair with" },
+        "createdAt": { "type": "string", "description": "ISO timestamp when code was created" },
+        "expiresAt": { "type": "string", "description": "ISO timestamp when code expires" }
+      },
+      "required": ["code", "userId", "createdAt", "expiresAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "Private user account profile and sync code"
+    },
+    "/users/{userId}/sync/state": {
+      "schema": "SyncState",
+      "description": "Synchronized vocabulary progress, stats, and settings"
+    },
+    "/pairingCodes/{code}": {
+      "schema": "PairingCode",
+      "description": "Ephemeral pairing codes to link phone and PC without typing passwords"
+    }
+  }
+}

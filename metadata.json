@@ -1,0 +1,6 @@
+{
+  "name": "Beseda - Slovenian 1,000 Words & Spaced Repetition",
+  "description": "Master the 1,000 most common Slovenian words with 5-minute daily lessons, Leitner spaced repetition, and an intelligent self-sustaining sentence engine.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
