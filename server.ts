@@ -1,4 +1,5 @@
 import express from 'express';
+import fs from 'fs';
 import { createServer as createViteServer } from 'vite';
 import { GoogleGenAI } from '@google/genai';
 import dotenv from 'dotenv';
@@ -90,20 +91,28 @@ ${JSON.stringify(allowedWords)}
   }
 });
 
-// In-memory cache for generated authentic Slovenian speech audio (MP3)
+// In-memory cache for generated authentic Slovenian speech audio
 const ttsCache = new Map<string, { buffer: Buffer; mimeType: string }>();
+
+// In-flight deduplication to prevent parallel duplicate WebSocket requests
+const inFlightTTS = new Map<string, Promise<{ buffer: Buffer; mimeType: string }>>();
+
+// Persistent disk cache directory for audio
+const DISK_CACHE_DIR = path.join('/tmp', 'dvojeziko_audio_cache');
+try {
+  if (!fs.existsSync(DISK_CACHE_DIR)) {
+    fs.mkdirSync(DISK_CACHE_DIR, { recursive: true });
+  }
+} catch (_) {}
 
 /**
  * Preprocesses Slovenian text for authentic neural text-to-speech pronunciation.
  *
  * Slovenian phonetic rules:
- * 1. The standalone preposition "v" (meaning 'in', 'into', 'at', rank 20):
- *    In standard Slovenian orthoepy, isolated "v" is pronounced as bilabial /u̯/
- *    (sounds like "u" / "yu" / "w"), NOT as the labiodental fricative [v] or letter name "ve".
- *    Passing "u" to the Slovenian voice produces the authentic native pronunciation.
- * 2. Preposition "v" before consonants in phrases (e.g. "v šoli", "v redu", "v mestu"):
- *    In Slovenian, "v" before consonants vocalizes to [u̯] ("u"), whereas before vowels ("v avtu")
- *    it remains [v].
+ * 1. Standalone preposition "v" is pronounced as bilabial /u̯/ (sounds like "u" / "yu").
+ * 2. Preposition "v" before consonants vocalizes to "u".
+ * 3. Standalone preposition "z" or "s" is vocalized as "ze" / "se".
+ * 4. Isolated words without terminal punctuation get capitalized with a period for natural prosody.
  */
 function prepareSlovenianTTSInput(rawText: string): string {
   const trimmed = rawText.trim();
@@ -120,19 +129,15 @@ function prepareSlovenianTTSInput(rawText: string): string {
     return (v === 'V' ? 'U ' : 'u ') + next;
   });
 
-  // Rule 3: Standalone preposition "z" or "s" (meaning 'with')
-  // An isolated fricative consonant "z" causes neural TTS to emit an unnatural mechanical buzzing sound.
-  // In Slovenian language teaching and dictionaries (SSKJ), the isolated preposition is vocalized as "ze".
+  // Rule 3: Standalone preposition "z" or "s"
   if (trimmed.toLowerCase() === 'z') {
     return 'ze';
   }
   if (trimmed.toLowerCase() === 's') {
     return 'se';
   }
+
   // Rule 4: Isolated words without punctuation
-  // Microsoft neural TTS treats bare unpunctuated lowercase words (like "na", "da", "že")
-  // as fragmented continuations, causing clipped robotic audio.
-  // Capitalizing and adding a terminal period applies full declarative prosody and natural vowel length.
   if (!/[.?!]$/.test(processed) && processed.split(/\s+/).length === 1) {
     const capitalized = processed.charAt(0).toUpperCase() + processed.slice(1);
     return `${capitalized}.`;
@@ -141,40 +146,107 @@ function prepareSlovenianTTSInput(rawText: string): string {
   return processed;
 }
 
+// Serialized execution queue for Edge TTS to prevent simultaneous handshake bursts
+let edgeQueue = Promise.resolve<any>(null);
+
+function synthesizeWithEdgeTTS(text: string): Promise<Buffer> {
+  const task = async (): Promise<Buffer> => {
+    const tts = new MsEdgeTTS();
+    await tts.setMetadata('sl-SI-PetraNeural', OUTPUT_FORMAT.AUDIO_24KHZ_48KBITRATE_MONO_MP3);
+    const { audioStream } = tts.toStream(text);
+    const chunks: Buffer[] = [];
+
+    return new Promise<Buffer>((resolve, reject) => {
+      const timer = setTimeout(() => {
+        try { tts.close(); } catch (_) {}
+        reject(new Error('Edge TTS timed out after 8s'));
+      }, 8000);
+
+      audioStream.on('data', (chunk: Buffer) => chunks.push(chunk));
+      audioStream.on('end', () => {
+        clearTimeout(timer);
+        try { tts.close(); } catch (_) {}
+        resolve(Buffer.concat(chunks));
+      });
+      audioStream.on('error', (err: any) => {
+        clearTimeout(timer);
+        try { tts.close(); } catch (_) {}
+        reject(err);
+      });
+    });
+  };
+
+  const nextPromise = edgeQueue.then(task, task);
+  edgeQueue = nextPromise;
+  return nextPromise;
+}
+
 /**
- * Synthesizes native Slovenian audio using the official sl-SI-PetraNeural neural voice.
- * Produces authentic native pronunciation with correct pitch accent, Slovenian č/š/ž phonetics,
- * and natural rhythm.
+ * Fallback synthesis using Gemini 3.8 Flash Lite TTS
+ * Returns standard WAV audio when Edge TTS encounters 429 rate-limiting.
  */
-async function synthesizeSlovenianSpeech(text: string): Promise<Buffer> {
-  const tts = new MsEdgeTTS();
-  await tts.setMetadata('sl-SI-PetraNeural', OUTPUT_FORMAT.AUDIO_24KHZ_48KBITRATE_MONO_MP3);
-  const { audioStream } = tts.toStream(text);
-  const chunks: Buffer[] = [];
-
-  return new Promise((resolve, reject) => {
-    const timer = setTimeout(() => {
-      try { tts.close(); } catch (_) {}
-      reject(new Error('Slovenian TTS synthesis timed out after 8s'));
-    }, 8000);
-
-    audioStream.on('data', (chunk: Buffer) => chunks.push(chunk));
-    audioStream.on('end', () => {
-      clearTimeout(timer);
-      try { tts.close(); } catch (_) {}
-      resolve(Buffer.concat(chunks));
-    });
-    audioStream.on('error', (err: any) => {
-      clearTimeout(timer);
-      try { tts.close(); } catch (_) {}
-      reject(err);
-    });
+async function synthesizeWithGeminiTTS(text: string): Promise<{ buffer: Buffer; mimeType: string }> {
+  const response = await ai.models.generateContent({
+    model: 'gemini-3.8-flash-lite-tts',
+    contents: [
+      {
+        role: 'user',
+        parts: [
+          {
+            text: text,
+            speechMetadata: {
+              style: 'Clear, natural Slovenian pronunciation'
+            }
+          }
+        ]
+      }
+    ],
+    config: {
+      responseModalities: ['AUDIO'],
+      speechConfig: {
+        voiceConfig: {
+          prebuiltVoiceConfig: { voiceName: 'Kore' }
+        }
+      }
+    }
   });
+
+  const base64Audio = response.candidates?.[0]?.content?.parts?.[0]?.inlineData?.data;
+  if (!base64Audio) {
+    throw new Error('Gemini TTS returned no audio data');
+  }
+
+  const buffer = Buffer.from(base64Audio, 'base64');
+  return { buffer, mimeType: 'audio/wav' };
+}
+
+/**
+ * Multi-tier synthesis orchestrator:
+ * 1. Try Microsoft Edge Neural Slovenian Voice (sl-SI-PetraNeural)
+ * 2. Fall back seamlessly to Gemini 3.8 Flash Lite TTS if Edge TTS returns 429 or is unavailable
+ */
+async function synthesizeSlovenianSpeech(text: string): Promise<{ buffer: Buffer; mimeType: string }> {
+  try {
+    const buffer = await synthesizeWithEdgeTTS(text);
+    return { buffer, mimeType: 'audio/mpeg' };
+  } catch (edgeErr: any) {
+    console.warn(`Edge TTS unavailable (${edgeErr?.message || edgeErr}), activating Gemini TTS fallback...`);
+
+    if (process.env.GEMINI_API_KEY) {
+      try {
+        return await synthesizeWithGeminiTTS(text);
+      } catch (geminiErr: any) {
+        console.warn(`Gemini TTS fallback also unavailable (${geminiErr?.message || geminiErr})`);
+      }
+    }
+
+    throw edgeErr;
+  }
 }
 
 /**
  * Endpoint: GET /api/tts?text=...
- * Generates and streams authentic native Slovenian audio pronunciation.
+ * Generates and streams authentic native Slovenian audio pronunciation with multi-tier resilience.
  */
 app.get('/api/tts', async (req, res) => {
   try {
@@ -186,7 +258,7 @@ app.get('/api/tts', async (req, res) => {
     const cleanText = rawText.replace(/[()]/g, '').trim().slice(0, 300);
     const cacheKey = cleanText.toLowerCase();
 
-    // Serve from memory cache if available (instant 0ms response)
+    // 1. Check in-memory cache (instant 0ms response)
     if (ttsCache.has(cacheKey)) {
       const cached = ttsCache.get(cacheKey)!;
       res.setHeader('Content-Type', cached.mimeType || 'audio/mpeg');
@@ -194,21 +266,51 @@ app.get('/api/tts', async (req, res) => {
       return res.send(cached.buffer);
     }
 
-    // Apply Slovenian phonetic correction (e.g. "v" pronounced as "u" / [u̯])
+    // 2. Check persistent disk cache
+    const safeKey = Buffer.from(cacheKey).toString('hex');
+    const diskPathMp3 = path.join(DISK_CACHE_DIR, `${safeKey}.mp3`);
+    const diskPathWav = path.join(DISK_CACHE_DIR, `${safeKey}.wav`);
+
+    if (fs.existsSync(diskPathMp3)) {
+      const buffer = fs.readFileSync(diskPathMp3);
+      ttsCache.set(cacheKey, { buffer, mimeType: 'audio/mpeg' });
+      res.setHeader('Content-Type', 'audio/mpeg');
+      res.setHeader('Cache-Control', 'public, max-age=604800, immutable');
+      return res.send(buffer);
+    }
+    if (fs.existsSync(diskPathWav)) {
+      const buffer = fs.readFileSync(diskPathWav);
+      ttsCache.set(cacheKey, { buffer, mimeType: 'audio/wav' });
+      res.setHeader('Content-Type', 'audio/wav');
+      res.setHeader('Cache-Control', 'public, max-age=604800, immutable');
+      return res.send(buffer);
+    }
+
+    // 3. Deduplicate in-flight requests for the same word
     const phoneticInput = prepareSlovenianTTSInput(cleanText);
 
-    // Generate authentic Slovenian audio via native neural voice
-    const buffer = await synthesizeSlovenianSpeech(phoneticInput);
-    const mimeType = 'audio/mpeg';
+    let fetchPromise = inFlightTTS.get(cacheKey);
+    if (!fetchPromise) {
+      fetchPromise = synthesizeSlovenianSpeech(phoneticInput).finally(() => {
+        inFlightTTS.delete(cacheKey);
+      });
+      inFlightTTS.set(cacheKey, fetchPromise);
+    }
+
+    const { buffer, mimeType } = await fetchPromise;
+
+    // Save to memory cache & disk cache
     ttsCache.set(cacheKey, { buffer, mimeType });
+    const ext = mimeType === 'audio/wav' ? 'wav' : 'mp3';
+    fs.writeFile(path.join(DISK_CACHE_DIR, `${safeKey}.${ext}`), buffer, () => {});
 
     res.setHeader('Content-Type', mimeType);
     res.setHeader('Cache-Control', 'public, max-age=604800, immutable');
     res.setHeader('Content-Length', buffer.length);
     return res.send(buffer);
   } catch (err: any) {
-    console.error('Slovenian TTS endpoint error:', err?.message || err);
-    return res.status(500).send(err?.message || 'TTS generation failed');
+    console.warn('Slovenian TTS synthesis temporary limitation:', err?.message || err);
+    return res.status(503).json({ error: 'tts_temporarily_unavailable', message: err?.message });
   }
 });
 

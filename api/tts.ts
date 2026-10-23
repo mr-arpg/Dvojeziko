@@ -39,30 +39,40 @@ function prepareSlovenianTTSInput(rawText: string): string {
   return processed;
 }
 
-async function synthesizeSlovenianSpeech(text: string): Promise<Buffer> {
-  const tts = new MsEdgeTTS();
-  await tts.setMetadata('sl-SI-PetraNeural', OUTPUT_FORMAT.AUDIO_24KHZ_48KBITRATE_MONO_MP3);
-  const { audioStream } = tts.toStream(text);
-  const chunks: Buffer[] = [];
+// Serialized execution queue for Edge TTS to prevent simultaneous handshake bursts
+let edgeQueue = Promise.resolve<any>(null);
+const inFlightTTS = new Map<string, Promise<Buffer>>();
 
-  return new Promise((resolve, reject) => {
-    const timer = setTimeout(() => {
-      try { tts.close(); } catch (_) {}
-      reject(new Error('Slovenian TTS synthesis timed out after 8s'));
-    }, 8000);
+function synthesizeWithEdgeTTS(text: string): Promise<Buffer> {
+  const task = async (): Promise<Buffer> => {
+    const tts = new MsEdgeTTS();
+    await tts.setMetadata('sl-SI-PetraNeural', OUTPUT_FORMAT.AUDIO_24KHZ_48KBITRATE_MONO_MP3);
+    const { audioStream } = tts.toStream(text);
+    const chunks: Buffer[] = [];
 
-    audioStream.on('data', (chunk: Buffer) => chunks.push(chunk));
-    audioStream.on('end', () => {
-      clearTimeout(timer);
-      try { tts.close(); } catch (_) {}
-      resolve(Buffer.concat(chunks));
+    return new Promise<Buffer>((resolve, reject) => {
+      const timer = setTimeout(() => {
+        try { tts.close(); } catch (_) {}
+        reject(new Error('Slovenian TTS timed out after 8s'));
+      }, 8000);
+
+      audioStream.on('data', (chunk: Buffer) => chunks.push(chunk));
+      audioStream.on('end', () => {
+        clearTimeout(timer);
+        try { tts.close(); } catch (_) {}
+        resolve(Buffer.concat(chunks));
+      });
+      audioStream.on('error', (err: any) => {
+        clearTimeout(timer);
+        try { tts.close(); } catch (_) {}
+        reject(err);
+      });
     });
-    audioStream.on('error', (err: any) => {
-      clearTimeout(timer);
-      try { tts.close(); } catch (_) {}
-      reject(err);
-    });
-  });
+  };
+
+  const nextPromise = edgeQueue.then(task, task);
+  edgeQueue = nextPromise;
+  return nextPromise;
 }
 
 export default async function handler(req: IncomingMessage & { query?: Record<string, string> }, res: ServerResponse) {
@@ -85,12 +95,21 @@ export default async function handler(req: IncomingMessage & { query?: Record<st
     }
 
     const phoneticInput = prepareSlovenianTTSInput(cleanText);
-    const buffer = await synthesizeSlovenianSpeech(phoneticInput);
+
+    let fetchPromise = inFlightTTS.get(cacheKey);
+    if (!fetchPromise) {
+      fetchPromise = synthesizeWithEdgeTTS(phoneticInput).finally(() => {
+        inFlightTTS.delete(cacheKey);
+      });
+      inFlightTTS.set(cacheKey, fetchPromise);
+    }
+
+    const buffer = await fetchPromise;
     ttsCache.set(cacheKey, buffer);
     res.setHeader('Content-Length', buffer.length);
     return res.end(buffer);
   } catch (err: any) {
-    res.statusCode = 500;
-    return res.end(err?.message || 'TTS generation failed');
+    res.statusCode = 503;
+    return res.end(JSON.stringify({ error: 'tts_temporarily_unavailable', message: err?.message }));
   }
 }
