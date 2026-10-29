@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <!-- Background Alpine Teal / Emerald Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#047857" />
+      <stop offset="45%" stop-color="#0d9488" />
+      <stop offset="100%" stop-color="#0f766e" />
+    </linearGradient>
+
+    <!-- Deep Ambient Glow behind Mountains -->
+    <radialGradient id="skyGlow" cx="50%" cy="35%" r="50%">
+      <stop offset="0%" stop-color="#5eead4" stop-opacity="0.35" />
+      <stop offset="60%" stop-color="#0d9488" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#047857" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Triglav Mountain Facet Gradients -->
+    <linearGradient id="peakLeftGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#cbd5e1" />
+    </linearGradient>
+
+    <linearGradient id="peakRightGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#94a3b8" />
+      <stop offset="100%" stop-color="#475569" />
+    </linearGradient>
+
+    <linearGradient id="mountainBaseGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#134e4a" />
+      <stop offset="100%" stop-color="#042f2e" />
+    </linearGradient>
+
+    <!-- Golden Star & Flame Glow (Slovenian Golden Star) -->
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="50%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#d97706" />
+    </linearGradient>
+
+    <radialGradient id="starAura" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fef08a" stop-opacity="0.9" />
+      <stop offset="50%" stop-color="#fbbf24" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Speech / Language Bubble Emerald Accent -->
+    <linearGradient id="speechBubbleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34d399" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+
+    <!-- Glass Rim Highlight -->
+    <linearGradient id="rimGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.4" />
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.2" />
+    </linearGradient>
+
+    <!-- Shadow Filter -->
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#022c22" flood-opacity="0.45" />
+    </filter>
+
+    <filter id="glowFilter" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Base Squircle Container (Full 512x512) -->
+  <rect width="512" height="512" rx="116" fill="url(#bgGrad)" />
+
+  <!-- Inner Ambient Sky Glow -->
+  <circle cx="256" cy="210" r="210" fill="url(#skyGlow)" />
+
+  <!-- Subtle Top Rim Bevel for App Store Polish -->
+  <rect x="6" y="6" width="500" height="500" rx="110" fill="none" stroke="url(#rimGrad)" stroke-width="4" />
+
+  <!-- Main Artwork Group with Drop Shadow -->
+  <g filter="url(#softShadow)">
+
+    <!-- Background Mountain Base (Slovenian Alps Silhouette) -->
+    <path d="M 64 416 L 150 286 L 206 332 L 256 220 L 306 332 L 362 286 L 448 416 Z" fill="url(#mountainBaseGrad)" />
+
+    <!-- MOUNT TRIGLAV (Three Peaks of Slovenia) -->
+    <!-- Center Peak: Triglav Highest Crest (256, 172) -->
+    <!-- Left Crest: (166, 236), Right Crest: (346, 236) -->
+
+    <!-- Triglav Mountain Massifs - Lit Faces (Left) -->
+    <!-- Left Peak Left Face -->
+    <polygon points="166,236 100,390 178,390" fill="url(#peakLeftGrad)" />
+    <!-- Center Peak Left Face (Sunlit) -->
+    <polygon points="256,172 178,390 256,390" fill="#ffffff" />
+    <!-- Right Peak Left Face -->
+    <polygon points="346,236 304,390 346,390" fill="url(#peakLeftGrad)" />
+
+    <!-- Triglav Mountain Massifs - Shaded Faces (Right / Depth) -->
+    <!-- Left Peak Shaded Face -->
+    <polygon points="166,236 178,390 206,310" fill="url(#peakRightGrad)" />
+    <!-- Center Peak Shaded Face -->
+    <polygon points="256,172 256,390 304,390" fill="#94a3b8" />
+    <!-- Right Peak Shaded Face -->
+    <polygon points="346,236 346,390 412,390" fill="url(#peakRightGrad)" />
+
+    <!-- Crisp Snow Caps on Triglav -->
+    <!-- Center Peak Snow Cap -->
+    <polygon points="256,172 232,228 256,238 274,220" fill="#ffffff" filter="url(#glowFilter)" />
+    <polygon points="256,172 256,238 274,220" fill="#e2e8f0" />
+    
+    <!-- Left Peak Snow Cap -->
+    <polygon points="166,236 148,276 174,272" fill="#ffffff" />
+    <!-- Right Peak Snow Cap -->
+    <polygon points="346,236 332,274 360,274" fill="#cbd5e1" />
+
+    <!-- Modern Speech / Dialogue Arc (Beseda - The Word / Language) -->
+    <!-- Floating in front of mountains: A vibrant speech bubble with 3 dots of dialogue -->
+    <g transform="translate(0, 16)">
+      <!-- Smooth Pill Speech Bubble in foreground -->
+      <rect x="136" y="324" width="240" height="84" rx="42" fill="#ffffff" />
+      <!-- Speech tail pointing left -->
+      <path d="M 180 404 L 160 436 L 210 406 Z" fill="#ffffff" />
+
+      <!-- Three glowing language dots inside speech bubble representing learning progress & 3 Slovenian dualities -->
+      <circle cx="196" cy="366" r="14" fill="#059669" />
+      <circle cx="256" cy="366" r="14" fill="#0d9488" />
+      <circle cx="316" cy="366" r="14" fill="#2563eb" />
+    </g>
+
+    <!-- Golden Radiant Slovenian Star (Above Central Triglav Peak) -->
+    <!-- Glowing Aura -->
+    <circle cx="256" cy="116" r="42" fill="url(#starAura)" />
+
+    <!-- Golden 6-Pointed Star (Traditional Slovenian Emblem & Spark of Knowledge) -->
+    <g transform="translate(256, 116)">
+      <!-- Star polygon (6 points) -->
+      <polygon points="0,-26 7,-9 24,-13 14,2 24,16 7,12 0,28 -7,12 -24,16 -14,2 -24,-13 -7,-9" fill="url(#goldGrad)" />
+      <!-- Inner star sparkle highlight -->
+      <circle cx="0" cy="0" r="4.5" fill="#ffffff" />
+    </g>
+
+    <!-- Glacial Water Ripple Lines at the Base (Lake Bled / Soča River) -->
+    <path d="M 112 448 C 160 442, 200 454, 256 448 C 312 442, 352 454, 400 448" fill="none" stroke="#5eead4" stroke-width="4.5" stroke-linecap="round" opacity="0.6" />
+    <path d="M 148 464 C 188 460, 224 468, 256 464 C 288 460, 324 468, 364 464" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity="0.4" />
+  </g>
+</svg>
