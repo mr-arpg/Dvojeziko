@@ -1,13 +1,14 @@
 import React from 'react';
 import { Volume2, Sparkles, Check, X, ArrowLeft } from 'lucide-react';
-import { playSlovenianAudio } from '../tts/audioService';
-import { WordStatus, CEFRLevel } from '../data/types';
+import { playAudio } from '../tts/audioService';
+import { WordStatus, CEFRLevel, Language } from '../data/types';
 
 interface AudioButtonProps {
   text: string;
   size?: 'sm' | 'md' | 'lg';
   className?: string;
   label?: string;
+  lang?: Language;
 }
 
 export const AudioButton: React.FC<AudioButtonProps> = ({
@@ -15,6 +16,7 @@ export const AudioButton: React.FC<AudioButtonProps> = ({
   size = 'md',
   className = '',
   label,
+  lang,
 }) => {
   const [isPlaying, setIsPlaying] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState(false);
@@ -25,7 +27,7 @@ export const AudioButton: React.FC<AudioButtonProps> = ({
     setIsLoading(true);
     setIsPlaying(true);
     try {
-      await playSlovenianAudio(text);
+      await playAudio(text, lang);
     } finally {
       setIsLoading(false);
       setTimeout(() => setIsPlaying(false), 700);

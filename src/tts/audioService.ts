@@ -18,20 +18,30 @@ if (typeof window !== 'undefined' && 'caches' in window) {
   caches.delete('dvojeziko-slovenian-audio-v5').catch(() => {});
 }
 
+let activeLanguage: 'sl' | 'pt' = 'sl';
+
+export function setActiveAudioLanguage(lang: 'sl' | 'pt') {
+  activeLanguage = lang;
+}
+
+export function getActiveAudioLanguage(): 'sl' | 'pt' {
+  return activeLanguage;
+}
+
 /**
- * Loads and caches authentic native neural Slovenian audio (sl-SI-PetraNeural)
+ * Loads and caches authentic native neural audio (sl-SI-PetraNeural or pt-PT-RaquelNeural)
  * into local phone CacheStorage and memory Blob URL for instant 0ms playback.
  */
-async function loadNeuralAudioBlob(cleanText: string, timeoutMs = 4000): Promise<string | null> {
+async function loadNeuralAudioBlob(cleanText: string, lang: 'sl' | 'pt' = activeLanguage, timeoutMs = 8000): Promise<string | null> {
   if (typeof window === 'undefined') return null;
-  const key = cleanText.toLowerCase();
+  const key = `${lang}:${cleanText.toLowerCase()}`;
 
   // 1. In-memory Blob URL (instant 0ms playback)
   if (blobUrls.has(key)) {
     return blobUrls.get(key)!;
   }
 
-  const url = `/api/tts?text=${encodeURIComponent(cleanText)}`;
+  const url = `/api/tts?text=${encodeURIComponent(cleanText)}&lang=${lang}`;
 
   // 2. Persistent device CacheStorage (offline-ready)
   if (typeof window.caches !== 'undefined') {
@@ -83,32 +93,34 @@ function getSharedPlayer(): HTMLAudioElement {
 }
 
 /**
- * Preload authentic Slovenian neural audio clips in background for upcoming words in the session
+ * Preload authentic neural audio clips in background for upcoming words in the session
  */
-export async function preloadSlovenianAudio(texts: string[]): Promise<void> {
+export async function preloadAudio(texts: string[], lang: 'sl' | 'pt' = activeLanguage): Promise<void> {
   if (typeof window === 'undefined') return;
 
   const validTexts = texts
     .map(t => t.replace(/[()]/g, '').trim())
     .filter(Boolean);
 
-  await Promise.allSettled(validTexts.map(text => loadNeuralAudioBlob(text, 6000)));
+  await Promise.allSettled(validTexts.map(text => loadNeuralAudioBlob(text, lang, 8000)));
 }
 
+// Backwards-compatible alias
+export const preloadSlovenianAudio = preloadAudio;
+
 /**
- * Plays authentic native Slovenian human neural audio (sl-SI-PetraNeural).
+ * Plays authentic native neural audio (sl-SI-PetraNeural or pt-PT-RaquelNeural).
  * Synchronously initiates playback inside the user's tap gesture so mobile browsers
  * (iOS Safari & Android Chrome) never block audio.
- * NEVER falls back to robotic synthesized speech.
  */
-export async function playSlovenianAudio(text: string): Promise<boolean> {
+export async function playAudio(text: string, lang: 'sl' | 'pt' = activeLanguage): Promise<boolean> {
   if (typeof window === 'undefined' || !text) return false;
 
   const cleanText = text.replace(/[()]/g, '').trim();
   if (!cleanText) return false;
 
-  const key = cleanText.toLowerCase();
-  const url = `/api/tts?text=${encodeURIComponent(cleanText)}`;
+  const key = `${lang}:${cleanText.toLowerCase()}`;
+  const url = `/api/tts?text=${encodeURIComponent(cleanText)}&lang=${lang}`;
   const player = getSharedPlayer();
 
   try {
@@ -142,10 +154,13 @@ export async function playSlovenianAudio(text: string): Promise<boolean> {
 
     return true;
   } catch (err) {
-    console.warn('Native Slovenian neural playback issue:', err);
+    console.warn('Native neural playback issue:', err);
     return false;
   }
 }
+
+// Backwards-compatible alias
+export const playSlovenianAudio = playAudio;
 
 // Gentle audio effects for interactions (using Web Audio API)
 let audioCtx: AudioContext | null = null;

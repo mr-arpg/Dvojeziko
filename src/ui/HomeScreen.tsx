@@ -22,6 +22,7 @@ interface HomeScreenProps {
   isModerated?: boolean;
   moderationReason?: string;
   mistakeWordsCount?: number;
+  language?: 'sl' | 'pt';
   onStartLesson: () => void;
   onPracticeKnown: () => void;
   onPracticeMistakes?: () => void;
@@ -39,6 +40,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
   isModerated,
   moderationReason,
   mistakeWordsCount = 0,
+  language = 'sl',
   onStartLesson,
   onPracticeKnown,
   onPracticeMistakes,
@@ -62,16 +64,14 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
   }
 
   // Pick a featured word of the day (e.g. first due word or word rank 1)
-  const featuredWord = WORDS[Math.floor(Date.now() / (1000 * 60 * 60 * 24)) % 100];
+  const featuredWord = WORDS[Math.floor(Date.now() / (1000 * 60 * 60 * 24)) % 100] || WORDS[0];
 
-  // Pre-cache foundational words during idle time so they work offline/with weak internet
+  // Pre-cache foundational words during idle time so they work offline and with instant 0ms response
   React.useEffect(() => {
-    const timer = setTimeout(() => {
-      const topWords = WORDS.slice(0, 25).map(w => w.sl);
-      preloadSlovenianAudio(topWords);
-    }, 1200);
-    return () => clearTimeout(timer);
-  }, []);
+    // Warm up the first 30 words immediately in the background
+    const topWords = WORDS.slice(0, 30).map(w => w.sl);
+    preloadSlovenianAudio(topWords, language);
+  }, [language]);
 
   return (
     <div className="space-y-6 pb-24 animate-in fade-in duration-200">
@@ -109,7 +109,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
         </div>
 
         <h3 className="text-lg font-bold text-slate-900 dark:text-white">
-          Slovenian 1,000 Core Vocabulary
+          {language === 'pt' ? 'Portuguese (Portugal)' : 'Slovenian'} 1,000 Core Vocabulary
         </h3>
         <p className="text-xs text-slate-500 dark:text-zinc-400 max-w-xs mt-1">
           {learnedCount} learned (Box 3+) • {learningCount} learning • {1000 - (learnedCount + learningCount)} new

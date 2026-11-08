@@ -126,7 +126,10 @@ export type LessonExercise =
   | SentenceGapExercise
   | SentenceUnderstandExercise;
 
+export type Language = 'sl' | 'pt';
+
 export interface UserSettings {
+  language?: Language; // 'sl' (Slovenian) or 'pt' (Portuguese from Portugal)
   newWordsPerDay: number; // 1 to 8, default 3
   adaptivePace?: boolean; // Smart Moderation: throttles new words when mistake/due review backlog is high
   soundEnabled: boolean;

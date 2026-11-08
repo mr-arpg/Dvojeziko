@@ -14,7 +14,7 @@ function prepareSlovenianTTSInput(rawText: string): string {
 let edgeQueue = Promise.resolve<any>(null);
 const inFlightTTS = new Map<string, Promise<Buffer>>();
 
-async function synthesizeWithEdgeTTS(text: string): Promise<Buffer> {
+async function synthesizeWithEdgeTTS(text: string, voice = 'sl-SI-PetraNeural'): Promise<Buffer> {
   const task = async (): Promise<Buffer> => {
     let MsEdgeTTSClass: any;
     let outputFormat: any;
@@ -31,23 +31,30 @@ async function synthesizeWithEdgeTTS(text: string): Promise<Buffer> {
     }
 
     const tts = new MsEdgeTTSClass();
-    await tts.setMetadata('sl-SI-PetraNeural', outputFormat);
+    await tts.setMetadata(voice, outputFormat);
     const { audioStream } = tts.toStream(text);
     const chunks: Buffer[] = [];
 
     return new Promise<Buffer>((resolve, reject) => {
+      let settled = false;
       const timer = setTimeout(() => {
+        if (settled) return;
+        settled = true;
         try { tts.close(); } catch (_) {}
-        reject(new Error('Slovenian TTS timed out after 8s'));
+        reject(new Error('TTS timed out after 8s'));
       }, 8000);
 
       audioStream.on('data', (chunk: Buffer) => chunks.push(chunk));
       audioStream.on('end', () => {
+        if (settled) return;
+        settled = true;
         clearTimeout(timer);
         try { tts.close(); } catch (_) {}
         resolve(Buffer.concat(chunks));
       });
       audioStream.on('error', (err: any) => {
+        if (settled) return;
+        settled = true;
         clearTimeout(timer);
         try { tts.close(); } catch (_) {}
         reject(err);
@@ -69,8 +76,9 @@ export default async function handler(req: IncomingMessage & { query?: Record<st
       return res.end('Missing text parameter');
     }
 
+    const lang = (url.searchParams.get('lang') || 'sl').toLowerCase();
     const cleanText = rawText.replace(/[()]/g, '').trim().slice(0, 300);
-    const cacheKey = cleanText.toLowerCase();
+    const cacheKey = `${lang}:${cleanText.toLowerCase()}`;
 
     res.setHeader('Content-Type', 'audio/mpeg');
     res.setHeader('Cache-Control', 'public, max-age=604800, immutable');
@@ -79,11 +87,11 @@ export default async function handler(req: IncomingMessage & { query?: Record<st
       return res.end(ttsCache.get(cacheKey));
     }
 
-    const phoneticInput = prepareSlovenianTTSInput(cleanText);
+    const voice = lang === 'pt' ? 'pt-PT-RaquelNeural' : 'sl-SI-PetraNeural';
 
     let fetchPromise = inFlightTTS.get(cacheKey);
     if (!fetchPromise) {
-      fetchPromise = synthesizeWithEdgeTTS(phoneticInput).finally(() => {
+      fetchPromise = synthesizeWithEdgeTTS(cleanText, voice).finally(() => {
         inFlightTTS.delete(cacheKey);
       });
       inFlightTTS.set(cacheKey, fetchPromise);

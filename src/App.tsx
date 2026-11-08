@@ -26,8 +26,16 @@ import {
   UserStats,
   UserProfile,
   LessonExercise,
+  Language,
 } from './data/types';
-import { WORDS, WORDS_BY_RANK } from './data/words';
+import {
+  WORDS,
+  WORDS_BY_RANK,
+  setGlobalLanguage,
+  getWordsForLanguage,
+  getWordsByRankMap,
+} from './data/words';
+import { setActiveAudioLanguage } from './tts/audioService';
 import {
   loadWordProgress,
   saveWordProgress,
@@ -178,6 +186,20 @@ export default function App() {
     return () => unsub();
   }, []);
 
+  // Current active language ('sl' or 'pt')
+  const currentLanguage: Language = settings.language || 'sl';
+
+  // Language application: update active vocabulary lists and audio service
+  useEffect(() => {
+    setGlobalLanguage(currentLanguage);
+    setActiveAudioLanguage(currentLanguage);
+    // Load word progress and stats corresponding to this language
+    const loadedProgress = loadWordProgress(currentLanguage);
+    const loadedStats = loadStats(currentLanguage);
+    setProgressMap(loadedProgress);
+    setStatsState(loadedStats);
+  }, [currentLanguage]);
+
   // Theme application
   useEffect(() => {
     const root = document.documentElement;
@@ -198,8 +220,21 @@ export default function App() {
 
   // Save settings handler
   const handleUpdateSettings = (newSettings: UserSettings) => {
+    const prevLang = settings.language || 'sl';
+    const nextLang = newSettings.language || 'sl';
+
     setSettingsState(newSettings);
     saveSettings(newSettings);
+
+    if (prevLang !== nextLang) {
+      setGlobalLanguage(nextLang);
+      setActiveAudioLanguage(nextLang);
+      const newProgress = loadWordProgress(nextLang);
+      const newStats = loadStats(nextLang);
+      setProgressMap(newProgress);
+      setStatsState(newStats);
+    }
+
     if (currentUser) {
       uploadLocalToCloud(currentUser).catch(err => console.warn('Cloud sync settings upload:', err));
     }
@@ -209,7 +244,13 @@ export default function App() {
   const handleResetData = () => {
     setProgressMap({});
     setStatsState(DEFAULT_STATS);
+    saveWordProgress({}, currentLanguage);
+    saveStats(DEFAULT_STATS, currentLanguage);
   };
+
+  // Active word maps and list for the active language
+  const activeWords = getWordsForLanguage(currentLanguage);
+  const activeRankMap = getWordsByRankMap(currentLanguage);
 
   // Mistake words tracking: any word failed in lesson/practice that hasn't been recapped yet
   const mistakeWords = Object.values(progressMap)
@@ -219,7 +260,7 @@ export default function App() {
       if (!a.hasUnresolvedMistake && b.hasUnresolvedMistake) return 1;
       return (b.failedCount || 0) - (a.failedCount || 0);
     })
-    .map(p => WORDS_BY_RANK.get(p.rank))
+    .map(p => activeRankMap.get(p.rank))
     .filter((w): w is Word => !!w);
 
   // Strictly due items & lesson review items (guarantees every lesson includes review words!)
@@ -245,7 +286,7 @@ export default function App() {
       const allowedWords: Word[] = [];
       for (const p of Object.values(progressMap)) {
         if (p.status !== 'new') {
-          const w = WORDS_BY_RANK.get(p.rank);
+          const w = activeRankMap.get(p.rank);
           if (w) allowedWords.push(w);
         }
       }
@@ -260,7 +301,7 @@ export default function App() {
         ...lessonReviewItems.map(d => d.word),
         ...todayNewWords,
       ];
-      const pool = targetWords.length > 0 ? targetWords : WORDS.slice(0, 10);
+      const pool = targetWords.length > 0 ? targetWords : activeWords.slice(0, 10);
 
       // Fetch or generate sentences with 2s max timeout so UI never hangs
       const sentencesPromise = getPracticeSentences(pool, allowedWords, 3);
@@ -276,14 +317,14 @@ export default function App() {
       let exercises = buildLessonExercises(lessonReviewItems, todayNewWords, sentences, allowedLemmas, allowedWords);
       if (exercises.length === 0) {
         // Fallback safety: always ensure at least today's new words are tested
-        exercises = buildLessonExercises([], WORDS.slice(0, 3), [], allowedLemmas, allowedWords);
+        exercises = buildLessonExercises([], activeWords.slice(0, 3), [], allowedLemmas, allowedWords);
       }
       setLessonExercises(exercises);
       setIsInLesson(true);
     } catch (e) {
       console.error('Error starting lesson:', e);
       // Emergency fallback
-      const fallbackExercises = buildLessonExercises([], todayNewWords.length > 0 ? todayNewWords : WORDS.slice(0, 3), [], new Set(), []);
+      const fallbackExercises = buildLessonExercises([], todayNewWords.length > 0 ? todayNewWords : activeWords.slice(0, 3), [], new Set(), []);
       setLessonExercises(fallbackExercises);
       setIsInLesson(true);
     } finally {
@@ -297,12 +338,12 @@ export default function App() {
     const knownWords: Word[] = [];
     for (const p of Object.values(progressMap)) {
       if (p.status !== 'new') {
-        const w = WORDS_BY_RANK.get(p.rank);
+        const w = activeRankMap.get(p.rank);
         if (w) knownWords.push(w);
       }
     }
     // If user has few or 0 known words, use foundational starter words
-    const pool = knownWords.length >= 3 ? knownWords : WORDS.slice(0, 10);
+    const pool = knownWords.length >= 3 ? knownWords : activeWords.slice(0, 10);
     const count = Math.min(12, Math.max(6, pool.length));
     const exercises = buildKnownWordsPracticeExercises(pool, count);
     setLessonExercises(exercises);
@@ -402,7 +443,7 @@ export default function App() {
                 Dvojeziko
               </h1>
               <span className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 tracking-wider uppercase">
-                Slovenian in 5 Min/Day
+                {currentLanguage === 'pt' ? 'Portuguese in 5 Min/Day' : 'Slovenian in 5 Min/Day'}
               </span>
             </div>
           </div>
@@ -487,6 +528,7 @@ export default function App() {
             isModerated={newWordsQuota.isModerated}
             moderationReason={newWordsQuota.reason}
             mistakeWordsCount={mistakeWords.length}
+            language={currentLanguage}
             onStartLesson={handleStartLesson}
             onPracticeKnown={handleStartPracticeKnown}
             onPracticeMistakes={() => handlePracticeMistakes(mistakeWords)}

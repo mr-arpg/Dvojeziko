@@ -1,0 +1,8002 @@
+[
+  {
+    "rank": 1,
+    "pt": "de",
+    "sl": "de",
+    "en": "of; from",
+    "level": "A1",
+    "pos": "preposition"
+  },
+  {
+    "rank": 2,
+    "pt": "a",
+    "sl": "a",
+    "en": "the (f.); to; her",
+    "level": "A1",
+    "pos": "article"
+  },
+  {
+    "rank": 3,
+    "pt": "o",
+    "sl": "o",
+    "en": "the (m.); him; it",
+    "level": "A1",
+    "pos": "article"
+  },
+  {
+    "rank": 4,
+    "pt": "que",
+    "sl": "que",
+    "en": "that; which; what; than",
+    "level": "A1",
+    "pos": "conjunction"
+  },
+  {
+    "rank": 5,
+    "pt": "e",
+    "sl": "e",
+    "en": "and",
+    "level": "A1",
+    "pos": "conjunction"
+  },
+  {
+    "rank": 6,
+    "pt": "do",
+    "sl": "do",
+    "en": "of the (m.); from the (m.)",
+    "level": "A1",
+    "pos": "preposition"
+  },
+  {
+    "rank": 7,
+    "pt": "da",
+    "sl": "da",
+    "en": "of the (f.); from the (f.)",
+    "level": "A1",
+    "pos": "preposition"
+  },
+  {
+    "rank": 8,
+    "pt": "em",
+    "sl": "em",
+    "en": "in; on; at",
+    "level": "A1",
+    "pos": "preposition"
+  },
+  {
+    "rank": 9,
+    "pt": "um",
+    "sl": "um",
+    "en": "a; an; one (m.)",
+    "level": "A1",
+    "pos": "article"
+  },
+  {
+    "rank": 10,
+    "pt": "para",
+    "sl": "para",
+    "en": "for; to; in order to",
+    "level": "A1",
+    "pos": "preposition"
+  },
+  {
+    "rank": 11,
+    "pt": "é",
+    "sl": "é",
+    "en": "is (ser)",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 12,
+    "pt": "com",
+    "sl": "com",
+    "en": "with",
+    "level": "A1",
+    "pos": "preposition"
+  },
+  {
+    "rank": 13,
+    "pt": "não",
+    "sl": "não",
+    "en": "no; not",
+    "level": "A1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 14,
+    "pt": "uma",
+    "sl": "uma",
+    "en": "a; an; one (f.)",
+    "level": "A1",
+    "pos": "article"
+  },
+  {
+    "rank": 15,
+    "pt": "os",
+    "sl": "os",
+    "en": "the (m. pl.); them (m.)",
+    "level": "A1",
+    "pos": "article"
+  },
+  {
+    "rank": 16,
+    "pt": "no",
+    "sl": "no",
+    "en": "in the (m.); on the (m.)",
+    "level": "A1",
+    "pos": "preposition"
+  },
+  {
+    "rank": 17,
+    "pt": "se",
+    "sl": "se",
+    "en": "if; oneself; himself; herself",
+    "level": "A1",
+    "pos": "pronoun"
+  },
+  {
+    "rank": 18,
+    "pt": "na",
+    "sl": "na",
+    "en": "in the (f.); on the (f.)",
+    "level": "A1",
+    "pos": "preposition"
+  },
+  {
+    "rank": 19,
+    "pt": "por",
+    "sl": "por",
+    "en": "by; for; through; per",
+    "level": "A1",
+    "pos": "preposition"
+  },
+  {
+    "rank": 20,
+    "pt": "mais",
+    "sl": "mais",
+    "en": "more; most; plus",
+    "level": "A1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 21,
+    "pt": "as",
+    "sl": "as",
+    "en": "the (f. pl.); them (f.)",
+    "level": "A1",
+    "pos": "article"
+  },
+  {
+    "rank": 22,
+    "pt": "dos",
+    "sl": "dos",
+    "en": "of the (m. pl.); from the (m. pl.)",
+    "level": "A1",
+    "pos": "preposition"
+  },
+  {
+    "rank": 23,
+    "pt": "como",
+    "sl": "como",
+    "en": "how; like; as",
+    "level": "A1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 24,
+    "pt": "mas",
+    "sl": "mas",
+    "en": "but",
+    "level": "A1",
+    "pos": "conjunction"
+  },
+  {
+    "rank": 25,
+    "pt": "ao",
+    "sl": "ao",
+    "en": "to the (m.); at the (m.)",
+    "level": "A1",
+    "pos": "preposition"
+  },
+  {
+    "rank": 26,
+    "pt": "ele",
+    "sl": "ele",
+    "en": "he; him; it",
+    "level": "A1",
+    "pos": "pronoun"
+  },
+  {
+    "rank": 27,
+    "pt": "das",
+    "sl": "das",
+    "en": "of the (f. pl.); from the (f. pl.)",
+    "level": "A1",
+    "pos": "preposition"
+  },
+  {
+    "rank": 28,
+    "pt": "à",
+    "sl": "à",
+    "en": "to the (f.); at the (f.)",
+    "level": "A1",
+    "pos": "preposition"
+  },
+  {
+    "rank": 29,
+    "pt": "seu",
+    "sl": "seu",
+    "en": "your; his; her; its (m.)",
+    "level": "A1",
+    "pos": "determiner"
+  },
+  {
+    "rank": 30,
+    "pt": "sua",
+    "sl": "sua",
+    "en": "your; his; her; its (f.)",
+    "level": "A1",
+    "pos": "determiner"
+  },
+  {
+    "rank": 31,
+    "pt": "ou",
+    "sl": "ou",
+    "en": "or",
+    "level": "A1",
+    "pos": "conjunction"
+  },
+  {
+    "rank": 32,
+    "pt": "quando",
+    "sl": "quando",
+    "en": "when",
+    "level": "A1",
+    "pos": "conjunction"
+  },
+  {
+    "rank": 33,
+    "pt": "muito",
+    "sl": "muito",
+    "en": "very; much; a lot",
+    "level": "A1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 34,
+    "pt": "nos",
+    "sl": "nos",
+    "en": "in the (m. pl.); us",
+    "level": "A1",
+    "pos": "preposition"
+  },
+  {
+    "rank": 35,
+    "pt": "já",
+    "sl": "já",
+    "en": "already; now; right away",
+    "level": "A1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 36,
+    "pt": "eu",
+    "sl": "eu",
+    "en": "I",
+    "level": "A1",
+    "pos": "pronoun"
+  },
+  {
+    "rank": 37,
+    "pt": "também",
+    "sl": "também",
+    "en": "also; too; as well",
+    "level": "A1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 38,
+    "pt": "ser",
+    "sl": "ser",
+    "en": "to be (permanent/essential)",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 39,
+    "pt": "ter",
+    "sl": "ter",
+    "en": "to have",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 40,
+    "pt": "você",
+    "sl": "você",
+    "en": "you (sing.)",
+    "level": "A1",
+    "pos": "pronoun"
+  },
+  {
+    "rank": 41,
+    "pt": "me",
+    "sl": "me",
+    "en": "me; to me; myself",
+    "level": "A1",
+    "pos": "pronoun"
+  },
+  {
+    "rank": 42,
+    "pt": "estar",
+    "sl": "estar",
+    "en": "to be (state/location)",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 43,
+    "pt": "só",
+    "sl": "só",
+    "en": "only; just; alone",
+    "level": "A1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 44,
+    "pt": "isso",
+    "sl": "isso",
+    "en": "that; this thing",
+    "level": "A1",
+    "pos": "pronoun"
+  },
+  {
+    "rank": 45,
+    "pt": "bem",
+    "sl": "bem",
+    "en": "well; very; quite",
+    "level": "A1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 46,
+    "pt": "pelo",
+    "sl": "pelo",
+    "en": "by the (m.); for the (m.); through the (m.)",
+    "level": "A1",
+    "pos": "preposition"
+  },
+  {
+    "rank": 47,
+    "pt": "aqui",
+    "sl": "aqui",
+    "en": "here",
+    "level": "A1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 48,
+    "pt": "fazer",
+    "sl": "fazer",
+    "en": "to do; to make",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 49,
+    "pt": "todo",
+    "sl": "todo",
+    "en": "all; every; whole",
+    "level": "A1",
+    "pos": "determiner"
+  },
+  {
+    "rank": 50,
+    "pt": "ir",
+    "sl": "ir",
+    "en": "to go",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 51,
+    "pt": "ela",
+    "sl": "ela",
+    "en": "she; her; it",
+    "level": "A1",
+    "pos": "pronoun"
+  },
+  {
+    "rank": 52,
+    "pt": "este",
+    "sl": "este",
+    "en": "this (m.)",
+    "level": "A1",
+    "pos": "determiner"
+  },
+  {
+    "rank": 53,
+    "pt": "meu",
+    "sl": "meu",
+    "en": "my; mine (m.)",
+    "level": "A1",
+    "pos": "determiner"
+  },
+  {
+    "rank": 54,
+    "pt": "às",
+    "sl": "às",
+    "en": "to the (f. pl.); at the (f. pl.)",
+    "level": "A1",
+    "pos": "preposition"
+  },
+  {
+    "rank": 55,
+    "pt": "esse",
+    "sl": "esse",
+    "en": "that (m., near you)",
+    "level": "A1",
+    "pos": "determiner"
+  },
+  {
+    "rank": 56,
+    "pt": "alguém",
+    "sl": "alguém",
+    "en": "someone; somebody",
+    "level": "A1",
+    "pos": "pronoun"
+  },
+  {
+    "rank": 57,
+    "pt": "minha",
+    "sl": "minha",
+    "en": "my; mine (f.)",
+    "level": "A1",
+    "pos": "determiner"
+  },
+  {
+    "rank": 58,
+    "pt": "até",
+    "sl": "até",
+    "en": "until; up to; even",
+    "level": "A1",
+    "pos": "preposition"
+  },
+  {
+    "rank": 59,
+    "pt": "ver",
+    "sl": "ver",
+    "en": "to see; to watch",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 60,
+    "pt": "poder",
+    "sl": "poder",
+    "en": "to be able to; can",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 61,
+    "pt": "querer",
+    "sl": "querer",
+    "en": "to want",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 62,
+    "pt": "onde",
+    "sl": "onde",
+    "en": "where",
+    "level": "A1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 63,
+    "pt": "depois",
+    "sl": "depois",
+    "en": "after; afterwards; later",
+    "level": "A1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 64,
+    "pt": "sem",
+    "sl": "sem",
+    "en": "without",
+    "level": "A1",
+    "pos": "preposition"
+  },
+  {
+    "rank": 65,
+    "pt": "dizer",
+    "sl": "dizer",
+    "en": "to say; to tell",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 66,
+    "pt": "nós",
+    "sl": "nós",
+    "en": "we; us",
+    "level": "A1",
+    "pos": "pronoun"
+  },
+  {
+    "rank": 67,
+    "pt": "ainda",
+    "sl": "ainda",
+    "en": "still; yet",
+    "level": "A1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 68,
+    "pt": "então",
+    "sl": "então",
+    "en": "then; so",
+    "level": "A1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 69,
+    "pt": "pela",
+    "sl": "pela",
+    "en": "by the (f.); for the (f.); through the (f.)",
+    "level": "A1",
+    "pos": "preposition"
+  },
+  {
+    "rank": 70,
+    "pt": "dia",
+    "sl": "dia",
+    "en": "day",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 71,
+    "pt": "tudo",
+    "sl": "tudo",
+    "en": "everything; all",
+    "level": "A1",
+    "pos": "pronoun"
+  },
+  {
+    "rank": 72,
+    "pt": "antes",
+    "sl": "antes",
+    "en": "before; beforehand",
+    "level": "A1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 73,
+    "pt": "sim",
+    "sl": "sim",
+    "en": "yes",
+    "level": "A1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 74,
+    "pt": "entre",
+    "sl": "entre",
+    "en": "between; among",
+    "level": "A1",
+    "pos": "preposition"
+  },
+  {
+    "rank": 75,
+    "pt": "grande",
+    "sl": "grande",
+    "en": "big; large; great",
+    "level": "A1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 76,
+    "pt": "saber",
+    "sl": "saber",
+    "en": "to know (a fact)",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 77,
+    "pt": "aquele",
+    "sl": "aquele",
+    "en": "that (m., over there)",
+    "level": "A1",
+    "pos": "determiner"
+  },
+  {
+    "rank": 78,
+    "pt": "coisa",
+    "sl": "coisa",
+    "en": "thing",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 79,
+    "pt": "vez",
+    "sl": "vez",
+    "en": "time; occasion",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 80,
+    "pt": "nada",
+    "sl": "nada",
+    "en": "nothing; anything",
+    "level": "A1",
+    "pos": "pronoun"
+  },
+  {
+    "rank": 81,
+    "pt": "dar",
+    "sl": "dar",
+    "en": "to give",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 82,
+    "pt": "gente",
+    "sl": "gente",
+    "en": "people; we (colloquial)",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 83,
+    "pt": "ficar",
+    "sl": "ficar",
+    "en": "to stay; to become; to be (located)",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 84,
+    "pt": "tempo",
+    "sl": "tempo",
+    "en": "time; weather",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 85,
+    "pt": "mesmo",
+    "sl": "mesmo",
+    "en": "same; even; really",
+    "level": "A1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 86,
+    "pt": "agora",
+    "sl": "agora",
+    "en": "now",
+    "level": "A1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 87,
+    "pt": "vida",
+    "sl": "vida",
+    "en": "life",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 88,
+    "pt": "ano",
+    "sl": "ano",
+    "en": "year",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 89,
+    "pt": "algum",
+    "sl": "algum",
+    "en": "some; any (m.)",
+    "level": "A1",
+    "pos": "determiner"
+  },
+  {
+    "rank": 90,
+    "pt": "outro",
+    "sl": "outro",
+    "en": "other; another (m.)",
+    "level": "A1",
+    "pos": "determiner"
+  },
+  {
+    "rank": 91,
+    "pt": "muita",
+    "sl": "muita",
+    "en": "a lot of; much (f.)",
+    "level": "A1",
+    "pos": "determiner"
+  },
+  {
+    "rank": 92,
+    "pt": "assim",
+    "sl": "assim",
+    "en": "like this; so; thus",
+    "level": "A1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 93,
+    "pt": "qual",
+    "sl": "qual",
+    "en": "which; what",
+    "level": "A1",
+    "pos": "pronoun"
+  },
+  {
+    "rank": 94,
+    "pt": "aí",
+    "sl": "aí",
+    "en": "there (near you); then",
+    "level": "A1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 95,
+    "pt": "lá",
+    "sl": "lá",
+    "en": "there; over there",
+    "level": "A1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 96,
+    "pt": "passar",
+    "sl": "passar",
+    "en": "to pass; to spend (time); to happen",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 97,
+    "pt": "quem",
+    "sl": "quem",
+    "en": "who; whom",
+    "level": "A1",
+    "pos": "pronoun"
+  },
+  {
+    "rank": 98,
+    "pt": "todos",
+    "sl": "todos",
+    "en": "everyone; all (m. pl.)",
+    "level": "A1",
+    "pos": "determiner"
+  },
+  {
+    "rank": 99,
+    "pt": "casa",
+    "sl": "casa",
+    "en": "house; home",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 100,
+    "pt": "porque",
+    "sl": "porque",
+    "en": "because",
+    "level": "A1",
+    "pos": "conjunction"
+  },
+  {
+    "rank": 101,
+    "pt": "cada",
+    "sl": "cada",
+    "en": "each; every",
+    "level": "A1",
+    "pos": "determiner"
+  },
+  {
+    "rank": 102,
+    "pt": "homem",
+    "sl": "homem",
+    "en": "man",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 103,
+    "pt": "vir",
+    "sl": "vir",
+    "en": "to come",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 104,
+    "pt": "novo",
+    "sl": "novo",
+    "en": "new; young (m.)",
+    "level": "A1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 105,
+    "pt": "falar",
+    "sl": "falar",
+    "en": "to speak; to talk",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 106,
+    "pt": "sobre",
+    "sl": "sobre",
+    "en": "about; on; over",
+    "level": "A1",
+    "pos": "preposition"
+  },
+  {
+    "rank": 107,
+    "pt": "olhar",
+    "sl": "olhar",
+    "en": "to look; to watch",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 108,
+    "pt": "primeiro",
+    "sl": "primeiro",
+    "en": "first (m.)",
+    "level": "A1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 109,
+    "pt": "te",
+    "sl": "te",
+    "en": "you; to you (object)",
+    "level": "A1",
+    "pos": "pronoun"
+  },
+  {
+    "rank": 110,
+    "pt": "nunca",
+    "sl": "nunca",
+    "en": "never",
+    "level": "A1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 111,
+    "pt": "pessoa",
+    "sl": "pessoa",
+    "en": "person",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 112,
+    "pt": "sempre",
+    "sl": "sempre",
+    "en": "always",
+    "level": "A1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 113,
+    "pt": "outra",
+    "sl": "outra",
+    "en": "other; another (f.)",
+    "level": "A1",
+    "pos": "determiner"
+  },
+  {
+    "rank": 114,
+    "pt": "mundo",
+    "sl": "mundo",
+    "en": "world",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 115,
+    "pt": "parte",
+    "sl": "parte",
+    "en": "part; portion",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 116,
+    "pt": "chegar",
+    "sl": "chegar",
+    "en": "to arrive; to get to; to be enough",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 117,
+    "pt": "achar",
+    "sl": "achar",
+    "en": "to think; to find",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 118,
+    "pt": "lhe",
+    "sl": "lhe",
+    "en": "to him; to her; to you (indirect)",
+    "level": "A1",
+    "pos": "pronoun"
+  },
+  {
+    "rank": 119,
+    "pt": "olho",
+    "sl": "olho",
+    "en": "eye",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 120,
+    "pt": "coração",
+    "sl": "coração",
+    "en": "heart",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 121,
+    "pt": "olá",
+    "sl": "olá",
+    "en": "hello; hi",
+    "level": "A1",
+    "pos": "interjection"
+  },
+  {
+    "rank": 122,
+    "pt": "trabalhar",
+    "sl": "trabalhar",
+    "en": "to work",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 123,
+    "pt": "noite",
+    "sl": "noite",
+    "en": "night",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 124,
+    "pt": "bom",
+    "sl": "bom",
+    "en": "good (m.)",
+    "level": "A1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 125,
+    "pt": "esta",
+    "sl": "esta",
+    "en": "this (f.)",
+    "level": "A1",
+    "pos": "determiner"
+  },
+  {
+    "rank": 126,
+    "pt": "contra",
+    "sl": "contra",
+    "en": "against",
+    "level": "A1",
+    "pos": "preposition"
+  },
+  {
+    "rank": 127,
+    "pt": "tão",
+    "sl": "tão",
+    "en": "so; as",
+    "level": "A1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 128,
+    "pt": "menos",
+    "sl": "menos",
+    "en": "less; fewer; except",
+    "level": "A1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 129,
+    "pt": "melhor",
+    "sl": "melhor",
+    "en": "better; best",
+    "level": "A1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 130,
+    "pt": "tal",
+    "sl": "tal",
+    "en": "such; so-and-so",
+    "level": "A1",
+    "pos": "determiner"
+  },
+  {
+    "rank": 131,
+    "pt": "vocês",
+    "sl": "vocês",
+    "en": "you all (plural)",
+    "level": "A1",
+    "pos": "pronoun"
+  },
+  {
+    "rank": 132,
+    "pt": "trabalho",
+    "sl": "trabalho",
+    "en": "work; job",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 133,
+    "pt": "pois",
+    "sl": "pois",
+    "en": "because; well; for; so",
+    "level": "A1",
+    "pos": "conjunction"
+  },
+  {
+    "rank": 134,
+    "pt": "senhor",
+    "sl": "senhor",
+    "en": "sir; Mr.; gentleman",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 135,
+    "pt": "nome",
+    "sl": "nome",
+    "en": "name",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 136,
+    "pt": "tarde",
+    "sl": "tarde",
+    "en": "afternoon; late",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 137,
+    "pt": "sair",
+    "sl": "sair",
+    "en": "to leave; to go out",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 138,
+    "pt": "colocar",
+    "sl": "colocar",
+    "en": "to put; to place",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 139,
+    "pt": "tanto",
+    "sl": "tanto",
+    "en": "so much; so many",
+    "level": "A1",
+    "pos": "determiner"
+  },
+  {
+    "rank": 140,
+    "pt": "certo",
+    "sl": "certo",
+    "en": "right; sure; certain",
+    "level": "A1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 141,
+    "pt": "mão",
+    "sl": "mão",
+    "en": "hand",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 142,
+    "pt": "último",
+    "sl": "último",
+    "en": "last; latest (m.)",
+    "level": "A1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 143,
+    "pt": "lugar",
+    "sl": "lugar",
+    "en": "place",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 144,
+    "pt": "deixar",
+    "sl": "deixar",
+    "en": "to let; to leave; to allow",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 145,
+    "pt": "água",
+    "sl": "água",
+    "en": "water",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 146,
+    "pt": "conhecer",
+    "sl": "conhecer",
+    "en": "to know (a person/place); to meet",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 147,
+    "pt": "encontrar",
+    "sl": "encontrar",
+    "en": "to find; to meet",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 148,
+    "pt": "número",
+    "sl": "número",
+    "en": "number",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 149,
+    "pt": "começar",
+    "sl": "começar",
+    "en": "to begin; to start",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 150,
+    "pt": "mulher",
+    "sl": "mulher",
+    "en": "woman; wife",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 151,
+    "pt": "logo",
+    "sl": "logo",
+    "en": "soon; right away; therefore",
+    "level": "A1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 152,
+    "pt": "dele",
+    "sl": "dele",
+    "en": "his; of him",
+    "level": "A1",
+    "pos": "determiner"
+  },
+  {
+    "rank": 153,
+    "pt": "acontecer",
+    "sl": "acontecer",
+    "en": "to happen",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 154,
+    "pt": "entrar",
+    "sl": "entrar",
+    "en": "to enter; to come in; to go in",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 155,
+    "pt": "nele",
+    "sl": "nele",
+    "en": "in him; in it (m.)",
+    "level": "A2",
+    "pos": "preposition"
+  },
+  {
+    "rank": 156,
+    "pt": "lembrar",
+    "sl": "lembrar",
+    "en": "to remember; to remind",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 157,
+    "pt": "filho",
+    "sl": "filho",
+    "en": "son; child",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 158,
+    "pt": "pai",
+    "sl": "pai",
+    "en": "father; dad",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 159,
+    "pt": "mãe",
+    "sl": "mãe",
+    "en": "mother; mom",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 160,
+    "pt": "amigo",
+    "sl": "amigo",
+    "en": "friend (m.)",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 161,
+    "pt": "dever",
+    "sl": "dever",
+    "en": "to owe; must; duty",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 162,
+    "pt": "precisar",
+    "sl": "precisar",
+    "en": "to need",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 163,
+    "pt": "sentir",
+    "sl": "sentir",
+    "en": "to feel",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 164,
+    "pt": "levar",
+    "sl": "levar",
+    "en": "to take; to carry",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 165,
+    "pt": "pouco",
+    "sl": "pouco",
+    "en": "little; few; a bit",
+    "level": "A1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 166,
+    "pt": "história",
+    "sl": "história",
+    "en": "story; history",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 167,
+    "pt": "seguir",
+    "sl": "seguir",
+    "en": "to follow; to continue",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 168,
+    "pt": "chamar",
+    "sl": "chamar",
+    "en": "to call",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 169,
+    "pt": "gostar",
+    "sl": "gostar",
+    "en": "to like",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 170,
+    "pt": "palavra",
+    "sl": "palavra",
+    "en": "word",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 171,
+    "pt": "cabeça",
+    "sl": "cabeça",
+    "en": "head",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 172,
+    "pt": "perder",
+    "sl": "perder",
+    "en": "to lose; to miss",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 173,
+    "pt": "porta",
+    "sl": "porta",
+    "en": "door",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 174,
+    "pt": "talvez",
+    "sl": "talvez",
+    "en": "maybe; perhaps",
+    "level": "A1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 175,
+    "pt": "momento",
+    "sl": "momento",
+    "en": "moment",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 176,
+    "pt": "demais",
+    "sl": "demais",
+    "en": "too much; too many; awesome",
+    "level": "A2",
+    "pos": "adverb"
+  },
+  {
+    "rank": 177,
+    "pt": "próprio",
+    "sl": "próprio",
+    "en": "own; proper; suitable",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 178,
+    "pt": "jeito",
+    "sl": "jeito",
+    "en": "way; manner; knack",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 179,
+    "pt": "nem",
+    "sl": "nem",
+    "en": "nor; not even",
+    "level": "A1",
+    "pos": "conjunction"
+  },
+  {
+    "rank": 180,
+    "pt": "esperar",
+    "sl": "esperar",
+    "en": "to wait; to hope; to expect",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 181,
+    "pt": "cidade",
+    "sl": "cidade",
+    "en": "city; town",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 182,
+    "pt": "certeza",
+    "sl": "certeza",
+    "en": "certainty; sureness",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 183,
+    "pt": "entender",
+    "sl": "entender",
+    "en": "to understand",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 184,
+    "pt": "contar",
+    "sl": "contar",
+    "en": "to tell; to count",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 185,
+    "pt": "pergunta",
+    "sl": "pergunta",
+    "en": "question",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 186,
+    "pt": "importante",
+    "sl": "importante",
+    "en": "important",
+    "level": "A1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 187,
+    "pt": "dela",
+    "sl": "dela",
+    "en": "her; of her",
+    "level": "A1",
+    "pos": "determiner"
+  },
+  {
+    "rank": 188,
+    "pt": "terra",
+    "sl": "terra",
+    "en": "earth; land; ground",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 189,
+    "pt": "problema",
+    "sl": "problema",
+    "en": "problem",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 190,
+    "pt": "depressa",
+    "sl": "depressa",
+    "en": "quickly; fast",
+    "level": "A2",
+    "pos": "adverb"
+  },
+  {
+    "rank": 191,
+    "pt": "voltar",
+    "sl": "voltar",
+    "en": "to return; to come back; to go back",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 192,
+    "pt": "menino",
+    "sl": "menino",
+    "en": "boy",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 193,
+    "pt": "acabar",
+    "sl": "acabar",
+    "en": "to finish; to end; to run out",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 194,
+    "pt": "mês",
+    "sl": "mês",
+    "en": "month",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 195,
+    "pt": "conseguir",
+    "sl": "conseguir",
+    "en": "to manage to; to get; to achieve",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 196,
+    "pt": "existir",
+    "sl": "existir",
+    "en": "to exist",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 197,
+    "pt": "carro",
+    "sl": "carro",
+    "en": "car",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 198,
+    "pt": "ideia",
+    "sl": "ideia",
+    "en": "idea",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 199,
+    "pt": "amor",
+    "sl": "amor",
+    "en": "love",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 200,
+    "pt": "fim",
+    "sl": "fim",
+    "en": "end",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 201,
+    "pt": "mostrar",
+    "sl": "mostrar",
+    "en": "to show",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 202,
+    "pt": "lado",
+    "sl": "lado",
+    "en": "side",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 203,
+    "pt": "amiga",
+    "sl": "amiga",
+    "en": "friend (f.)",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 204,
+    "pt": "livro",
+    "sl": "livro",
+    "en": "book",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 205,
+    "pt": "senhora",
+    "sl": "senhora",
+    "en": "lady; Mrs.; madam",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 206,
+    "pt": "ajudar",
+    "sl": "ajudar",
+    "en": "to help",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 207,
+    "pt": "brincar",
+    "sl": "brincar",
+    "en": "to play; to joke",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 208,
+    "pt": "algo",
+    "sl": "algo",
+    "en": "something",
+    "level": "A1",
+    "pos": "pronoun"
+  },
+  {
+    "rank": 209,
+    "pt": "usar",
+    "sl": "usar",
+    "en": "to use; to wear",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 210,
+    "pt": "pensar",
+    "sl": "pensar",
+    "en": "to think",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 211,
+    "pt": "tipo",
+    "sl": "tipo",
+    "en": "type; kind; like (filler)",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 212,
+    "pt": "trazer",
+    "sl": "trazer",
+    "en": "to bring",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 213,
+    "pt": "razão",
+    "sl": "razão",
+    "en": "reason; right",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 214,
+    "pt": "longe",
+    "sl": "longe",
+    "en": "far; far away",
+    "level": "A1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 215,
+    "pt": "certamente",
+    "sl": "certamente",
+    "en": "certainly; surely",
+    "level": "A2",
+    "pos": "adverb"
+  },
+  {
+    "rank": 216,
+    "pt": "dinheiro",
+    "sl": "dinheiro",
+    "en": "money",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 217,
+    "pt": "menina",
+    "sl": "menina",
+    "en": "girl",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 218,
+    "pt": "morrer",
+    "sl": "morrer",
+    "en": "to die",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 219,
+    "pt": "guerra",
+    "sl": "guerra",
+    "en": "war",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 220,
+    "pt": "ouvir",
+    "sl": "ouvir",
+    "en": "to hear; to listen",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 221,
+    "pt": "sozinho",
+    "sl": "sozinho",
+    "en": "alone; by oneself (m.)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 222,
+    "pt": "obrigado",
+    "sl": "obrigado",
+    "en": "thank you (m. speaker)",
+    "level": "A1",
+    "pos": "interjection"
+  },
+  {
+    "rank": 223,
+    "pt": "família",
+    "sl": "família",
+    "en": "family",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 224,
+    "pt": "preciso",
+    "sl": "preciso",
+    "en": "necessary; precise",
+    "level": "A1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 225,
+    "pt": "inteiro",
+    "sl": "inteiro",
+    "en": "whole; entire (m.)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 226,
+    "pt": "comprar",
+    "sl": "comprar",
+    "en": "to buy",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 227,
+    "pt": "verdade",
+    "sl": "verdade",
+    "en": "truth",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 228,
+    "pt": "aceitar",
+    "sl": "aceitar",
+    "en": "to accept",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 229,
+    "pt": "noivo",
+    "sl": "noivo",
+    "en": "fiancé; groom; boyfriend",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 230,
+    "pt": "cara",
+    "sl": "cara",
+    "en": "face; cheek",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 231,
+    "pt": "buscar",
+    "sl": "buscar",
+    "en": "to look for; to fetch; to pick up",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 232,
+    "pt": "perto",
+    "sl": "perto",
+    "en": "near; close",
+    "level": "A1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 233,
+    "pt": "apenas",
+    "sl": "apenas",
+    "en": "only; just",
+    "level": "A1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 234,
+    "pt": "comer",
+    "sl": "comer",
+    "en": "to eat",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 235,
+    "pt": "noiva",
+    "sl": "noiva",
+    "en": "fiancée; bride; girlfriend",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 236,
+    "pt": "força",
+    "sl": "força",
+    "en": "strength; force",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 237,
+    "pt": "segundo",
+    "sl": "segundo",
+    "en": "second; according to",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 238,
+    "pt": "igual",
+    "sl": "igual",
+    "en": "equal; the same",
+    "level": "A1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 239,
+    "pt": "matar",
+    "sl": "matar",
+    "en": "to kill",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 240,
+    "pt": "escutar",
+    "sl": "escutar",
+    "en": "to listen; to hear",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 241,
+    "pt": "irmão",
+    "sl": "irmão",
+    "en": "brother",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 242,
+    "pt": "seguro",
+    "sl": "seguro",
+    "en": "safe; sure; insurance",
+    "level": "A1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 243,
+    "pt": "terrível",
+    "sl": "terrível",
+    "en": "terrible; awful",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 244,
+    "pt": "entanto",
+    "sl": "entanto",
+    "en": "meanwhile (in the phrase no entanto)",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 245,
+    "pt": "importar",
+    "sl": "importar",
+    "en": "to matter; to mind; to import",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 246,
+    "pt": "abrir",
+    "sl": "abrir",
+    "en": "to open",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 247,
+    "pt": "especial",
+    "sl": "especial",
+    "en": "special",
+    "level": "A1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 248,
+    "pt": "situação",
+    "sl": "situação",
+    "en": "situation",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 249,
+    "pt": "medo",
+    "sl": "medo",
+    "en": "fear",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 250,
+    "pt": "hoje",
+    "sl": "hoje",
+    "en": "today",
+    "level": "A1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 251,
+    "pt": "fechar",
+    "sl": "fechar",
+    "en": "to close; to shut",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 252,
+    "pt": "maneira",
+    "sl": "maneira",
+    "en": "way; manner",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 253,
+    "pt": "correr",
+    "sl": "correr",
+    "en": "to run",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 254,
+    "pt": "especialmente",
+    "sl": "especialmente",
+    "en": "especially",
+    "level": "A2",
+    "pos": "adverb"
+  },
+  {
+    "rank": 255,
+    "pt": "amanhã",
+    "sl": "amanhã",
+    "en": "tomorrow",
+    "level": "A1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 256,
+    "pt": "campo",
+    "sl": "campo",
+    "en": "field; countryside",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 257,
+    "pt": "grupo",
+    "sl": "grupo",
+    "en": "group",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 258,
+    "pt": "ganhar",
+    "sl": "ganhar",
+    "en": "to win; to earn; to gain",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 259,
+    "pt": "andar",
+    "sl": "andar",
+    "en": "to walk; floor (of a building)",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 260,
+    "pt": "quarto",
+    "sl": "quarto",
+    "en": "room; bedroom; fourth",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 261,
+    "pt": "cima",
+    "sl": "cima",
+    "en": "top; above (in em cima)",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 262,
+    "pt": "corpo",
+    "sl": "corpo",
+    "en": "body",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 263,
+    "pt": "espécie",
+    "sl": "espécie",
+    "en": "kind; species; sort",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 264,
+    "pt": "jogar",
+    "sl": "jogar",
+    "en": "to play (a game/sport); to throw",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 265,
+    "pt": "ligar",
+    "sl": "ligar",
+    "en": "to call (phone); to turn on; to connect",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 266,
+    "pt": "fora",
+    "sl": "fora",
+    "en": "out; outside; away",
+    "level": "A1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 267,
+    "pt": "porém",
+    "sl": "porém",
+    "en": "however; but; yet",
+    "level": "A2",
+    "pos": "conjunction"
+  },
+  {
+    "rank": 268,
+    "pt": "garota",
+    "sl": "garota",
+    "en": "girl (BR)",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 269,
+    "pt": "garoto",
+    "sl": "garoto",
+    "en": "boy (BR)",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 270,
+    "pt": "segurar",
+    "sl": "segurar",
+    "en": "to hold; to hold on",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 271,
+    "pt": "estranho",
+    "sl": "estranho",
+    "en": "strange; stranger (m.)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 272,
+    "pt": "dormir",
+    "sl": "dormir",
+    "en": "to sleep",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 273,
+    "pt": "preocupar",
+    "sl": "preocupar",
+    "en": "to worry",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 274,
+    "pt": "cair",
+    "sl": "cair",
+    "en": "to fall",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 275,
+    "pt": "realmente",
+    "sl": "realmente",
+    "en": "really; actually",
+    "level": "A1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 276,
+    "pt": "lindo",
+    "sl": "lindo",
+    "en": "beautiful; gorgeous (m.)",
+    "level": "A1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 277,
+    "pt": "presente",
+    "sl": "presente",
+    "en": "present; gift; present (time)",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 278,
+    "pt": "mudar",
+    "sl": "mudar",
+    "en": "to change; to move (house)",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 279,
+    "pt": "errado",
+    "sl": "errado",
+    "en": "wrong; mistaken (m.)",
+    "level": "A1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 280,
+    "pt": "levantar",
+    "sl": "levantar",
+    "en": "to lift; to raise; to get up",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 281,
+    "pt": "subir",
+    "sl": "subir",
+    "en": "to go up; to climb; to rise",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 282,
+    "pt": "rapaz",
+    "sl": "rapaz",
+    "en": "young man; boy",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 283,
+    "pt": "chorar",
+    "sl": "chorar",
+    "en": "to cry; to weep",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 284,
+    "pt": "rua",
+    "sl": "rua",
+    "en": "street",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 285,
+    "pt": "sorte",
+    "sl": "sorte",
+    "en": "luck; fate",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 286,
+    "pt": "crer",
+    "sl": "crer",
+    "en": "to believe",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 287,
+    "pt": "cantar",
+    "sl": "cantar",
+    "en": "to sing",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 288,
+    "pt": "tirar",
+    "sl": "tirar",
+    "en": "to take out; to remove; to take (a photo)",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 289,
+    "pt": "feliz",
+    "sl": "feliz",
+    "en": "happy",
+    "level": "A1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 290,
+    "pt": "inclusive",
+    "sl": "inclusive",
+    "en": "including; even",
+    "level": "A2",
+    "pos": "adverb"
+  },
+  {
+    "rank": 291,
+    "pt": "esperança",
+    "sl": "esperança",
+    "en": "hope",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 292,
+    "pt": "branco",
+    "sl": "branco",
+    "en": "white (m.)",
+    "level": "A1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 293,
+    "pt": "lei",
+    "sl": "lei",
+    "en": "law",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 294,
+    "pt": "atrás",
+    "sl": "atrás",
+    "en": "behind; ago; back",
+    "level": "A1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 295,
+    "pt": "morte",
+    "sl": "morte",
+    "en": "death",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 296,
+    "pt": "partir",
+    "sl": "partir",
+    "en": "to leave; to depart; to break",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 297,
+    "pt": "mal",
+    "sl": "mal",
+    "en": "badly; evil; hardly",
+    "level": "A1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 298,
+    "pt": "preto",
+    "sl": "preto",
+    "en": "black (m.)",
+    "level": "A1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 299,
+    "pt": "dançar",
+    "sl": "dançar",
+    "en": "to dance",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 300,
+    "pt": "comida",
+    "sl": "comida",
+    "en": "food; meal",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 301,
+    "pt": "seguinte",
+    "sl": "seguinte",
+    "en": "following; next",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 302,
+    "pt": "terminar",
+    "sl": "terminar",
+    "en": "to finish; to end",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 303,
+    "pt": "ontem",
+    "sl": "ontem",
+    "en": "yesterday",
+    "level": "A1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 304,
+    "pt": "perigo",
+    "sl": "perigo",
+    "en": "danger",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 305,
+    "pt": "cama",
+    "sl": "cama",
+    "en": "bed",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 306,
+    "pt": "mesa",
+    "sl": "mesa",
+    "en": "table",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 307,
+    "pt": "janela",
+    "sl": "janela",
+    "en": "window",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 308,
+    "pt": "gostoso",
+    "sl": "gostoso",
+    "en": "tasty; pleasant; hot (attractive)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 309,
+    "pt": "sangue",
+    "sl": "sangue",
+    "en": "blood",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 310,
+    "pt": "jantar",
+    "sl": "jantar",
+    "en": "dinner; to have dinner",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 311,
+    "pt": "esquecer",
+    "sl": "esquecer",
+    "en": "to forget",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 312,
+    "pt": "pé",
+    "sl": "pé",
+    "en": "foot",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 313,
+    "pt": "chave",
+    "sl": "chave",
+    "en": "key",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 314,
+    "pt": "devagar",
+    "sl": "devagar",
+    "en": "slowly",
+    "level": "A2",
+    "pos": "adverb"
+  },
+  {
+    "rank": 315,
+    "pt": "valer",
+    "sl": "valer",
+    "en": "to be worth",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 316,
+    "pt": "música",
+    "sl": "música",
+    "en": "music; song",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 317,
+    "pt": "telefone",
+    "sl": "telefone",
+    "en": "telephone; phone",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 318,
+    "pt": "escola",
+    "sl": "escola",
+    "en": "school",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 319,
+    "pt": "polícia",
+    "sl": "polícia",
+    "en": "police",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 320,
+    "pt": "contente",
+    "sl": "contente",
+    "en": "glad; content; pleased",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 321,
+    "pt": "jogo",
+    "sl": "jogo",
+    "en": "game; match",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 322,
+    "pt": "papel",
+    "sl": "papel",
+    "en": "paper; role",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 323,
+    "pt": "branca",
+    "sl": "branca",
+    "en": "blank; white (f.)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 324,
+    "pt": "sala",
+    "sl": "sala",
+    "en": "living room; room; hall",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 325,
+    "pt": "quase",
+    "sl": "quase",
+    "en": "almost; nearly",
+    "level": "A1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 326,
+    "pt": "cozinha",
+    "sl": "cozinha",
+    "en": "kitchen",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 327,
+    "pt": "banheiro",
+    "sl": "banheiro",
+    "en": "bathroom (BR)",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 328,
+    "pt": "lembrança",
+    "sl": "lembrança",
+    "en": "memory; keepsake; regards",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 329,
+    "pt": "anjo",
+    "sl": "anjo",
+    "en": "angel",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 330,
+    "pt": "estado",
+    "sl": "estado",
+    "en": "state; condition",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 331,
+    "pt": "querido",
+    "sl": "querido",
+    "en": "dear; darling (m.)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 332,
+    "pt": "carta",
+    "sl": "carta",
+    "en": "letter; card",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 333,
+    "pt": "celular",
+    "sl": "celular",
+    "en": "cell phone; mobile (BR)",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 334,
+    "pt": "perigoso",
+    "sl": "perigoso",
+    "en": "dangerous (m.)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 335,
+    "pt": "idade",
+    "sl": "idade",
+    "en": "age",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 336,
+    "pt": "nascer",
+    "sl": "nascer",
+    "en": "to be born",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 337,
+    "pt": "demorar",
+    "sl": "demorar",
+    "en": "to take long; to delay",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 338,
+    "pt": "longo",
+    "sl": "longo",
+    "en": "long (m.)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 339,
+    "pt": "chamada",
+    "sl": "chamada",
+    "en": "call; phone call",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 340,
+    "pt": "caso",
+    "sl": "caso",
+    "en": "case; event",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 341,
+    "pt": "atenção",
+    "sl": "atenção",
+    "en": "attention; care",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 342,
+    "pt": "beber",
+    "sl": "beber",
+    "en": "to drink",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 343,
+    "pt": "rei",
+    "sl": "rei",
+    "en": "king",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 344,
+    "pt": "começo",
+    "sl": "começo",
+    "en": "beginning; start",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 345,
+    "pt": "sonho",
+    "sl": "sonho",
+    "en": "dream",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 346,
+    "pt": "esquisito",
+    "sl": "esquisito",
+    "en": "weird; odd",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 347,
+    "pt": "viajar",
+    "sl": "viajar",
+    "en": "to travel",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 348,
+    "pt": "roupa",
+    "sl": "roupa",
+    "en": "clothes; clothing",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 349,
+    "pt": "foto",
+    "sl": "foto",
+    "en": "photo; picture",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 350,
+    "pt": "perguntar",
+    "sl": "perguntar",
+    "en": "to ask",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 351,
+    "pt": "espírito",
+    "sl": "espírito",
+    "en": "spirit; ghost",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 352,
+    "pt": "cachorro",
+    "sl": "cachorro",
+    "en": "dog (BR)",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 353,
+    "pt": "pagar",
+    "sl": "pagar",
+    "en": "to pay",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 354,
+    "pt": "possível",
+    "sl": "possível",
+    "en": "possible",
+    "level": "A1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 355,
+    "pt": "gato",
+    "sl": "gato",
+    "en": "cat",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 356,
+    "pt": "caminho",
+    "sl": "caminho",
+    "en": "way; path; road",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 357,
+    "pt": "dúvida",
+    "sl": "dúvida",
+    "en": "doubt",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 358,
+    "pt": "segredo",
+    "sl": "segredo",
+    "en": "secret",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 359,
+    "pt": "chão",
+    "sl": "chão",
+    "en": "floor; ground",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 360,
+    "pt": "louco",
+    "sl": "louco",
+    "en": "crazy; mad (m.)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 361,
+    "pt": "vender",
+    "sl": "vender",
+    "en": "to sell",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 362,
+    "pt": "barato",
+    "sl": "barato",
+    "en": "cheap (m.)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 363,
+    "pt": "caro",
+    "sl": "caro",
+    "en": "expensive; dear (m.)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 364,
+    "pt": "senão",
+    "sl": "senão",
+    "en": "otherwise; or else; except",
+    "level": "A2",
+    "pos": "conjunction"
+  },
+  {
+    "rank": 365,
+    "pt": "destino",
+    "sl": "destino",
+    "en": "destiny; destination",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 366,
+    "pt": "diferente",
+    "sl": "diferente",
+    "en": "different",
+    "level": "A1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 367,
+    "pt": "doente",
+    "sl": "doente",
+    "en": "sick; ill",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 368,
+    "pt": "médico",
+    "sl": "médico",
+    "en": "doctor; physician",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 369,
+    "pt": "viver",
+    "sl": "viver",
+    "en": "to live",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 370,
+    "pt": "saúde",
+    "sl": "saúde",
+    "en": "health; cheers!",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 371,
+    "pt": "lua",
+    "sl": "lua",
+    "en": "moon",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 372,
+    "pt": "reconhecer",
+    "sl": "reconhecer",
+    "en": "to recognize",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 373,
+    "pt": "sol",
+    "sl": "sol",
+    "en": "sun",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 374,
+    "pt": "barco",
+    "sl": "barco",
+    "en": "boat; ship",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 375,
+    "pt": "preocupado",
+    "sl": "preocupado",
+    "en": "worried (m.)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 376,
+    "pt": "praia",
+    "sl": "praia",
+    "en": "beach",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 377,
+    "pt": "aprender",
+    "sl": "aprender",
+    "en": "to learn",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 378,
+    "pt": "jovem",
+    "sl": "jovem",
+    "en": "young; young person",
+    "level": "A1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 379,
+    "pt": "estudar",
+    "sl": "estudar",
+    "en": "to study",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 380,
+    "pt": "necessário",
+    "sl": "necessário",
+    "en": "necessary",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 381,
+    "pt": "legal",
+    "sl": "legal",
+    "en": "cool; nice; legal (BR)",
+    "level": "A1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 382,
+    "pt": "exemplo",
+    "sl": "exemplo",
+    "en": "example",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 383,
+    "pt": "pobre",
+    "sl": "pobre",
+    "en": "poor",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 384,
+    "pt": "rico",
+    "sl": "rico",
+    "en": "rich (m.)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 385,
+    "pt": "cansado",
+    "sl": "cansado",
+    "en": "tired (m.)",
+    "level": "A1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 386,
+    "pt": "cheio",
+    "sl": "cheio",
+    "en": "full (m.)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 387,
+    "pt": "atirar",
+    "sl": "atirar",
+    "en": "to shoot; to throw",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 388,
+    "pt": "ordem",
+    "sl": "ordem",
+    "en": "order; command",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 389,
+    "pt": "som",
+    "sl": "som",
+    "en": "sound",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 390,
+    "pt": "fogo",
+    "sl": "fogo",
+    "en": "fire",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 391,
+    "pt": "acordar",
+    "sl": "acordar",
+    "en": "to wake up",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 392,
+    "pt": "presença",
+    "sl": "presença",
+    "en": "presence",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 393,
+    "pt": "beijar",
+    "sl": "beijar",
+    "en": "to kiss",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 394,
+    "pt": "ali",
+    "sl": "ali",
+    "en": "there (near person/spot); over there",
+    "level": "A1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 395,
+    "pt": "esquerda",
+    "sl": "esquerda",
+    "en": "left (side)",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 396,
+    "pt": "direita",
+    "sl": "direita",
+    "en": "right (side)",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 397,
+    "pt": "chegada",
+    "sl": "chegada",
+    "en": "arrival",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 398,
+    "pt": "febre",
+    "sl": "febre",
+    "en": "fever",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 399,
+    "pt": "amar",
+    "sl": "amar",
+    "en": "to love",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 400,
+    "pt": "sonhar",
+    "sl": "sonhar",
+    "en": "to dream",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 401,
+    "pt": "país",
+    "sl": "país",
+    "en": "country",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 402,
+    "pt": "governo",
+    "sl": "governo",
+    "en": "government",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 403,
+    "pt": "filha",
+    "sl": "filha",
+    "en": "daughter",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 404,
+    "pt": "conta",
+    "sl": "conta",
+    "en": "bill; account; check",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 405,
+    "pt": "banco",
+    "sl": "banco",
+    "en": "bank; bench",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 406,
+    "pt": "loja",
+    "sl": "loja",
+    "en": "shop; store",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 407,
+    "pt": "empresa",
+    "sl": "empresa",
+    "en": "company; business",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 408,
+    "pt": "negócio",
+    "sl": "negócio",
+    "en": "business; deal; thing (colloquial)",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 409,
+    "pt": "plano",
+    "sl": "plano",
+    "en": "plan; flat",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 410,
+    "pt": "futuro",
+    "sl": "futuro",
+    "en": "future",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 411,
+    "pt": "semana",
+    "sl": "semana",
+    "en": "week",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 412,
+    "pt": "hora",
+    "sl": "hora",
+    "en": "hour; time (of day)",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 413,
+    "pt": "minuto",
+    "sl": "minuto",
+    "en": "minute",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 414,
+    "pt": "café",
+    "sl": "café",
+    "en": "coffee; café",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 415,
+    "pt": "pão",
+    "sl": "pão",
+    "en": "bread",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 416,
+    "pt": "leite",
+    "sl": "leite",
+    "en": "milk",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 417,
+    "pt": "carne",
+    "sl": "carne",
+    "en": "meat; flesh",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 418,
+    "pt": "fruta",
+    "sl": "fruta",
+    "en": "fruit",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 419,
+    "pt": "chuva",
+    "sl": "chuva",
+    "en": "rain",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 420,
+    "pt": "avô",
+    "sl": "avô",
+    "en": "grandfather",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 421,
+    "pt": "céu",
+    "sl": "céu",
+    "en": "sky; heaven",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 422,
+    "pt": "flor",
+    "sl": "flor",
+    "en": "flower",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 423,
+    "pt": "árvore",
+    "sl": "árvore",
+    "en": "tree",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 424,
+    "pt": "animal",
+    "sl": "animal",
+    "en": "animal",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 425,
+    "pt": "peixe",
+    "sl": "peixe",
+    "en": "fish",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 426,
+    "pt": "estrela",
+    "sl": "estrela",
+    "en": "star",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 427,
+    "pt": "mar",
+    "sl": "mar",
+    "en": "sea",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 428,
+    "pt": "rio",
+    "sl": "rio",
+    "en": "river",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 429,
+    "pt": "montanha",
+    "sl": "montanha",
+    "en": "mountain",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 430,
+    "pt": "floresta",
+    "sl": "floresta",
+    "en": "forest",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 431,
+    "pt": "cor",
+    "sl": "cor",
+    "en": "color",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 432,
+    "pt": "azul",
+    "sl": "azul",
+    "en": "blue",
+    "level": "A1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 433,
+    "pt": "vermelho",
+    "sl": "vermelho",
+    "en": "red (m.)",
+    "level": "A1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 434,
+    "pt": "verde",
+    "sl": "verde",
+    "en": "green",
+    "level": "A1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 435,
+    "pt": "amarelo",
+    "sl": "amarelo",
+    "en": "yellow (m.)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 436,
+    "pt": "roxo",
+    "sl": "roxo",
+    "en": "purple (m.)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 437,
+    "pt": "avó",
+    "sl": "avó",
+    "en": "grandmother",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 438,
+    "pt": "pequeno",
+    "sl": "pequeno",
+    "en": "small; little (m.)",
+    "level": "A1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 439,
+    "pt": "alto",
+    "sl": "alto",
+    "en": "tall; high; loud (m.)",
+    "level": "A1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 440,
+    "pt": "baixo",
+    "sl": "baixo",
+    "en": "low; short; quiet (m.)",
+    "level": "A1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 441,
+    "pt": "gordo",
+    "sl": "gordo",
+    "en": "fat (m.)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 442,
+    "pt": "magro",
+    "sl": "magro",
+    "en": "thin; skinny (m.)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 443,
+    "pt": "forte",
+    "sl": "forte",
+    "en": "strong",
+    "level": "A1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 444,
+    "pt": "fraco",
+    "sl": "fraco",
+    "en": "weak (m.)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 445,
+    "pt": "quente",
+    "sl": "quente",
+    "en": "hot; warm",
+    "level": "A1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 446,
+    "pt": "frio",
+    "sl": "frio",
+    "en": "cold (m.)",
+    "level": "A1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 447,
+    "pt": "velho",
+    "sl": "velho",
+    "en": "old (m.)",
+    "level": "A1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 448,
+    "pt": "bonito",
+    "sl": "bonito",
+    "en": "pretty; handsome (m.)",
+    "level": "A1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 449,
+    "pt": "feio",
+    "sl": "feio",
+    "en": "ugly (m.)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 450,
+    "pt": "difícil",
+    "sl": "difícil",
+    "en": "difficult; hard",
+    "level": "A1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 451,
+    "pt": "fácil",
+    "sl": "fácil",
+    "en": "easy",
+    "level": "A1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 452,
+    "pt": "limpo",
+    "sl": "limpo",
+    "en": "clean (m.)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 453,
+    "pt": "sujo",
+    "sl": "sujo",
+    "en": "dirty (m.)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 454,
+    "pt": "rápido",
+    "sl": "rápido",
+    "en": "fast; quick (m.)",
+    "level": "A1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 455,
+    "pt": "lento",
+    "sl": "lento",
+    "en": "slow (m.)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 456,
+    "pt": "tio",
+    "sl": "tio",
+    "en": "uncle",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 457,
+    "pt": "tranquilo",
+    "sl": "tranquilo",
+    "en": "calm; peaceful (m.)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 458,
+    "pt": "nervoso",
+    "sl": "nervoso",
+    "en": "nervous; anxious (m.)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 459,
+    "pt": "bravo",
+    "sl": "bravo",
+    "en": "angry; mad (BR); brave (m.)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 460,
+    "pt": "triste",
+    "sl": "triste",
+    "en": "sad",
+    "level": "A1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 461,
+    "pt": "alegre",
+    "sl": "alegre",
+    "en": "cheerful; happy",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 462,
+    "pt": "chateado",
+    "sl": "chateado",
+    "en": "upset; annoyed (m.)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 463,
+    "pt": "ocupado",
+    "sl": "ocupado",
+    "en": "busy; occupied (m.)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 464,
+    "pt": "pronto",
+    "sl": "pronto",
+    "en": "ready; done (m.)",
+    "level": "A1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 465,
+    "pt": "aberto",
+    "sl": "aberto",
+    "en": "open (m.)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 466,
+    "pt": "fechado",
+    "sl": "fechado",
+    "en": "closed; shut (m.)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 467,
+    "pt": "tia",
+    "sl": "tia",
+    "en": "aunt",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 468,
+    "pt": "parar",
+    "sl": "parar",
+    "en": "to stop",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 469,
+    "pt": "continuar",
+    "sl": "continuar",
+    "en": "to continue; to keep on",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 470,
+    "pt": "tentar",
+    "sl": "tentar",
+    "en": "to try; to attempt",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 471,
+    "pt": "decidir",
+    "sl": "decidir",
+    "en": "to decide",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 472,
+    "pt": "escolher",
+    "sl": "escolher",
+    "en": "to choose",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 473,
+    "pt": "mandar",
+    "sl": "mandar",
+    "en": "to send; to order",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 474,
+    "pt": "receber",
+    "sl": "receber",
+    "en": "to receive; to get",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 475,
+    "pt": "entregar",
+    "sl": "entregar",
+    "en": "to deliver; to hand over",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 476,
+    "pt": "pegar",
+    "sl": "pegar",
+    "en": "to grab; to catch; to pick up (BR)",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 477,
+    "pt": "soltar",
+    "sl": "soltar",
+    "en": "to release; to let go",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 478,
+    "pt": "largar",
+    "sl": "largar",
+    "en": "to drop; to let go of; to quit",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 479,
+    "pt": "puxar",
+    "sl": "puxar",
+    "en": "to pull",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 480,
+    "pt": "empurrar",
+    "sl": "empurrar",
+    "en": "to push",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 481,
+    "pt": "abraçar",
+    "sl": "abraçar",
+    "en": "to hug; to embrace",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 482,
+    "pt": "cuidar",
+    "sl": "cuidar",
+    "en": "to take care of; to look after",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 483,
+    "pt": "nadar",
+    "sl": "nadar",
+    "en": "to swim",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 484,
+    "pt": "dirigir",
+    "sl": "dirigir",
+    "en": "to drive",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 485,
+    "pt": "voar",
+    "sl": "voar",
+    "en": "to fly",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 486,
+    "pt": "crescer",
+    "sl": "crescer",
+    "en": "to grow",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 487,
+    "pt": "marido",
+    "sl": "marido",
+    "en": "husband",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 488,
+    "pt": "construir",
+    "sl": "construir",
+    "en": "to build",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 489,
+    "pt": "criar",
+    "sl": "criar",
+    "en": "to create; to raise (a child)",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 490,
+    "pt": "quebrar",
+    "sl": "quebrar",
+    "en": "to break",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 491,
+    "pt": "consertar",
+    "sl": "consertar",
+    "en": "to fix; to repair",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 492,
+    "pt": "trocar",
+    "sl": "trocar",
+    "en": "to change; to swap; to exchange",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 493,
+    "pt": "guardar",
+    "sl": "guardar",
+    "en": "to keep; to put away",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 494,
+    "pt": "esconder",
+    "sl": "esconder",
+    "en": "to hide",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 495,
+    "pt": "procurar",
+    "sl": "procurar",
+    "en": "to look for; to search",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 496,
+    "pt": "descobrir",
+    "sl": "descobrir",
+    "en": "to discover; to find out",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 497,
+    "pt": "explicar",
+    "sl": "explicar",
+    "en": "to explain",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 498,
+    "pt": "responder",
+    "sl": "responder",
+    "en": "to answer; to reply",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 499,
+    "pt": "repetir",
+    "sl": "repetir",
+    "en": "to repeat",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 500,
+    "pt": "escrever",
+    "sl": "escrever",
+    "en": "to write",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 501,
+    "pt": "ler",
+    "sl": "ler",
+    "en": "to read",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 502,
+    "pt": "ensinar",
+    "sl": "ensinar",
+    "en": "to teach",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 503,
+    "pt": "estudo",
+    "sl": "estudo",
+    "en": "study",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 504,
+    "pt": "aula",
+    "sl": "aula",
+    "en": "class; lesson",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 505,
+    "pt": "prova",
+    "sl": "prova",
+    "en": "test; proof",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 506,
+    "pt": "professor",
+    "sl": "professor",
+    "en": "teacher; professor (m.)",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 507,
+    "pt": "aluno",
+    "sl": "aluno",
+    "en": "student; pupil (m.)",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 508,
+    "pt": "faculdade",
+    "sl": "faculdade",
+    "en": "college; university faculty",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 509,
+    "pt": "nota",
+    "sl": "nota",
+    "en": "grade; note; banknote",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 510,
+    "pt": "língua",
+    "sl": "língua",
+    "en": "language; tongue",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 511,
+    "pt": "esposa",
+    "sl": "esposa",
+    "en": "wife",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 512,
+    "pt": "vizinho",
+    "sl": "vizinho",
+    "en": "neighbor (m.)",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 513,
+    "pt": "metade",
+    "sl": "metade",
+    "en": "half",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 514,
+    "pt": "chefe",
+    "sl": "chefe",
+    "en": "boss; chief",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 515,
+    "pt": "início",
+    "sl": "início",
+    "en": "start; beginning",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 516,
+    "pt": "meio",
+    "sl": "meio",
+    "en": "middle; means; half",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 517,
+    "pt": "centro",
+    "sl": "centro",
+    "en": "center; downtown",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 518,
+    "pt": "frente",
+    "sl": "frente",
+    "en": "front",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 519,
+    "pt": "costas",
+    "sl": "costas",
+    "en": "back (body); back part",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 520,
+    "pt": "braço",
+    "sl": "braço",
+    "en": "arm",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 521,
+    "pt": "perna",
+    "sl": "perna",
+    "en": "leg",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 522,
+    "pt": "dedo",
+    "sl": "dedo",
+    "en": "finger; toe",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 523,
+    "pt": "boca",
+    "sl": "boca",
+    "en": "mouth",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 524,
+    "pt": "nariz",
+    "sl": "nariz",
+    "en": "nose",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 525,
+    "pt": "orelha",
+    "sl": "orelha",
+    "en": "ear",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 526,
+    "pt": "cabelo",
+    "sl": "cabelo",
+    "en": "hair",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 527,
+    "pt": "rosto",
+    "sl": "rosto",
+    "en": "face",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 528,
+    "pt": "dente",
+    "sl": "dente",
+    "en": "tooth",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 529,
+    "pt": "pele",
+    "sl": "pele",
+    "en": "skin",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 530,
+    "pt": "osso",
+    "sl": "osso",
+    "en": "bone",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 531,
+    "pt": "cliente",
+    "sl": "cliente",
+    "en": "customer; client",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 532,
+    "pt": "sapato",
+    "sl": "sapato",
+    "en": "shoe",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 533,
+    "pt": "camisa",
+    "sl": "camisa",
+    "en": "shirt",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 534,
+    "pt": "vestido",
+    "sl": "vestido",
+    "en": "dress",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 535,
+    "pt": "chapéu",
+    "sl": "chapéu",
+    "en": "hat",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 536,
+    "pt": "bolsa",
+    "sl": "bolsa",
+    "en": "bag; purse",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 537,
+    "pt": "ônibus",
+    "sl": "ônibus",
+    "en": "bus (BR)",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 538,
+    "pt": "trem",
+    "sl": "trem",
+    "en": "train",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 539,
+    "pt": "avião",
+    "sl": "avião",
+    "en": "airplane",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 540,
+    "pt": "estrada",
+    "sl": "estrada",
+    "en": "road; highway",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 541,
+    "pt": "ponte",
+    "sl": "ponte",
+    "en": "bridge",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 542,
+    "pt": "esquina",
+    "sl": "esquina",
+    "en": "corner (street)",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 543,
+    "pt": "bairro",
+    "sl": "bairro",
+    "en": "neighborhood",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 544,
+    "pt": "igreja",
+    "sl": "igreja",
+    "en": "church",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 545,
+    "pt": "geladeira",
+    "sl": "geladeira",
+    "en": "fridge; refrigerator (BR)",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 546,
+    "pt": "fogão",
+    "sl": "fogão",
+    "en": "stove",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 547,
+    "pt": "prato",
+    "sl": "prato",
+    "en": "plate; dish",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 548,
+    "pt": "copo",
+    "sl": "copo",
+    "en": "glass; cup",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 549,
+    "pt": "garrafa",
+    "sl": "garrafa",
+    "en": "bottle",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 550,
+    "pt": "faca",
+    "sl": "faca",
+    "en": "knife",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 551,
+    "pt": "hotel",
+    "sl": "hotel",
+    "en": "hotel",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 552,
+    "pt": "ligação",
+    "sl": "ligação",
+    "en": "call; connection",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 553,
+    "pt": "mensagem",
+    "sl": "mensagem",
+    "en": "message",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 554,
+    "pt": "notícia",
+    "sl": "notícia",
+    "en": "news",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 555,
+    "pt": "jornal",
+    "sl": "jornal",
+    "en": "newspaper",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 556,
+    "pt": "filme",
+    "sl": "filme",
+    "en": "movie; film",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 557,
+    "pt": "festa",
+    "sl": "festa",
+    "en": "party",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 558,
+    "pt": "restaurante",
+    "sl": "restaurante",
+    "en": "restaurant",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 559,
+    "pt": "viagem",
+    "sl": "viagem",
+    "en": "trip; journey",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 560,
+    "pt": "férias",
+    "sl": "férias",
+    "en": "vacation; holidays",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 561,
+    "pt": "bola",
+    "sl": "bola",
+    "en": "ball",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 562,
+    "pt": "time",
+    "sl": "time",
+    "en": "team (BR)",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 563,
+    "pt": "raiva",
+    "sl": "raiva",
+    "en": "anger; rage",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 564,
+    "pt": "dor",
+    "sl": "dor",
+    "en": "pain; ache",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 565,
+    "pt": "saudade",
+    "sl": "saudade",
+    "en": "longing; missing someone",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 566,
+    "pt": "alegria",
+    "sl": "alegria",
+    "en": "joy",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 567,
+    "pt": "vontade",
+    "sl": "vontade",
+    "en": "will; urge; desire",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 568,
+    "pt": "sorriso",
+    "sl": "sorriso",
+    "en": "smile",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 569,
+    "pt": "beijo",
+    "sl": "beijo",
+    "en": "kiss",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 570,
+    "pt": "abraço",
+    "sl": "abraço",
+    "en": "hug; embrace",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 571,
+    "pt": "voz",
+    "sl": "voz",
+    "en": "voice",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 572,
+    "pt": "parque",
+    "sl": "parque",
+    "en": "park",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 573,
+    "pt": "silêncio",
+    "sl": "silêncio",
+    "en": "silence",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 574,
+    "pt": "barulho",
+    "sl": "barulho",
+    "en": "noise",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 575,
+    "pt": "luz",
+    "sl": "luz",
+    "en": "light",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 576,
+    "pt": "sombra",
+    "sl": "sombra",
+    "en": "shadow; shade",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 577,
+    "pt": "piscina",
+    "sl": "piscina",
+    "en": "swimming pool",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 578,
+    "pt": "imagem",
+    "sl": "imagem",
+    "en": "image; picture",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 579,
+    "pt": "motorista",
+    "sl": "motorista",
+    "en": "driver",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 580,
+    "pt": "quadro",
+    "sl": "quadro",
+    "en": "painting; picture; board",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 581,
+    "pt": "médica",
+    "sl": "médica",
+    "en": "doctor (f.)",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 582,
+    "pt": "apresentar",
+    "sl": "apresentar",
+    "en": "to present; to introduce",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 583,
+    "pt": "aparecer",
+    "sl": "aparecer",
+    "en": "to appear; to show up",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 584,
+    "pt": "desaparecer",
+    "sl": "desaparecer",
+    "en": "to disappear",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 585,
+    "pt": "advogado",
+    "sl": "advogado",
+    "en": "lawyer (m.)",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 586,
+    "pt": "parecer",
+    "sl": "parecer",
+    "en": "to seem; to look like",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 587,
+    "pt": "significar",
+    "sl": "significar",
+    "en": "to mean",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 588,
+    "pt": "diretor",
+    "sl": "diretor",
+    "en": "director; principal (m.)",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 589,
+    "pt": "imaginar",
+    "sl": "imaginar",
+    "en": "to imagine",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 590,
+    "pt": "considerar",
+    "sl": "considerar",
+    "en": "to consider",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 591,
+    "pt": "concordar",
+    "sl": "concordar",
+    "en": "to agree",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 592,
+    "pt": "discutir",
+    "sl": "discutir",
+    "en": "to argue; to discuss",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 593,
+    "pt": "brigar",
+    "sl": "brigar",
+    "en": "to fight; to quarrel",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 594,
+    "pt": "reclamar",
+    "sl": "reclamar",
+    "en": "to complain",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 595,
+    "pt": "gritar",
+    "sl": "gritar",
+    "en": "to shout; to scream",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 596,
+    "pt": "rir",
+    "sl": "rir",
+    "en": "to laugh",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 597,
+    "pt": "sorrir",
+    "sl": "sorrir",
+    "en": "to smile",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 598,
+    "pt": "engenheiro",
+    "sl": "engenheiro",
+    "en": "engineer (m.)",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 599,
+    "pt": "sofrer",
+    "sl": "sofrer",
+    "en": "to suffer",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 600,
+    "pt": "sentir-se",
+    "sl": "sentir-se",
+    "en": "to feel (a certain way)",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 601,
+    "pt": "droga",
+    "sl": "droga",
+    "en": "drug; darn! (mild oath)",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 602,
+    "pt": "merda",
+    "sl": "merda",
+    "en": "shit; crap (vulgar)",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 603,
+    "pt": "inferno",
+    "sl": "inferno",
+    "en": "hell",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 604,
+    "pt": "diabo",
+    "sl": "diabo",
+    "en": "devil",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 605,
+    "pt": "idiota",
+    "sl": "idiota",
+    "en": "idiot; stupid (insult)",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 606,
+    "pt": "burro",
+    "sl": "burro",
+    "en": "donkey; dumb (insult)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 607,
+    "pt": "chato",
+    "sl": "chato",
+    "en": "annoying; boring; flat (m.)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 608,
+    "pt": "maluco",
+    "sl": "maluco",
+    "en": "nuts; crazy (BR, m.)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 609,
+    "pt": "porra",
+    "sl": "porra",
+    "en": "damn; cum (vulgar interjection)",
+    "level": "A2",
+    "pos": "interjection"
+  },
+  {
+    "rank": 610,
+    "pt": "caralho",
+    "sl": "caralho",
+    "en": "dick; damn it (vulgar)",
+    "level": "B1",
+    "pos": "interjection"
+  },
+  {
+    "rank": 611,
+    "pt": "crime",
+    "sl": "crime",
+    "en": "crime",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 612,
+    "pt": "ladrão",
+    "sl": "ladrão",
+    "en": "thief; robber",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 613,
+    "pt": "preso",
+    "sl": "preso",
+    "en": "prisoner; arrested; stuck (m.)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 614,
+    "pt": "cadeia",
+    "sl": "cadeia",
+    "en": "jail; chain",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 615,
+    "pt": "prisão",
+    "sl": "prisão",
+    "en": "prison; arrest",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 616,
+    "pt": "culpa",
+    "sl": "culpa",
+    "en": "fault; guilt; blame",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 617,
+    "pt": "justiça",
+    "sl": "justiça",
+    "en": "justice",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 618,
+    "pt": "juiz",
+    "sl": "juiz",
+    "en": "judge; referee",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 619,
+    "pt": "paz",
+    "sl": "paz",
+    "en": "peace",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 620,
+    "pt": "tiro",
+    "sl": "tiro",
+    "en": "shot; gunshot",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 621,
+    "pt": "arma",
+    "sl": "arma",
+    "en": "weapon; gun",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 622,
+    "pt": "ferida",
+    "sl": "ferida",
+    "en": "wound; injury",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 623,
+    "pt": "remédio",
+    "sl": "remédio",
+    "en": "medicine; remedy",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 624,
+    "pt": "doença",
+    "sl": "doença",
+    "en": "illness; disease",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 625,
+    "pt": "arroz",
+    "sl": "arroz",
+    "en": "rice",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 626,
+    "pt": "cura",
+    "sl": "cura",
+    "en": "cure",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 627,
+    "pt": "durante",
+    "sl": "durante",
+    "en": "during",
+    "level": "A2",
+    "pos": "preposition"
+  },
+  {
+    "rank": 628,
+    "pt": "apesar",
+    "sl": "apesar",
+    "en": "despite; in spite of (apesar de)",
+    "level": "A2",
+    "pos": "preposition"
+  },
+  {
+    "rank": 629,
+    "pt": "embora",
+    "sl": "embora",
+    "en": "although; away (ir embora)",
+    "level": "A2",
+    "pos": "conjunction"
+  },
+  {
+    "rank": 630,
+    "pt": "portanto",
+    "sl": "portanto",
+    "en": "therefore; so",
+    "level": "A2",
+    "pos": "conjunction"
+  },
+  {
+    "rank": 631,
+    "pt": "enfim",
+    "sl": "enfim",
+    "en": "anyway; finally; in short",
+    "level": "B1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 632,
+    "pt": "aliás",
+    "sl": "aliás",
+    "en": "by the way; in fact",
+    "level": "B1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 633,
+    "pt": "afinal",
+    "sl": "afinal",
+    "en": "after all; so then",
+    "level": "B1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 634,
+    "pt": "próximo",
+    "sl": "próximo",
+    "en": "next; close; near (m.)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 635,
+    "pt": "anterior",
+    "sl": "anterior",
+    "en": "previous; earlier",
+    "level": "B1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 636,
+    "pt": "atual",
+    "sl": "atual",
+    "en": "current; present-day",
+    "level": "B1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 637,
+    "pt": "recente",
+    "sl": "recente",
+    "en": "recent",
+    "level": "B1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 638,
+    "pt": "cedo",
+    "sl": "cedo",
+    "en": "early",
+    "level": "A2",
+    "pos": "adverb"
+  },
+  {
+    "rank": 639,
+    "pt": "enquanto",
+    "sl": "enquanto",
+    "en": "while; as long as",
+    "level": "A2",
+    "pos": "conjunction"
+  },
+  {
+    "rank": 640,
+    "pt": "jamais",
+    "sl": "jamais",
+    "en": "never (emphatic)",
+    "level": "B1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 641,
+    "pt": "sequer",
+    "sl": "sequer",
+    "en": "even; not even (nem sequer)",
+    "level": "B1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 642,
+    "pt": "ovo",
+    "sl": "ovo",
+    "en": "egg",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 643,
+    "pt": "qualquer",
+    "sl": "qualquer",
+    "en": "any; whichever",
+    "level": "A2",
+    "pos": "determiner"
+  },
+  {
+    "rank": 644,
+    "pt": "vários",
+    "sl": "vários",
+    "en": "several; various (m.)",
+    "level": "A2",
+    "pos": "determiner"
+  },
+  {
+    "rank": 645,
+    "pt": "diversos",
+    "sl": "diversos",
+    "en": "diverse; several (m.)",
+    "level": "B1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 646,
+    "pt": "ambos",
+    "sl": "ambos",
+    "en": "both (m.)",
+    "level": "B1",
+    "pos": "determiner"
+  },
+  {
+    "rank": 647,
+    "pt": "nenhum",
+    "sl": "nenhum",
+    "en": "no; none; not any (m.)",
+    "level": "A2",
+    "pos": "determiner"
+  },
+  {
+    "rank": 648,
+    "pt": "ninguém",
+    "sl": "ninguém",
+    "en": "nobody; no one",
+    "level": "A1",
+    "pos": "pronoun"
+  },
+  {
+    "rank": 649,
+    "pt": "poucos",
+    "sl": "poucos",
+    "en": "few (m.)",
+    "level": "A2",
+    "pos": "determiner"
+  },
+  {
+    "rank": 650,
+    "pt": "batata",
+    "sl": "batata",
+    "en": "potato",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 651,
+    "pt": "aumentar",
+    "sl": "aumentar",
+    "en": "to increase; to raise",
+    "level": "B1",
+    "pos": "verb"
+  },
+  {
+    "rank": 652,
+    "pt": "diminuir",
+    "sl": "diminuir",
+    "en": "to decrease; to reduce",
+    "level": "B1",
+    "pos": "verb"
+  },
+  {
+    "rank": 653,
+    "pt": "melhorar",
+    "sl": "melhorar",
+    "en": "to improve; to get better",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 654,
+    "pt": "piorar",
+    "sl": "piorar",
+    "en": "to worsen; to get worse",
+    "level": "B1",
+    "pos": "verb"
+  },
+  {
+    "rank": 655,
+    "pt": "evitar",
+    "sl": "evitar",
+    "en": "to avoid",
+    "level": "B1",
+    "pos": "verb"
+  },
+  {
+    "rank": 656,
+    "pt": "permitir",
+    "sl": "permitir",
+    "en": "to allow; to permit",
+    "level": "B1",
+    "pos": "verb"
+  },
+  {
+    "rank": 657,
+    "pt": "impedir",
+    "sl": "impedir",
+    "en": "to prevent; to stop",
+    "level": "B1",
+    "pos": "verb"
+  },
+  {
+    "rank": 658,
+    "pt": "bolo",
+    "sl": "bolo",
+    "en": "cake",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 659,
+    "pt": "doce",
+    "sl": "doce",
+    "en": "sweet; candy",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 660,
+    "pt": "resolver",
+    "sl": "resolver",
+    "en": "to solve; to resolve; to decide",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 661,
+    "pt": "funcionar",
+    "sl": "funcionar",
+    "en": "to work; to function",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 662,
+    "pt": "fome",
+    "sl": "fome",
+    "en": "hunger",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 663,
+    "pt": "gastar",
+    "sl": "gastar",
+    "en": "to spend; to waste",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 664,
+    "pt": "economizar",
+    "sl": "economizar",
+    "en": "to save (money)",
+    "level": "B1",
+    "pos": "verb"
+  },
+  {
+    "rank": 665,
+    "pt": "emprestar",
+    "sl": "emprestar",
+    "en": "to lend",
+    "level": "B1",
+    "pos": "verb"
+  },
+  {
+    "rank": 666,
+    "pt": "devolver",
+    "sl": "devolver",
+    "en": "to return; to give back",
+    "level": "B1",
+    "pos": "verb"
+  },
+  {
+    "rank": 667,
+    "pt": "oferecer",
+    "sl": "oferecer",
+    "en": "to offer",
+    "level": "B1",
+    "pos": "verb"
+  },
+  {
+    "rank": 668,
+    "pt": "aproveitar",
+    "sl": "aproveitar",
+    "en": "to enjoy; to make the most of",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 669,
+    "pt": "preferir",
+    "sl": "preferir",
+    "en": "to prefer",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 670,
+    "pt": "desejar",
+    "sl": "desejar",
+    "en": "to wish; to desire",
+    "level": "B1",
+    "pos": "verb"
+  },
+  {
+    "rank": 671,
+    "pt": "pretender",
+    "sl": "pretender",
+    "en": "to intend; to plan to",
+    "level": "B1",
+    "pos": "verb"
+  },
+  {
+    "rank": 672,
+    "pt": "planejar",
+    "sl": "planejar",
+    "en": "to plan",
+    "level": "B1",
+    "pos": "verb"
+  },
+  {
+    "rank": 673,
+    "pt": "organizar",
+    "sl": "organizar",
+    "en": "to organize",
+    "level": "B1",
+    "pos": "verb"
+  },
+  {
+    "rank": 674,
+    "pt": "preparar",
+    "sl": "preparar",
+    "en": "to prepare",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 675,
+    "pt": "combinar",
+    "sl": "combinar",
+    "en": "to arrange; to combine; to match",
+    "level": "B1",
+    "pos": "verb"
+  },
+  {
+    "rank": 676,
+    "pt": "marcar",
+    "sl": "marcar",
+    "en": "to schedule; to mark; to score",
+    "level": "B1",
+    "pos": "verb"
+  },
+  {
+    "rank": 677,
+    "pt": "convidar",
+    "sl": "convidar",
+    "en": "to invite",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 678,
+    "pt": "visitar",
+    "sl": "visitar",
+    "en": "to visit",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 679,
+    "pt": "acompanhar",
+    "sl": "acompanhar",
+    "en": "to accompany; to follow along",
+    "level": "B1",
+    "pos": "verb"
+  },
+  {
+    "rank": 680,
+    "pt": "participar",
+    "sl": "participar",
+    "en": "to participate; to take part",
+    "level": "B1",
+    "pos": "verb"
+  },
+  {
+    "rank": 681,
+    "pt": "reunião",
+    "sl": "reunião",
+    "en": "meeting",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 682,
+    "pt": "encontro",
+    "sl": "encontro",
+    "en": "meeting; date; encounter",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 683,
+    "pt": "evento",
+    "sl": "evento",
+    "en": "event",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 684,
+    "pt": "projeto",
+    "sl": "projeto",
+    "en": "project",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 685,
+    "pt": "objetivo",
+    "sl": "objetivo",
+    "en": "goal; objective",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 686,
+    "pt": "resultado",
+    "sl": "resultado",
+    "en": "result",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 687,
+    "pt": "motivo",
+    "sl": "motivo",
+    "en": "reason; motive",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 688,
+    "pt": "causa",
+    "sl": "causa",
+    "en": "cause; reason",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 689,
+    "pt": "efeito",
+    "sl": "efeito",
+    "en": "effect",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 690,
+    "pt": "sede",
+    "sl": "sede",
+    "en": "thirst",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 691,
+    "pt": "assunto",
+    "sl": "assunto",
+    "en": "subject; topic; matter",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 692,
+    "pt": "ponto",
+    "sl": "ponto",
+    "en": "point; dot; stitch",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 693,
+    "pt": "detalhe",
+    "sl": "detalhe",
+    "en": "detail",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 694,
+    "pt": "diferença",
+    "sl": "diferença",
+    "en": "difference",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 695,
+    "pt": "condição",
+    "sl": "condição",
+    "en": "condition",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 696,
+    "pt": "qualidade",
+    "sl": "qualidade",
+    "en": "quality",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 697,
+    "pt": "quantidade",
+    "sl": "quantidade",
+    "en": "quantity; amount",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 698,
+    "pt": "valor",
+    "sl": "valor",
+    "en": "value; worth; amount",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 699,
+    "pt": "preço",
+    "sl": "preço",
+    "en": "price",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 700,
+    "pt": "tamanho",
+    "sl": "tamanho",
+    "en": "size",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 701,
+    "pt": "peso",
+    "sl": "peso",
+    "en": "weight",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 702,
+    "pt": "altura",
+    "sl": "altura",
+    "en": "height",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 703,
+    "pt": "distância",
+    "sl": "distância",
+    "en": "distance",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 704,
+    "pt": "velocidade",
+    "sl": "velocidade",
+    "en": "speed",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 705,
+    "pt": "temperatura",
+    "sl": "temperatura",
+    "en": "temperature",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 706,
+    "pt": "espaço",
+    "sl": "espaço",
+    "en": "space; room",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 707,
+    "pt": "direção",
+    "sl": "direção",
+    "en": "direction; steering",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 708,
+    "pt": "nível",
+    "sl": "nível",
+    "en": "level",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 709,
+    "pt": "prédio",
+    "sl": "prédio",
+    "en": "building",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 710,
+    "pt": "sistema",
+    "sl": "sistema",
+    "en": "system",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 711,
+    "pt": "processo",
+    "sl": "processo",
+    "en": "process; lawsuit",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 712,
+    "pt": "forma",
+    "sl": "forma",
+    "en": "form; shape; way",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 713,
+    "pt": "modo",
+    "sl": "modo",
+    "en": "way; manner; mode",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 714,
+    "pt": "sentido",
+    "sl": "sentido",
+    "en": "meaning; sense; direction",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 715,
+    "pt": "ação",
+    "sl": "ação",
+    "en": "action; act; share (stock)",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 716,
+    "pt": "atitude",
+    "sl": "atitude",
+    "en": "attitude",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 717,
+    "pt": "comportamento",
+    "sl": "comportamento",
+    "en": "behavior",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 718,
+    "pt": "costume",
+    "sl": "costume",
+    "en": "habit; custom",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 719,
+    "pt": "hábito",
+    "sl": "hábito",
+    "en": "habit",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 720,
+    "pt": "experiência",
+    "sl": "experiência",
+    "en": "experience",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 721,
+    "pt": "conhecimento",
+    "sl": "conhecimento",
+    "en": "knowledge",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 722,
+    "pt": "informação",
+    "sl": "informação",
+    "en": "information",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 723,
+    "pt": "resposta",
+    "sl": "resposta",
+    "en": "answer; reply",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 724,
+    "pt": "apartamento",
+    "sl": "apartamento",
+    "en": "apartment; flat",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 725,
+    "pt": "opinião",
+    "sl": "opinião",
+    "en": "opinion",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 726,
+    "pt": "conselho",
+    "sl": "conselho",
+    "en": "advice; council",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 727,
+    "pt": "decisão",
+    "sl": "decisão",
+    "en": "decision",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 728,
+    "pt": "escolha",
+    "sl": "escolha",
+    "en": "choice",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 729,
+    "pt": "chance",
+    "sl": "chance",
+    "en": "chance; opportunity",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 730,
+    "pt": "oportunidade",
+    "sl": "oportunidade",
+    "en": "opportunity",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 731,
+    "pt": "jardim",
+    "sl": "jardim",
+    "en": "garden",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 732,
+    "pt": "risco",
+    "sl": "risco",
+    "en": "risk",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 733,
+    "pt": "segurança",
+    "sl": "segurança",
+    "en": "safety; security",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 734,
+    "pt": "liberdade",
+    "sl": "liberdade",
+    "en": "freedom; liberty",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 735,
+    "pt": "direito",
+    "sl": "direito",
+    "en": "right; law; straight",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 736,
+    "pt": "escada",
+    "sl": "escada",
+    "en": "stairs; ladder",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 737,
+    "pt": "responsabilidade",
+    "sl": "responsabilidade",
+    "en": "responsibility",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 738,
+    "pt": "respeito",
+    "sl": "respeito",
+    "en": "respect; regard",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 739,
+    "pt": "confiança",
+    "sl": "confiança",
+    "en": "trust; confidence",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 740,
+    "pt": "amizade",
+    "sl": "amizade",
+    "en": "friendship",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 741,
+    "pt": "relacionamento",
+    "sl": "relacionamento",
+    "en": "relationship",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 742,
+    "pt": "casamento",
+    "sl": "casamento",
+    "en": "marriage; wedding",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 743,
+    "pt": "namorado",
+    "sl": "namorado",
+    "en": "boyfriend",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 744,
+    "pt": "namorada",
+    "sl": "namorada",
+    "en": "girlfriend",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 745,
+    "pt": "casar",
+    "sl": "casar",
+    "en": "to marry; to get married",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 746,
+    "pt": "namorar",
+    "sl": "namorar",
+    "en": "to date; to go out with",
+    "level": "B1",
+    "pos": "verb"
+  },
+  {
+    "rank": 747,
+    "pt": "apaixonar",
+    "sl": "apaixonar",
+    "en": "to fall in love",
+    "level": "B1",
+    "pos": "verb"
+  },
+  {
+    "rank": 748,
+    "pt": "confiar",
+    "sl": "confiar",
+    "en": "to trust",
+    "level": "B1",
+    "pos": "verb"
+  },
+  {
+    "rank": 749,
+    "pt": "mentir",
+    "sl": "mentir",
+    "en": "to lie",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 750,
+    "pt": "mentira",
+    "sl": "mentira",
+    "en": "lie; falsehood",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 751,
+    "pt": "enganar",
+    "sl": "enganar",
+    "en": "to deceive; to cheat; to fool",
+    "level": "B1",
+    "pos": "verb"
+  },
+  {
+    "rank": 752,
+    "pt": "trair",
+    "sl": "trair",
+    "en": "to betray; to cheat on",
+    "level": "B1",
+    "pos": "verb"
+  },
+  {
+    "rank": 753,
+    "pt": "perdoar",
+    "sl": "perdoar",
+    "en": "to forgive",
+    "level": "B1",
+    "pos": "verb"
+  },
+  {
+    "rank": 754,
+    "pt": "desculpar",
+    "sl": "desculpar",
+    "en": "to excuse; to apologize",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 755,
+    "pt": "agradecer",
+    "sl": "agradecer",
+    "en": "to thank",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 756,
+    "pt": "cumprimentar",
+    "sl": "cumprimentar",
+    "en": "to greet",
+    "level": "B1",
+    "pos": "verb"
+  },
+  {
+    "rank": 757,
+    "pt": "apresentar-se",
+    "sl": "apresentar-se",
+    "en": "to introduce oneself",
+    "level": "B1",
+    "pos": "verb"
+  },
+  {
+    "rank": 758,
+    "pt": "chamar-se",
+    "sl": "chamar-se",
+    "en": "to be called (one's name)",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 759,
+    "pt": "levantar-se",
+    "sl": "levantar-se",
+    "en": "to get up; to stand up",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 760,
+    "pt": "sentar",
+    "sl": "sentar",
+    "en": "to sit; to sit down",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 761,
+    "pt": "deitar",
+    "sl": "deitar",
+    "en": "to lie down; to lay down",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 762,
+    "pt": "vestir",
+    "sl": "vestir",
+    "en": "to wear; to dress; to put on",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 763,
+    "pt": "tomar",
+    "sl": "tomar",
+    "en": "to take; to drink; to have (a shower)",
+    "level": "A1",
+    "pos": "verb"
+  },
+  {
+    "rank": 764,
+    "pt": "banho",
+    "sl": "banho",
+    "en": "bath; shower",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 765,
+    "pt": "cozinhar",
+    "sl": "cozinhar",
+    "en": "to cook",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 766,
+    "pt": "limpar",
+    "sl": "limpar",
+    "en": "to clean",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 767,
+    "pt": "lavar",
+    "sl": "lavar",
+    "en": "to wash",
+    "level": "A2",
+    "pos": "verb"
+  },
+  {
+    "rank": 768,
+    "pt": "arrumar",
+    "sl": "arrumar",
+    "en": "to tidy up; to arrange; to fix",
+    "level": "B1",
+    "pos": "verb"
+  },
+  {
+    "rank": 769,
+    "pt": "sujar",
+    "sl": "sujar",
+    "en": "to make dirty; to soil",
+    "level": "B1",
+    "pos": "verb"
+  },
+  {
+    "rank": 770,
+    "pt": "trabalhador",
+    "sl": "trabalhador",
+    "en": "worker; hardworking",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 771,
+    "pt": "emprego",
+    "sl": "emprego",
+    "en": "job; employment",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 772,
+    "pt": "salário",
+    "sl": "salário",
+    "en": "salary; wage",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 773,
+    "pt": "escritório",
+    "sl": "escritório",
+    "en": "office",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 774,
+    "pt": "fábrica",
+    "sl": "fábrica",
+    "en": "factory",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 775,
+    "pt": "máquina",
+    "sl": "máquina",
+    "en": "machine",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 776,
+    "pt": "ferramenta",
+    "sl": "ferramenta",
+    "en": "tool",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 777,
+    "pt": "material",
+    "sl": "material",
+    "en": "material",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 778,
+    "pt": "produto",
+    "sl": "produto",
+    "en": "product",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 779,
+    "pt": "serviço",
+    "sl": "serviço",
+    "en": "service",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 780,
+    "pt": "documento",
+    "sl": "documento",
+    "en": "document",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 781,
+    "pt": "contrato",
+    "sl": "contrato",
+    "en": "contract",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 782,
+    "pt": "parente",
+    "sl": "parente",
+    "en": "relative; family member",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 783,
+    "pt": "geração",
+    "sl": "geração",
+    "en": "generation",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 784,
+    "pt": "infância",
+    "sl": "infância",
+    "en": "childhood",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 785,
+    "pt": "juventude",
+    "sl": "juventude",
+    "en": "youth",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 786,
+    "pt": "bebê",
+    "sl": "bebê",
+    "en": "baby",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 787,
+    "pt": "criança",
+    "sl": "criança",
+    "en": "child; kid",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 788,
+    "pt": "adulto",
+    "sl": "adulto",
+    "en": "adult",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 789,
+    "pt": "velhice",
+    "sl": "velhice",
+    "en": "old age",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 790,
+    "pt": "pedra",
+    "sl": "pedra",
+    "en": "stone; rock",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 791,
+    "pt": "mente",
+    "sl": "mente",
+    "en": "mind",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 792,
+    "pt": "alma",
+    "sl": "alma",
+    "en": "soul",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 793,
+    "pt": "pensamento",
+    "sl": "pensamento",
+    "en": "thought",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 794,
+    "pt": "sentimento",
+    "sl": "sentimento",
+    "en": "feeling",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 795,
+    "pt": "emoção",
+    "sl": "emoção",
+    "en": "emotion; excitement",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 796,
+    "pt": "memória",
+    "sl": "memória",
+    "en": "memory",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 797,
+    "pt": "imaginação",
+    "sl": "imaginação",
+    "en": "imagination",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 798,
+    "pt": "personalidade",
+    "sl": "personalidade",
+    "en": "personality",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 799,
+    "pt": "humor",
+    "sl": "humor",
+    "en": "mood; humor",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 800,
+    "pt": "caráter",
+    "sl": "caráter",
+    "en": "character; nature",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 801,
+    "pt": "tu",
+    "sl": "tu",
+    "en": "you (informal sing.)",
+    "level": "A1",
+    "pos": "pronoun"
+  },
+  {
+    "rank": 802,
+    "pt": "nosso",
+    "sl": "nosso",
+    "en": "our; ours (m.)",
+    "level": "A1",
+    "pos": "determiner"
+  },
+  {
+    "rank": 803,
+    "pt": "teu",
+    "sl": "teu",
+    "en": "your; yours (informal, m.)",
+    "level": "A2",
+    "pos": "determiner"
+  },
+  {
+    "rank": 804,
+    "pt": "meus",
+    "sl": "meus",
+    "en": "my; mine (m. pl.)",
+    "level": "A1",
+    "pos": "determiner"
+  },
+  {
+    "rank": 805,
+    "pt": "uns",
+    "sl": "uns",
+    "en": "some; a few (m.)",
+    "level": "A1",
+    "pos": "article"
+  },
+  {
+    "rank": 806,
+    "pt": "umas",
+    "sl": "umas",
+    "en": "some; a few (f.)",
+    "level": "A1",
+    "pos": "article"
+  },
+  {
+    "rank": 807,
+    "pt": "num",
+    "sl": "num",
+    "en": "in a; in one (m.)",
+    "level": "A1",
+    "pos": "preposition"
+  },
+  {
+    "rank": 808,
+    "pt": "numa",
+    "sl": "numa",
+    "en": "in a; in one (f.)",
+    "level": "A1",
+    "pos": "preposition"
+  },
+  {
+    "rank": 809,
+    "pt": "comigo",
+    "sl": "comigo",
+    "en": "with me",
+    "level": "A1",
+    "pos": "pronoun"
+  },
+  {
+    "rank": 810,
+    "pt": "contigo",
+    "sl": "contigo",
+    "en": "with you (informal)",
+    "level": "A2",
+    "pos": "pronoun"
+  },
+  {
+    "rank": 811,
+    "pt": "deste",
+    "sl": "deste",
+    "en": "of this; from this (m.)",
+    "level": "A2",
+    "pos": "preposition"
+  },
+  {
+    "rank": 812,
+    "pt": "desta",
+    "sl": "desta",
+    "en": "of this; from this (f.)",
+    "level": "A2",
+    "pos": "preposition"
+  },
+  {
+    "rank": 813,
+    "pt": "nisso",
+    "sl": "nisso",
+    "en": "in that; on that",
+    "level": "A1",
+    "pos": "preposition"
+  },
+  {
+    "rank": 814,
+    "pt": "disso",
+    "sl": "disso",
+    "en": "of that; about that",
+    "level": "A1",
+    "pos": "preposition"
+  },
+  {
+    "rank": 815,
+    "pt": "por que",
+    "sl": "por que",
+    "en": "why (question)",
+    "level": "A1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 816,
+    "pt": "por favor",
+    "sl": "por favor",
+    "en": "please",
+    "level": "A1",
+    "pos": "interjection"
+  },
+  {
+    "rank": 817,
+    "pt": "obrigada",
+    "sl": "obrigada",
+    "en": "thank you (f. speaker)",
+    "level": "A1",
+    "pos": "interjection"
+  },
+  {
+    "rank": 818,
+    "pt": "oi",
+    "sl": "oi",
+    "en": "hi; hey (BR)",
+    "level": "A1",
+    "pos": "interjection"
+  },
+  {
+    "rank": 819,
+    "pt": "tchau",
+    "sl": "tchau",
+    "en": "bye",
+    "level": "A1",
+    "pos": "interjection"
+  },
+  {
+    "rank": 820,
+    "pt": "nossa",
+    "sl": "nossa",
+    "en": "wow; gosh (BR interjection)",
+    "level": "A2",
+    "pos": "interjection"
+  },
+  {
+    "rank": 821,
+    "pt": "sociedade",
+    "sl": "sociedade",
+    "en": "society",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 822,
+    "pt": "cultura",
+    "sl": "cultura",
+    "en": "culture",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 823,
+    "pt": "arte",
+    "sl": "arte",
+    "en": "art",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 824,
+    "pt": "ciência",
+    "sl": "ciência",
+    "en": "science",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 825,
+    "pt": "natureza",
+    "sl": "natureza",
+    "en": "nature",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 826,
+    "pt": "energia",
+    "sl": "energia",
+    "en": "energy",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 827,
+    "pt": "economia",
+    "sl": "economia",
+    "en": "economy; savings",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 828,
+    "pt": "política",
+    "sl": "política",
+    "en": "politics; policy",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 829,
+    "pt": "religião",
+    "sl": "religião",
+    "en": "religion",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 830,
+    "pt": "educação",
+    "sl": "educação",
+    "en": "education; manners",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 831,
+    "pt": "conosco",
+    "sl": "conosco",
+    "en": "with us",
+    "level": "A2",
+    "pos": "pronoun"
+  },
+  {
+    "rank": 832,
+    "pt": "moeda",
+    "sl": "moeda",
+    "en": "coin; currency",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 833,
+    "pt": "ouro",
+    "sl": "ouro",
+    "en": "gold",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 834,
+    "pt": "ferro",
+    "sl": "ferro",
+    "en": "iron",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 835,
+    "pt": "programa",
+    "sl": "programa",
+    "en": "program; show",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 836,
+    "pt": "canal",
+    "sl": "canal",
+    "en": "channel; canal",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 837,
+    "pt": "tela",
+    "sl": "tela",
+    "en": "screen",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 838,
+    "pt": "rede",
+    "sl": "rede",
+    "en": "network; net; hammock",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 839,
+    "pt": "senha",
+    "sl": "senha",
+    "en": "password",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 840,
+    "pt": "arquivo",
+    "sl": "arquivo",
+    "en": "file; archive",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 841,
+    "pt": "vídeo",
+    "sl": "vídeo",
+    "en": "video",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 842,
+    "pt": "computador",
+    "sl": "computador",
+    "en": "computer",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 843,
+    "pt": "esporte",
+    "sl": "esporte",
+    "en": "sport",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 844,
+    "pt": "partida",
+    "sl": "partida",
+    "en": "match; departure",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 845,
+    "pt": "gol",
+    "sl": "gol",
+    "en": "goal (BR, soccer)",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 846,
+    "pt": "vitória",
+    "sl": "vitória",
+    "en": "victory; win",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 847,
+    "pt": "derrota",
+    "sl": "derrota",
+    "en": "defeat; loss",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 848,
+    "pt": "corrida",
+    "sl": "corrida",
+    "en": "race; run; ride (taxi)",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 849,
+    "pt": "luta",
+    "sl": "luta",
+    "en": "fight; struggle",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 850,
+    "pt": "treino",
+    "sl": "treino",
+    "en": "training; practice",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 851,
+    "pt": "madeira",
+    "sl": "madeira",
+    "en": "wood",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 852,
+    "pt": "vidro",
+    "sl": "vidro",
+    "en": "glass (material)",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 853,
+    "pt": "vencer",
+    "sl": "vencer",
+    "en": "to win; to overcome; to beat",
+    "level": "B1",
+    "pos": "verb"
+  },
+  {
+    "rank": 854,
+    "pt": "competir",
+    "sl": "competir",
+    "en": "to compete",
+    "level": "B1",
+    "pos": "verb"
+  },
+  {
+    "rank": 855,
+    "pt": "treinar",
+    "sl": "treinar",
+    "en": "to train; to practice",
+    "level": "B1",
+    "pos": "verb"
+  },
+  {
+    "rank": 856,
+    "pt": "praticar",
+    "sl": "praticar",
+    "en": "to practice",
+    "level": "B1",
+    "pos": "verb"
+  },
+  {
+    "rank": 857,
+    "pt": "exercício",
+    "sl": "exercício",
+    "en": "exercise",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 858,
+    "pt": "caneta",
+    "sl": "caneta",
+    "en": "pen",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 859,
+    "pt": "lápis",
+    "sl": "lápis",
+    "en": "pencil",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 860,
+    "pt": "músculo",
+    "sl": "músculo",
+    "en": "muscle",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 861,
+    "pt": "coragem",
+    "sl": "coragem",
+    "en": "courage",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 862,
+    "pt": "tesoura",
+    "sl": "tesoura",
+    "en": "scissors",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 863,
+    "pt": "orgulho",
+    "sl": "orgulho",
+    "en": "pride",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 864,
+    "pt": "vergonha",
+    "sl": "vergonha",
+    "en": "shame; embarrassment",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 865,
+    "pt": "ciúme",
+    "sl": "ciúme",
+    "en": "jealousy",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 866,
+    "pt": "inveja",
+    "sl": "inveja",
+    "en": "envy",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 867,
+    "pt": "ódio",
+    "sl": "ódio",
+    "en": "hatred",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 868,
+    "pt": "paixão",
+    "sl": "paixão",
+    "en": "passion",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 869,
+    "pt": "carinho",
+    "sl": "carinho",
+    "en": "affection; tenderness",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 870,
+    "pt": "desejo",
+    "sl": "desejo",
+    "en": "wish; desire",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 871,
+    "pt": "gosto",
+    "sl": "gosto",
+    "en": "taste; liking",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 872,
+    "pt": "cheiro",
+    "sl": "cheiro",
+    "en": "smell; scent",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 873,
+    "pt": "sabor",
+    "sl": "sabor",
+    "en": "flavor; taste",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 874,
+    "pt": "toque",
+    "sl": "toque",
+    "en": "touch; ring (phone)",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 875,
+    "pt": "espada",
+    "sl": "espada",
+    "en": "sword",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 876,
+    "pt": "rainha",
+    "sl": "rainha",
+    "en": "queen",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 877,
+    "pt": "gelado",
+    "sl": "gelado",
+    "en": "ice-cold; chilled (m.)",
+    "level": "B1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 878,
+    "pt": "seco",
+    "sl": "seco",
+    "en": "dry (m.)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 879,
+    "pt": "molhado",
+    "sl": "molhado",
+    "en": "wet (m.)",
+    "level": "B1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 880,
+    "pt": "macio",
+    "sl": "macio",
+    "en": "soft (m.)",
+    "level": "B1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 881,
+    "pt": "duro",
+    "sl": "duro",
+    "en": "hard; tough (m.)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 882,
+    "pt": "leve",
+    "sl": "leve",
+    "en": "light (weight); slight",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 883,
+    "pt": "pesado",
+    "sl": "pesado",
+    "en": "heavy (m.)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 884,
+    "pt": "claro",
+    "sl": "claro",
+    "en": "clear; light; of course (m.)",
+    "level": "A1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 885,
+    "pt": "escuro",
+    "sl": "escuro",
+    "en": "dark (m.)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 886,
+    "pt": "brilhante",
+    "sl": "brilhante",
+    "en": "bright; brilliant; shiny",
+    "level": "B1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 887,
+    "pt": "redondo",
+    "sl": "redondo",
+    "en": "round (m.)",
+    "level": "B1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 888,
+    "pt": "reto",
+    "sl": "reto",
+    "en": "straight (m.)",
+    "level": "B1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 889,
+    "pt": "torto",
+    "sl": "torto",
+    "en": "crooked; bent (m.)",
+    "level": "B1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 890,
+    "pt": "largo",
+    "sl": "largo",
+    "en": "wide; broad (m.)",
+    "level": "B1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 891,
+    "pt": "estreito",
+    "sl": "estreito",
+    "en": "narrow (m.)",
+    "level": "B1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 892,
+    "pt": "fundo",
+    "sl": "fundo",
+    "en": "deep; bottom (m.)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 893,
+    "pt": "raso",
+    "sl": "raso",
+    "en": "shallow (m.)",
+    "level": "B1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 894,
+    "pt": "castelo",
+    "sl": "castelo",
+    "en": "castle",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 895,
+    "pt": "teto",
+    "sl": "teto",
+    "en": "ceiling; roof",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 896,
+    "pt": "canto",
+    "sl": "canto",
+    "en": "corner; singing",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 897,
+    "pt": "buraco",
+    "sl": "buraco",
+    "en": "hole",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 898,
+    "pt": "lixo",
+    "sl": "lixo",
+    "en": "trash; garbage",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 899,
+    "pt": "caixa",
+    "sl": "caixa",
+    "en": "box; checkout",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 900,
+    "pt": "saco",
+    "sl": "saco",
+    "en": "bag; sack",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 901,
+    "pt": "bosta",
+    "sl": "bosta",
+    "en": "crap; dung (vulgar)",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 902,
+    "pt": "sujeira",
+    "sl": "sujeira",
+    "en": "dirt; filth",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 903,
+    "pt": "poeira",
+    "sl": "poeira",
+    "en": "dust",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 904,
+    "pt": "fumaça",
+    "sl": "fumaça",
+    "en": "smoke",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 905,
+    "pt": "vento",
+    "sl": "vento",
+    "en": "wind",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 906,
+    "pt": "nuvem",
+    "sl": "nuvem",
+    "en": "cloud",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 907,
+    "pt": "tempestade",
+    "sl": "tempestade",
+    "en": "storm",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 908,
+    "pt": "trovão",
+    "sl": "trovão",
+    "en": "thunder",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 909,
+    "pt": "neve",
+    "sl": "neve",
+    "en": "snow",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 910,
+    "pt": "gelo",
+    "sl": "gelo",
+    "en": "ice",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 911,
+    "pt": "calor",
+    "sl": "calor",
+    "en": "heat; warmth",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 912,
+    "pt": "fantasma",
+    "sl": "fantasma",
+    "en": "ghost",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 913,
+    "pt": "verão",
+    "sl": "verão",
+    "en": "summer",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 914,
+    "pt": "inverno",
+    "sl": "inverno",
+    "en": "winter",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 915,
+    "pt": "estação",
+    "sl": "estação",
+    "en": "season; station",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 916,
+    "pt": "clima",
+    "sl": "clima",
+    "en": "climate; weather; mood",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 917,
+    "pt": "planeta",
+    "sl": "planeta",
+    "en": "planet",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 918,
+    "pt": "herói",
+    "sl": "herói",
+    "en": "hero",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 919,
+    "pt": "universo",
+    "sl": "universo",
+    "en": "universe",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 920,
+    "pt": "monstro",
+    "sl": "monstro",
+    "en": "monster",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 921,
+    "pt": "passado",
+    "sl": "passado",
+    "en": "past",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 922,
+    "pt": "tesouro",
+    "sl": "tesouro",
+    "en": "treasure",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 923,
+    "pt": "época",
+    "sl": "época",
+    "en": "era; time; period",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 924,
+    "pt": "século",
+    "sl": "século",
+    "en": "century",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 925,
+    "pt": "data",
+    "sl": "data",
+    "en": "date",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 926,
+    "pt": "aniversário",
+    "sl": "aniversário",
+    "en": "birthday; anniversary",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 927,
+    "pt": "feriado",
+    "sl": "feriado",
+    "en": "public holiday",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 928,
+    "pt": "domingo",
+    "sl": "domingo",
+    "en": "Sunday",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 929,
+    "pt": "sábado",
+    "sl": "sábado",
+    "en": "Saturday",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 930,
+    "pt": "manhã",
+    "sl": "manhã",
+    "en": "morning",
+    "level": "A1",
+    "pos": "noun"
+  },
+  {
+    "rank": 931,
+    "pt": "madrugada",
+    "sl": "madrugada",
+    "en": "dawn; early hours",
+    "level": "B1",
+    "pos": "noun"
+  },
+  {
+    "rank": 932,
+    "pt": "sexta",
+    "sl": "sexta",
+    "en": "Friday (sexta-feira)",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 933,
+    "pt": "relógio",
+    "sl": "relógio",
+    "en": "clock; watch",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 934,
+    "pt": "atrasado",
+    "sl": "atrasado",
+    "en": "late; behind; delayed (m.)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 935,
+    "pt": "adiantado",
+    "sl": "adiantado",
+    "en": "ahead; early; advanced (m.)",
+    "level": "B1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 936,
+    "pt": "primavera",
+    "sl": "primavera",
+    "en": "spring (season)",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 937,
+    "pt": "geralmente",
+    "sl": "geralmente",
+    "en": "usually; generally",
+    "level": "B1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 938,
+    "pt": "normalmente",
+    "sl": "normalmente",
+    "en": "normally; usually",
+    "level": "A2",
+    "pos": "adverb"
+  },
+  {
+    "rank": 939,
+    "pt": "frequentemente",
+    "sl": "frequentemente",
+    "en": "frequently; often",
+    "level": "B1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 940,
+    "pt": "raramente",
+    "sl": "raramente",
+    "en": "rarely; seldom",
+    "level": "B1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 941,
+    "pt": "finalmente",
+    "sl": "finalmente",
+    "en": "finally; at last",
+    "level": "A2",
+    "pos": "adverb"
+  },
+  {
+    "rank": 942,
+    "pt": "imediatamente",
+    "sl": "imediatamente",
+    "en": "immediately",
+    "level": "B1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 943,
+    "pt": "rapidamente",
+    "sl": "rapidamente",
+    "en": "quickly; rapidly",
+    "level": "B1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 944,
+    "pt": "facilmente",
+    "sl": "facilmente",
+    "en": "easily",
+    "level": "B1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 945,
+    "pt": "exatamente",
+    "sl": "exatamente",
+    "en": "exactly",
+    "level": "A2",
+    "pos": "adverb"
+  },
+  {
+    "rank": 946,
+    "pt": "simplesmente",
+    "sl": "simplesmente",
+    "en": "simply; just",
+    "level": "B1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 947,
+    "pt": "principalmente",
+    "sl": "principalmente",
+    "en": "mainly; especially",
+    "level": "B1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 948,
+    "pt": "completamente",
+    "sl": "completamente",
+    "en": "completely",
+    "level": "A2",
+    "pos": "adverb"
+  },
+  {
+    "rank": 949,
+    "pt": "totalmente",
+    "sl": "totalmente",
+    "en": "totally",
+    "level": "B1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 950,
+    "pt": "infelizmente",
+    "sl": "infelizmente",
+    "en": "unfortunately",
+    "level": "A2",
+    "pos": "adverb"
+  },
+  {
+    "rank": 951,
+    "pt": "felizmente",
+    "sl": "felizmente",
+    "en": "fortunately; luckily",
+    "level": "B1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 952,
+    "pt": "provavelmente",
+    "sl": "provavelmente",
+    "en": "probably",
+    "level": "A2",
+    "pos": "adverb"
+  },
+  {
+    "rank": 953,
+    "pt": "outono",
+    "sl": "outono",
+    "en": "autumn; fall",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 954,
+    "pt": "possivelmente",
+    "sl": "possivelmente",
+    "en": "possibly",
+    "level": "B1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 955,
+    "pt": "quarta",
+    "sl": "quarta",
+    "en": "Wednesday (quarta-feira)",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 956,
+    "pt": "verdadeiro",
+    "sl": "verdadeiro",
+    "en": "true; real (m.)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 957,
+    "pt": "falso",
+    "sl": "falso",
+    "en": "false; fake (m.)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 958,
+    "pt": "real",
+    "sl": "real",
+    "en": "real; royal",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 959,
+    "pt": "normal",
+    "sl": "normal",
+    "en": "normal",
+    "level": "A1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 960,
+    "pt": "segunda",
+    "sl": "segunda",
+    "en": "Monday (segunda-feira)",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 961,
+    "pt": "comum",
+    "sl": "comum",
+    "en": "common; ordinary",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 962,
+    "pt": "raro",
+    "sl": "raro",
+    "en": "rare (m.)",
+    "level": "B1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 963,
+    "pt": "simples",
+    "sl": "simples",
+    "en": "simple",
+    "level": "A1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 964,
+    "pt": "complicado",
+    "sl": "complicado",
+    "en": "complicated (m.)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 965,
+    "pt": "ótimo",
+    "sl": "ótimo",
+    "en": "great; excellent (m.)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 966,
+    "pt": "péssimo",
+    "sl": "péssimo",
+    "en": "terrible; awful (m.)",
+    "level": "B1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 967,
+    "pt": "útil",
+    "sl": "útil",
+    "en": "useful",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 968,
+    "pt": "inútil",
+    "sl": "inútil",
+    "en": "useless",
+    "level": "B1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 969,
+    "pt": "perfeito",
+    "sl": "perfeito",
+    "en": "perfect (m.)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 970,
+    "pt": "impossível",
+    "sl": "impossível",
+    "en": "impossible",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 971,
+    "pt": "capaz",
+    "sl": "capaz",
+    "en": "capable; able",
+    "level": "B1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 972,
+    "pt": "incapaz",
+    "sl": "incapaz",
+    "en": "incapable; unable",
+    "level": "B1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 973,
+    "pt": "esperto",
+    "sl": "esperto",
+    "en": "clever; smart (m.)",
+    "level": "B1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 974,
+    "pt": "inteligente",
+    "sl": "inteligente",
+    "en": "intelligent; smart",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 975,
+    "pt": "bobo",
+    "sl": "bobo",
+    "en": "silly; foolish (m.)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 976,
+    "pt": "educado",
+    "sl": "educado",
+    "en": "polite; well-mannered (m.)",
+    "level": "B1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 977,
+    "pt": "gentil",
+    "sl": "gentil",
+    "en": "kind; gentle; nice",
+    "level": "B1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 978,
+    "pt": "grosso",
+    "sl": "grosso",
+    "en": "rude; thick (m.)",
+    "level": "B1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 979,
+    "pt": "famoso",
+    "sl": "famoso",
+    "en": "famous (m.)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 980,
+    "pt": "maravilhoso",
+    "sl": "maravilhoso",
+    "en": "wonderful; marvelous (m.)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 981,
+    "pt": "horrível",
+    "sl": "horrível",
+    "en": "horrible; awful",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 982,
+    "pt": "sério",
+    "sl": "sério",
+    "en": "serious (m.)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 983,
+    "pt": "engraçado",
+    "sl": "engraçado",
+    "en": "funny (m.)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 984,
+    "pt": "divertido",
+    "sl": "divertido",
+    "en": "fun; entertaining (m.)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 985,
+    "pt": "curioso",
+    "sl": "curioso",
+    "en": "curious (m.)",
+    "level": "B1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 986,
+    "pt": "preguiçoso",
+    "sl": "preguiçoso",
+    "en": "lazy (m.)",
+    "level": "B1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 987,
+    "pt": "corajoso",
+    "sl": "corajoso",
+    "en": "brave; courageous (m.)",
+    "level": "B1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 988,
+    "pt": "medroso",
+    "sl": "medroso",
+    "en": "fearful; cowardly (m.)",
+    "level": "B1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 989,
+    "pt": "orgulhoso",
+    "sl": "orgulhoso",
+    "en": "proud (m.)",
+    "level": "B1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 990,
+    "pt": "apaixonado",
+    "sl": "apaixonado",
+    "en": "in love (m.)",
+    "level": "B1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 991,
+    "pt": "solteiro",
+    "sl": "solteiro",
+    "en": "single; unmarried (m.)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 992,
+    "pt": "casado",
+    "sl": "casado",
+    "en": "married (m.)",
+    "level": "A2",
+    "pos": "adjective"
+  },
+  {
+    "rank": 993,
+    "pt": "separado",
+    "sl": "separado",
+    "en": "separated; apart (m.)",
+    "level": "B1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 994,
+    "pt": "saudável",
+    "sl": "saudável",
+    "en": "healthy",
+    "level": "B1",
+    "pos": "adjective"
+  },
+  {
+    "rank": 995,
+    "pt": "junto",
+    "sl": "junto",
+    "en": "together; next to (m.)",
+    "level": "A2",
+    "pos": "adverb"
+  },
+  {
+    "rank": 996,
+    "pt": "quinta",
+    "sl": "quinta",
+    "en": "Thursday (quinta-feira)",
+    "level": "A2",
+    "pos": "noun"
+  },
+  {
+    "rank": 997,
+    "pt": "dentro",
+    "sl": "dentro",
+    "en": "inside; within",
+    "level": "A1",
+    "pos": "adverb"
+  },
+  {
+    "rank": 998,
+    "pt": "debaixo",
+    "sl": "debaixo",
+    "en": "under; underneath",
+    "level": "A2",
+    "pos": "adverb"
+  },
+  {
+    "rank": 999,
+    "pt": "acima",
+    "sl": "acima",
+    "en": "above; over",
+    "level": "A2",
+    "pos": "adverb"
+  },
+  {
+    "rank": 1000,
+    "pt": "abaixo",
+    "sl": "abaixo",
+    "en": "below; down",
+    "level": "A2",
+    "pos": "adverb"
+  }
+]

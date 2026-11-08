@@ -130,7 +130,7 @@ function prepareSlovenianTTSInput(rawText: string): string {
 // Serialized execution queue for Edge TTS to prevent simultaneous handshake bursts
 let edgeQueue = Promise.resolve<any>(null);
 
-async function synthesizeWithEdgeTTS(text: string): Promise<Buffer> {
+async function synthesizeWithEdgeTTS(text: string, voice = 'sl-SI-PetraNeural'): Promise<Buffer> {
   const task = async (): Promise<Buffer> => {
     let MsEdgeTTSClass: any;
     let outputFormat: any;
@@ -147,7 +147,7 @@ async function synthesizeWithEdgeTTS(text: string): Promise<Buffer> {
     }
 
     const tts = new MsEdgeTTSClass();
-    await tts.setMetadata('sl-SI-PetraNeural', outputFormat);
+    await tts.setMetadata(voice, outputFormat);
     const { audioStream } = tts.toStream(text);
     const chunks: Buffer[] = [];
 
@@ -184,18 +184,19 @@ async function synthesizeWithEdgeTTS(text: string): Promise<Buffer> {
 }
 
 /**
- * Native Slovenian Neural Voice Synthesis (sl-SI-PetraNeural)
- * Produces authentic native pronunciation with correct pitch accent, Slovenian č/š/ž phonetics,
- * and natural rhythm.
+ * Neural Voice Synthesis supporting Slovenian (sl-SI-PetraNeural)
+ * and European Portuguese from Portugal (pt-PT-RaquelNeural).
  */
-async function synthesizeSlovenianSpeech(text: string): Promise<{ buffer: Buffer; mimeType: string }> {
-  const buffer = await synthesizeWithEdgeTTS(text);
+async function synthesizeSpeech(text: string, lang = 'sl'): Promise<{ buffer: Buffer; mimeType: string }> {
+  // European Portuguese voice: pt-PT-RaquelNeural; Slovenian voice: sl-SI-PetraNeural
+  const voice = lang === 'pt' ? 'pt-PT-RaquelNeural' : 'sl-SI-PetraNeural';
+  const buffer = await synthesizeWithEdgeTTS(text, voice);
   return { buffer, mimeType: 'audio/mpeg' };
 }
 
 /**
- * Endpoint: GET /api/tts?text=...
- * Generates and streams authentic native Slovenian audio pronunciation with multi-tier resilience.
+ * Endpoint: GET /api/tts?text=...&lang=sl|pt
+ * Generates and streams authentic native audio pronunciation with multi-tier resilience.
  */
 app.get('/api/tts', async (req, res) => {
   try {
@@ -204,8 +205,9 @@ app.get('/api/tts', async (req, res) => {
       return res.status(400).send('Missing text parameter');
     }
 
+    const lang = (req.query.lang as string || 'sl').toLowerCase();
     const cleanText = rawText.replace(/[()]/g, '').trim().slice(0, 300);
-    const cacheKey = cleanText.toLowerCase();
+    const cacheKey = `${lang}:${cleanText.toLowerCase()}`;
 
     // 1. Check in-memory cache (instant 0ms response)
     if (ttsCache.has(cacheKey)) {
@@ -235,12 +237,10 @@ app.get('/api/tts', async (req, res) => {
       return res.send(buffer);
     }
 
-    // 3. Deduplicate in-flight requests for the same word
-    const phoneticInput = prepareSlovenianTTSInput(cleanText);
-
+    // 3. Deduplicate in-flight requests
     let fetchPromise = inFlightTTS.get(cacheKey);
     if (!fetchPromise) {
-      fetchPromise = synthesizeSlovenianSpeech(phoneticInput).finally(() => {
+      fetchPromise = synthesizeSpeech(cleanText, lang).finally(() => {
         inFlightTTS.delete(cacheKey);
       });
       inFlightTTS.set(cacheKey, fetchPromise);
@@ -258,7 +258,7 @@ app.get('/api/tts', async (req, res) => {
     res.setHeader('Content-Length', buffer.length);
     return res.send(buffer);
   } catch (err: any) {
-    console.warn('Slovenian TTS synthesis temporary limitation:', err?.message || err);
+    console.warn('TTS synthesis temporary limitation:', err?.message || err);
     return res.status(503).json({ error: 'tts_temporarily_unavailable', message: err?.message });
   }
 });

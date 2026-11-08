@@ -14,6 +14,7 @@ const SENTENCES_CACHE_KEY = 'beseda_sentences_cache_v1';
 const PROFILE_KEY = 'dvojeziko_user_profile_v1';
 
 export const DEFAULT_SETTINGS: UserSettings = {
+  language: 'sl',
   newWordsPerDay: 3,
   adaptivePace: true,
   soundEnabled: true,
@@ -58,10 +59,26 @@ export function saveUserProfile(profile: UserProfile): void {
 }
 
 
+// Helper to get language-aware key
+function getProgressKey(lang?: string): string {
+  if (lang === 'pt') return 'beseda_word_progress_pt_v1';
+  return PROGRESS_KEY;
+}
+
+function getSentencesKey(lang?: string): string {
+  if (lang === 'pt') return 'beseda_sentences_cache_pt_v1';
+  return SENTENCES_CACHE_KEY;
+}
+
+function getStatsKey(lang?: string): string {
+  if (lang === 'pt') return 'beseda_user_stats_pt_v1';
+  return STATS_KEY;
+}
+
 // Storage operations
-export function loadWordProgress(): Record<number, WordProgress> {
+export function loadWordProgress(lang?: string): Record<number, WordProgress> {
   try {
-    const raw = localStorage.getItem(PROGRESS_KEY);
+    const raw = localStorage.getItem(getProgressKey(lang));
     if (!raw) return {};
     return JSON.parse(raw);
   } catch (e) {
@@ -70,9 +87,9 @@ export function loadWordProgress(): Record<number, WordProgress> {
   }
 }
 
-export function saveWordProgress(progress: Record<number, WordProgress>): void {
+export function saveWordProgress(progress: Record<number, WordProgress>, lang?: string): void {
   try {
-    localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress));
+    localStorage.setItem(getProgressKey(lang), JSON.stringify(progress));
   } catch (e) {
     console.error('Failed to save word progress:', e);
   }
@@ -97,9 +114,9 @@ export function saveSettings(settings: UserSettings): void {
   }
 }
 
-export function loadStats(): UserStats {
+export function loadStats(lang?: string): UserStats {
   try {
-    const raw = localStorage.getItem(STATS_KEY);
+    const raw = localStorage.getItem(getStatsKey(lang));
     if (!raw) return DEFAULT_STATS;
     return { ...DEFAULT_STATS, ...JSON.parse(raw) };
   } catch (e) {
@@ -108,17 +125,17 @@ export function loadStats(): UserStats {
   }
 }
 
-export function saveStats(stats: UserStats): void {
+export function saveStats(stats: UserStats, lang?: string): void {
   try {
-    localStorage.setItem(STATS_KEY, JSON.stringify(stats));
+    localStorage.setItem(getStatsKey(lang), JSON.stringify(stats));
   } catch (e) {
     console.error('Failed to save stats:', e);
   }
 }
 
-export function loadSentenceCache(): SentenceItem[] {
+export function loadSentenceCache(lang?: string): SentenceItem[] {
   try {
-    const raw = localStorage.getItem(SENTENCES_CACHE_KEY);
+    const raw = localStorage.getItem(getSentencesKey(lang));
     if (!raw) return [];
     return JSON.parse(raw);
   } catch (e) {
@@ -127,14 +144,14 @@ export function loadSentenceCache(): SentenceItem[] {
   }
 }
 
-export function saveSentenceToCache(sentence: SentenceItem): void {
+export function saveSentenceToCache(sentence: SentenceItem, lang?: string): void {
   try {
-    const current = loadSentenceCache();
+    const current = loadSentenceCache(lang);
     // Avoid duplicates by sl text
     const exists = current.some(s => s.sl.toLowerCase().trim() === sentence.sl.toLowerCase().trim());
     if (!exists) {
       current.push({ ...sentence, cachedAt: Date.now() });
-      localStorage.setItem(SENTENCES_CACHE_KEY, JSON.stringify(current));
+      localStorage.setItem(getSentencesKey(lang), JSON.stringify(current));
     }
   } catch (e) {
     console.error('Failed to save sentence cache:', e);
