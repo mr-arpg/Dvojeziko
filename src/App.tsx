@@ -412,28 +412,28 @@ export default function App() {
             <button
               type="button"
               onClick={() => setShowCloudSyncModal(true)}
-              className={`flex items-center gap-1.5 p-1 pr-2 sm:pr-2.5 rounded-full font-bold text-xs transition-all cursor-pointer shadow-xs active:scale-95 group border ${
-                currentUser || userProfile.isFirebaseSynced
-                  ? 'bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-800 dark:text-emerald-200 border-emerald-500/30'
-                  : 'bg-slate-100 hover:bg-slate-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-slate-700 dark:text-zinc-200 border-slate-200 dark:border-zinc-700'
-              }`}
+              className="relative rounded-full focus:outline-none focus:ring-2 focus:ring-emerald-500/50 cursor-pointer active:scale-95 transition-transform p-0 shrink-0"
               title={
                 currentUser || userProfile.isFirebaseSynced
                   ? `Logged in: ${userProfile.displayName} (${userProfile.email}) • Cloud Synced`
                   : `Profile: ${userProfile.displayName} • Tap to sync PC & Phone`
               }
             >
-              <div className="relative w-7 h-7 shrink-0">
+              <div className="relative w-8 h-8 shrink-0">
                 <img
                   src={
                     userProfile.photoURL ||
-                    `https://ui-avatars.com/api/?name=${encodeURIComponent(userProfile.displayName)}&background=0d9488&color=fff&bold=true`
+                    `https://api.dicebear.com/9.x/initials/svg?seed=${encodeURIComponent(userProfile.displayName || 'RP')}&backgroundColor=0f766e,0d9488&textColor=ffffff`
                   }
-                  alt={userProfile.displayName}
-                  className="w-7 h-7 rounded-full object-cover ring-2 ring-emerald-500/80"
+                  alt={userProfile.displayName || 'User Avatar'}
+                  className="w-8 h-8 rounded-full object-cover ring-2 ring-emerald-500/80 hover:ring-emerald-400 transition-all shadow-xs bg-emerald-800"
                   referrerPolicy="no-referrer"
+                  crossOrigin="anonymous"
                   onError={e => {
-                    e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(userProfile.displayName)}&background=0d9488&color=fff&bold=true`;
+                    const fallback = `https://api.dicebear.com/9.x/initials/svg?seed=${encodeURIComponent(userProfile.displayName || 'RP')}&backgroundColor=0f766e,0d9488&textColor=ffffff`;
+                    if (e.currentTarget.src !== fallback) {
+                      e.currentTarget.src = fallback;
+                    }
                   }}
                 />
                 {/* Active green synced dot if firebase connected, amber dot if local profile */}
@@ -446,9 +446,6 @@ export default function App() {
                   title={currentUser || userProfile.isFirebaseSynced ? 'Firebase Synced' : 'Local Profile (Tap to sync)'}
                 />
               </div>
-              <span className="hidden sm:inline font-bold text-xs truncate max-w-[85px]">
-                {userProfile.displayName ? userProfile.displayName.split(' ')[0] : 'Profile'}
-              </span>
             </button>
 
             {/* Streak Indicator */}

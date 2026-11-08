@@ -4,7 +4,15 @@ import { createServer as createViteServer } from 'vite';
 import { GoogleGenAI } from '@google/genai';
 import dotenv from 'dotenv';
 import path from 'path';
-import { MsEdgeTTS, OUTPUT_FORMAT } from 'msedge-tts';
+
+// Prevent unhandled errors or socket drops from crashing dev server
+process.on('uncaughtException', (err) => {
+  console.error('[server] Uncaught exception:', err);
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('[server] Unhandled rejection at:', promise, 'reason:', reason);
+});
 
 dotenv.config();
 
@@ -122,26 +130,47 @@ function prepareSlovenianTTSInput(rawText: string): string {
 // Serialized execution queue for Edge TTS to prevent simultaneous handshake bursts
 let edgeQueue = Promise.resolve<any>(null);
 
-function synthesizeWithEdgeTTS(text: string): Promise<Buffer> {
+async function synthesizeWithEdgeTTS(text: string): Promise<Buffer> {
   const task = async (): Promise<Buffer> => {
-    const tts = new MsEdgeTTS();
-    await tts.setMetadata('sl-SI-PetraNeural', OUTPUT_FORMAT.AUDIO_24KHZ_48KBITRATE_MONO_MP3);
+    let MsEdgeTTSClass: any;
+    let outputFormat: any;
+    try {
+      const edgeMod = await import('msedge-tts');
+      MsEdgeTTSClass = edgeMod.MsEdgeTTS || (edgeMod as any).default?.MsEdgeTTS || (edgeMod as any).default;
+      outputFormat = edgeMod.OUTPUT_FORMAT?.AUDIO_24KHZ_48KBITRATE_MONO_MP3 || 'audio-24khz-48kbitrate-mono-mp3';
+    } catch (err: any) {
+      throw new Error(`Edge TTS module load failed: ${err?.message}`);
+    }
+
+    if (!MsEdgeTTSClass) {
+      throw new Error('MsEdgeTTS class not found');
+    }
+
+    const tts = new MsEdgeTTSClass();
+    await tts.setMetadata('sl-SI-PetraNeural', outputFormat);
     const { audioStream } = tts.toStream(text);
     const chunks: Buffer[] = [];
 
     return new Promise<Buffer>((resolve, reject) => {
+      let settled = false;
       const timer = setTimeout(() => {
+        if (settled) return;
+        settled = true;
         try { tts.close(); } catch (_) {}
         reject(new Error('Edge TTS timed out after 8s'));
       }, 8000);
 
       audioStream.on('data', (chunk: Buffer) => chunks.push(chunk));
       audioStream.on('end', () => {
+        if (settled) return;
+        settled = true;
         clearTimeout(timer);
         try { tts.close(); } catch (_) {}
         resolve(Buffer.concat(chunks));
       });
       audioStream.on('error', (err: any) => {
+        if (settled) return;
+        settled = true;
         clearTimeout(timer);
         try { tts.close(); } catch (_) {}
         reject(err);
@@ -253,8 +282,12 @@ async function start() {
     app.use(vite.middlewares);
   }
 
-  app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Beseda server is running on http://0.0.0.0:${PORT}`);
+  const server = app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Dvojeziko server is running on http://0.0.0.0:${PORT}`);
+  });
+
+  server.on('error', (err: any) => {
+    console.error('Server listen error:', err);
   });
 }
 

@@ -35,7 +35,7 @@ export const DEFAULT_STATS: UserStats = {
 export const DEFAULT_USER_PROFILE: UserProfile = {
   displayName: 'Rafael Pires',
   email: 'piresrafaelarmando2002@gmail.com',
-  photoURL: 'https://unavatar.io/google/piresrafaelarmando2002@gmail.com',
+  photoURL: 'https://api.dicebear.com/9.x/initials/svg?seed=Rafael+Pires&backgroundColor=0f766e,0d9488,059669&textColor=ffffff',
   isFirebaseSynced: false,
 };
 

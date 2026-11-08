@@ -1,17 +1,12 @@
 import type { IncomingMessage, ServerResponse } from 'http';
-import { MsEdgeTTS, OUTPUT_FORMAT } from 'msedge-tts';
 
 // In-memory cache on the serverless instance
 const ttsCache = new Map<string, Buffer>();
 
 /**
  * Preprocesses Slovenian text for authentic neural text-to-speech pronunciation.
- * Rules:
- * 1. Isolated preposition "v" is pronounced as bilabial /u̯/ (sounds like "u" / "yu"), NOT consonant [v].
- * 2. Preposition "v" before a consonant (e.g. "v šoli", "v redu") vocalizes to "u".
  */
 function prepareSlovenianTTSInput(rawText: string): string {
-  // Pass genuine, clean Slovenian text without artificial phonetic corruption
   return rawText.trim();
 }
 
@@ -19,10 +14,24 @@ function prepareSlovenianTTSInput(rawText: string): string {
 let edgeQueue = Promise.resolve<any>(null);
 const inFlightTTS = new Map<string, Promise<Buffer>>();
 
-function synthesizeWithEdgeTTS(text: string): Promise<Buffer> {
+async function synthesizeWithEdgeTTS(text: string): Promise<Buffer> {
   const task = async (): Promise<Buffer> => {
-    const tts = new MsEdgeTTS();
-    await tts.setMetadata('sl-SI-PetraNeural', OUTPUT_FORMAT.AUDIO_24KHZ_48KBITRATE_MONO_MP3);
+    let MsEdgeTTSClass: any;
+    let outputFormat: any;
+    try {
+      const edgeMod = await import('msedge-tts');
+      MsEdgeTTSClass = edgeMod.MsEdgeTTS || (edgeMod as any).default?.MsEdgeTTS || (edgeMod as any).default;
+      outputFormat = edgeMod.OUTPUT_FORMAT?.AUDIO_24KHZ_48KBITRATE_MONO_MP3 || 'audio-24khz-48kbitrate-mono-mp3';
+    } catch (err: any) {
+      throw new Error(`Edge TTS module load failed: ${err?.message}`);
+    }
+
+    if (!MsEdgeTTSClass) {
+      throw new Error('MsEdgeTTS class not found');
+    }
+
+    const tts = new MsEdgeTTSClass();
+    await tts.setMetadata('sl-SI-PetraNeural', outputFormat);
     const { audioStream } = tts.toStream(text);
     const chunks: Buffer[] = [];
 

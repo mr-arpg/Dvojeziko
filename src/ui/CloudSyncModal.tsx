@@ -167,13 +167,17 @@ export const CloudSyncModal: React.FC<CloudSyncModalProps> = ({
                   src={
                     currentUser.photoURL ||
                     userProfile.photoURL ||
-                    `https://ui-avatars.com/api/?name=${encodeURIComponent(currentUser.displayName || userProfile.displayName)}&background=0d9488&color=fff&bold=true`
+                    `https://api.dicebear.com/9.x/initials/svg?seed=${encodeURIComponent(currentUser.displayName || userProfile.displayName || 'RP')}&backgroundColor=0f766e,0d9488&textColor=ffffff`
                   }
                   alt={currentUser.displayName || userProfile.displayName}
-                  className="w-10 h-10 rounded-full border border-emerald-500/40 object-cover"
+                  className="w-10 h-10 rounded-full border border-emerald-500/40 object-cover bg-emerald-800"
                   referrerPolicy="no-referrer"
+                  crossOrigin="anonymous"
                   onError={e => {
-                    e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(currentUser.displayName || userProfile.displayName)}&background=0d9488&color=fff&bold=true`;
+                    const fallback = `https://api.dicebear.com/9.x/initials/svg?seed=${encodeURIComponent(currentUser.displayName || userProfile.displayName || 'RP')}&backgroundColor=0f766e,0d9488&textColor=ffffff`;
+                    if (e.currentTarget.src !== fallback) {
+                      e.currentTarget.src = fallback;
+                    }
                   }}
                 />
                 <div>
@@ -222,13 +226,17 @@ export const CloudSyncModal: React.FC<CloudSyncModalProps> = ({
               <img
                 src={
                   userProfile.photoURL ||
-                  `https://ui-avatars.com/api/?name=${encodeURIComponent(userProfile.displayName)}&background=0d9488&color=fff&bold=true`
+                  `https://api.dicebear.com/9.x/initials/svg?seed=${encodeURIComponent(userProfile.displayName || 'RP')}&backgroundColor=0f766e,0d9488&textColor=ffffff`
                 }
                 alt={userProfile.displayName}
-                className="w-11 h-11 rounded-full border border-slate-300 dark:border-zinc-600 object-cover"
+                className="w-11 h-11 rounded-full border border-slate-300 dark:border-zinc-600 object-cover bg-emerald-800"
                 referrerPolicy="no-referrer"
+                crossOrigin="anonymous"
                 onError={e => {
-                  e.currentTarget.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(userProfile.displayName)}&background=0d9488&color=fff&bold=true`;
+                  const fallback = `https://api.dicebear.com/9.x/initials/svg?seed=${encodeURIComponent(userProfile.displayName || 'RP')}&backgroundColor=0f766e,0d9488&textColor=ffffff`;
+                  if (e.currentTarget.src !== fallback) {
+                    e.currentTarget.src = fallback;
+                  }
                 }}
               />
               <div className="flex-1 min-w-0">
