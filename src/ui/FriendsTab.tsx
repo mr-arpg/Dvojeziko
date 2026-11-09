@@ -78,7 +78,7 @@ export const FriendsTab: React.FC<FriendsTabProps> = ({
   };
 
   const handleShareInvite = () => {
-    const code = userProfile.friendCode || 'DV-RP82';
+    const code = userProfile.friendCode || 'DV-LEARN';
     const text = `Join me learning on Dvojeziko! Add my friend code ${code} to track daily streaks and words together: ${window.location.origin}`;
     if (navigator.share) {
       navigator.share({
@@ -188,7 +188,7 @@ export const FriendsTab: React.FC<FriendsTabProps> = ({
                 Your Friend Code
               </span>
               <h3 className="text-xl font-black tracking-wider text-white">
-                {userProfile.friendCode || 'DV-RP82'}
+                {userProfile.friendCode || '...'}
               </h3>
             </div>
           </div>

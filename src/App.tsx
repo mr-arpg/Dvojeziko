@@ -48,6 +48,7 @@ import {
   updateStreakAndStats,
   DEFAULT_SETTINGS,
   DEFAULT_STATS,
+  getAnonymousDeviceFriendCode,
 } from './data/storage';
 import {
   getDueReviewWords,
@@ -79,6 +80,7 @@ import {
   mergeCloudAndLocal,
   subscribeToCloudSync,
   getDeviceName,
+  resolveUserFriendCode,
 } from './services/cloudSync';
 
 type NavTab = 'home' | 'words' | 'stats' | 'settings';
@@ -128,13 +130,14 @@ export default function App() {
     const unsub = onAuthStateChanged(auth, user => {
       setCurrentUser(user);
       if (user) {
-        // Sync authenticated user into local profile
+        // Sync authenticated user into local profile with their distinct friend code
         setUserProfile(prev => {
+          const friendCode = resolveUserFriendCode(user, prev.friendCode);
           const updated: UserProfile = {
-            displayName: user.displayName || prev.displayName,
+            displayName: user.displayName || prev.displayName || 'Learner',
             email: user.email || prev.email,
             photoURL: user.photoURL || prev.photoURL,
-            friendCode: prev.friendCode,
+            friendCode,
             isFirebaseSynced: true,
           };
           saveUserProfile(updated);
@@ -174,7 +177,13 @@ export default function App() {
         return () => unsubCloud();
       } else {
         setUserProfile(prev => {
-          const updated = { ...prev, isFirebaseSynced: false };
+          const updated: UserProfile = {
+            displayName: 'Learner',
+            email: '',
+            photoURL: '',
+            friendCode: getAnonymousDeviceFriendCode(),
+            isFirebaseSynced: false,
+          };
           saveUserProfile(updated);
           return updated;
         });

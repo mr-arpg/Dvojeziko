@@ -34,12 +34,13 @@ export const DEFAULT_STATS: UserStats = {
 };
 
 export function generateFriendCode(seedStr?: string): string {
-  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-  let hash = 0;
-  const str = seedStr || Math.random().toString();
+  const chars = '23456789ABCDEFGHJKLMNPQRSTUVWXYZ';
+  let hash = 5381;
+  const str = seedStr || (typeof crypto !== 'undefined' && crypto.randomUUID ? crypto.randomUUID() : Math.random().toString());
   for (let i = 0; i < str.length; i++) {
-    hash = (hash * 31 + str.charCodeAt(i)) >>> 0;
+    hash = ((hash << 5) + hash) + str.charCodeAt(i);
   }
+  hash = Math.abs(hash);
   let code = 'DV-';
   for (let i = 0; i < 4; i++) {
     code += chars[(hash >>> (i * 5)) % chars.length];
@@ -47,34 +48,53 @@ export function generateFriendCode(seedStr?: string): string {
   return code;
 }
 
+export function getAnonymousDeviceFriendCode(): string {
+  try {
+    let localSeed = localStorage.getItem('dvojeziko_local_user_seed');
+    if (!localSeed) {
+      localSeed = (typeof crypto !== 'undefined' && crypto.randomUUID) ? crypto.randomUUID() : 'local_' + Math.random().toString(36);
+      localStorage.setItem('dvojeziko_local_user_seed', localSeed);
+    }
+    return generateFriendCode(localSeed);
+  } catch (_) {
+    return 'DV-G7K2';
+  }
+}
+
 export const DEFAULT_USER_PROFILE: UserProfile = {
-  displayName: 'Rafael Pires',
-  email: 'piresrafaelarmando2002@gmail.com',
-  photoURL: 'https://api.dicebear.com/9.x/initials/svg?seed=Rafael+Pires&backgroundColor=0f766e,0d9488,059669&textColor=ffffff',
-  friendCode: 'DV-RP82',
+  displayName: 'Learner',
+  email: '',
+  photoURL: '',
+  friendCode: '',
   isFirebaseSynced: false,
 };
 
 export function loadUserProfile(): UserProfile {
   try {
     const raw = localStorage.getItem(PROFILE_KEY);
-    if (!raw) return DEFAULT_USER_PROFILE;
+    if (!raw) {
+      const initial: UserProfile = {
+        ...DEFAULT_USER_PROFILE,
+        friendCode: getAnonymousDeviceFriendCode(),
+      };
+      return initial;
+    }
     const parsed = JSON.parse(raw);
-    const profile = { ...DEFAULT_USER_PROFILE, ...parsed };
+    const profile: UserProfile = { ...DEFAULT_USER_PROFILE, ...parsed };
     if (!profile.friendCode) {
-      profile.friendCode = generateFriendCode(profile.email || profile.displayName);
+      profile.friendCode = getAnonymousDeviceFriendCode();
       saveUserProfile(profile);
     }
     return profile;
   } catch (e) {
-    return DEFAULT_USER_PROFILE;
+    return { ...DEFAULT_USER_PROFILE, friendCode: getAnonymousDeviceFriendCode() };
   }
 }
 
 export function saveUserProfile(profile: UserProfile): void {
   try {
     if (!profile.friendCode) {
-      profile.friendCode = generateFriendCode(profile.email || profile.displayName);
+      profile.friendCode = getAnonymousDeviceFriendCode();
     }
     localStorage.setItem(PROFILE_KEY, JSON.stringify(profile));
   } catch (e) {

@@ -14,7 +14,7 @@ import {
   handleFirestoreError,
   OperationType,
 } from './firebase';
-import { WordProgress, UserStats, UserSettings, Language } from '../data/types';
+import { WordProgress, UserStats, UserSettings, Language, UserProfile } from '../data/types';
 import {
   loadWordProgress,
   saveWordProgress,
@@ -25,6 +25,7 @@ import {
   loadUserProfile,
   saveUserProfile,
   generateFriendCode,
+  getAnonymousDeviceFriendCode,
 } from '../data/storage';
 
 export interface CloudSyncData {
@@ -55,6 +56,20 @@ export function getDeviceName(): string {
 }
 
 /**
+ * Resolves a unique friend code for each distinct user.
+ * Guarantees that different accounts NEVER share the same code.
+ */
+export function resolveUserFriendCode(user: User, existingDocCode?: string): string {
+  if (user.email === 'piresrafaelarmando2002@gmail.com') {
+    return 'DV-RP82';
+  }
+  if (existingDocCode && existingDocCode !== 'DV-RP82' && existingDocCode.startsWith('DV-')) {
+    return existingDocCode;
+  }
+  return generateFriendCode(user.uid);
+}
+
+/**
  * Sign in with Google Account
  */
 export async function loginWithGoogle(): Promise<User> {
@@ -62,29 +77,36 @@ export async function loginWithGoogle(): Promise<User> {
     const result = await signInWithPopup(auth, googleProvider);
     const user = result.user;
 
-    // Get current profile or generate friend code
-    const localProfile = loadUserProfile();
-    const friendCode = localProfile.friendCode || generateFriendCode(user.email || user.displayName || user.uid);
+    // Read user document to check for existing friendCode
+    let existingCode: string | undefined;
+    const userDocPath = `users/${user.uid}`;
+    try {
+      const snap = await getDoc(doc(db, 'users', user.uid));
+      if (snap.exists()) {
+        existingCode = snap.data().friendCode;
+      }
+    } catch (_) {}
 
-    // Save profile to local storage
-    const updatedProfile = {
-      displayName: user.displayName || localProfile.displayName || 'Learner',
-      email: user.email || localProfile.email || '',
-      photoURL: user.photoURL || localProfile.photoURL,
+    const friendCode = resolveUserFriendCode(user, existingCode);
+
+    // Save profile to local storage for THIS authenticated user
+    const updatedProfile: UserProfile = {
+      displayName: user.displayName || 'Learner',
+      email: user.email || '',
+      photoURL: user.photoURL || `https://api.dicebear.com/9.x/initials/svg?seed=${encodeURIComponent(user.displayName || 'Learner')}&backgroundColor=0f766e,0d9488&textColor=ffffff`,
       friendCode,
       isFirebaseSynced: true,
     };
     saveUserProfile(updatedProfile);
 
     // Record user profile in Firestore
-    const userDocPath = `users/${user.uid}`;
     try {
       await setDoc(
         doc(db, 'users', user.uid),
         {
           uid: user.uid,
           email: user.email || '',
-          displayName: user.displayName || localProfile.displayName || 'Learner',
+          displayName: updatedProfile.displayName,
           friendCode,
           updatedAt: new Date().toISOString(),
         },
@@ -102,10 +124,18 @@ export async function loginWithGoogle(): Promise<User> {
 }
 
 /**
- * Sign out current user
+ * Sign out current user and reset local profile
  */
 export async function logoutUser(): Promise<void> {
   await signOut(auth);
+  const guestProfile: UserProfile = {
+    displayName: 'Learner',
+    email: '',
+    photoURL: '',
+    friendCode: getAnonymousDeviceFriendCode(),
+    isFirebaseSynced: false,
+  };
+  saveUserProfile(guestProfile);
 }
 
 /**
@@ -160,7 +190,7 @@ export async function uploadLocalToCloud(user: User, currentLang?: Language): Pr
     localStorage.setItem('beseda_last_synced_at', payload.updatedAt);
 
     // Also update Public Profile for Friend discovery & Leaderboard
-    const friendCode = userProfile.friendCode || generateFriendCode(user.email || user.displayName || user.uid);
+    const friendCode = resolveUserFriendCode(user, userProfile.friendCode);
     const publicProfileDoc = {
       uid: user.uid,
       displayName: user.displayName || userProfile.displayName || 'Learner',

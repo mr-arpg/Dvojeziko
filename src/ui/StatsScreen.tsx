@@ -32,7 +32,7 @@ export const StatsScreen: React.FC<StatsScreenProps> = ({
   stats,
   progressMap,
   currentUser = null,
-  userProfile = { email: '', displayName: 'Learner', isFirebaseSynced: false, friendCode: 'DV-RP82' },
+  userProfile = { email: '', displayName: 'Learner', isFirebaseSynced: false, friendCode: '' },
   activeLanguage = 'sl',
   onSelectWord,
   onPracticeMistakes,
