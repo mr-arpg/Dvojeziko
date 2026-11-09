@@ -532,7 +532,6 @@ export default function App() {
             onSelectWord={word => setSelectedWord(word)}
             onNavigateToWords={() => setActiveTab('words')}
             onOpenInstallModal={() => setShowInstallModal(true)}
-            onSwitchLanguage={lang => handleUpdateSettings({ ...settings, language: lang })}
           />
         )}
 

@@ -12,61 +12,22 @@ import {
 import { db, User, handleFirestoreError, OperationType } from './firebase';
 import { FriendProfile } from '../data/types';
 import { getTodayString } from '../srs/scheduler';
-import { loadUserProfile } from '../data/storage';
 
 const FRIENDS_LOCAL_CACHE_KEY = 'dvojeziko_saved_friends_v1';
 
-// Default starter study buddies for instant community leaderboard
-export const COMMUNITY_FRIENDS: FriendProfile[] = [
-  {
-    uid: 'community_ana',
-    displayName: 'Ana Kovačič',
-    photoURL: 'https://api.dicebear.com/9.x/initials/svg?seed=Ana+Kovacic&backgroundColor=ec4899,db2777&textColor=ffffff',
-    friendCode: 'DV-ANA1',
-    streak: 14,
-    learnedCountSl: 142,
-    learnedCountPt: 35,
-    totalLessons: 38,
-    lastActiveDate: getTodayString(),
-    activeToday: true,
-    updatedAt: new Date().toISOString(),
-  },
-  {
-    uid: 'community_luka',
-    displayName: 'Luka Novak',
-    photoURL: 'https://api.dicebear.com/9.x/initials/svg?seed=Luka+Novak&backgroundColor=3b82f6,1d4ed8&textColor=ffffff',
-    friendCode: 'DV-LUK2',
-    streak: 9,
-    learnedCountSl: 98,
-    learnedCountPt: 60,
-    totalLessons: 27,
-    lastActiveDate: getTodayString(),
-    activeToday: true,
-    updatedAt: new Date().toISOString(),
-  },
-  {
-    uid: 'community_matej',
-    displayName: 'Matej Zupan',
-    photoURL: 'https://api.dicebear.com/9.x/initials/svg?seed=Matej+Zupan&backgroundColor=f59e0b,d97706&textColor=ffffff',
-    friendCode: 'DV-MAT3',
-    streak: 5,
-    learnedCountSl: 52,
-    learnedCountPt: 12,
-    totalLessons: 16,
-    lastActiveDate: getTodayString(),
-    activeToday: true,
-    updatedAt: new Date().toISOString(),
-  },
-];
-
 /**
- * Load cached local friends list
+ * Load cached local friends list (stripping any legacy demo profiles)
  */
 export function getLocalFriends(): FriendProfile[] {
   try {
     const raw = localStorage.getItem(FRIENDS_LOCAL_CACHE_KEY);
     if (!raw) return [];
-    return JSON.parse(raw);
+    const parsed: FriendProfile[] = JSON.parse(raw);
+    const realFriends = parsed.filter(f => !f.uid.startsWith('community_'));
+    if (realFriends.length !== parsed.length) {
+      saveLocalFriends(realFriends);
+    }
+    return realFriends;
   } catch (e) {
     return [];
   }
@@ -77,22 +38,19 @@ export function getLocalFriends(): FriendProfile[] {
  */
 export function saveLocalFriends(friends: FriendProfile[]): void {
   try {
-    localStorage.setItem(FRIENDS_LOCAL_CACHE_KEY, JSON.stringify(friends));
+    const realFriends = friends.filter(f => !f.uid.startsWith('community_'));
+    localStorage.setItem(FRIENDS_LOCAL_CACHE_KEY, JSON.stringify(realFriends));
   } catch (e) {
     console.error('Failed to save local friends cache:', e);
   }
 }
 
 /**
- * Search user in Firestore by Friend Code (e.g. "DV-RP82" or "DV-ANA1")
+ * Search user in Firestore by Friend Code (e.g. "DV-RP82")
  */
 export async function searchUserByFriendCode(code: string): Promise<FriendProfile | null> {
   const cleanCode = code.trim().toUpperCase();
   if (!cleanCode) return null;
-
-  // Check demo community friends first
-  const matchDemo = COMMUNITY_FRIENDS.find(f => f.friendCode.toUpperCase() === cleanCode);
-  if (matchDemo) return matchDemo;
 
   try {
     const q = query(
@@ -128,7 +86,7 @@ export async function searchUserByFriendCode(code: string): Promise<FriendProfil
  * Add a friend to user's friends list
  */
 export async function addFriend(currentUser: User | null, friend: FriendProfile): Promise<void> {
-  // Always update local cache
+  // Update local cache
   const local = getLocalFriends();
   if (!local.some(f => f.uid === friend.uid)) {
     const updated = [friend, ...local];
@@ -136,7 +94,7 @@ export async function addFriend(currentUser: User | null, friend: FriendProfile)
   }
 
   // If signed in to Firebase, sync to Firestore
-  if (currentUser && !friend.uid.startsWith('community_')) {
+  if (currentUser) {
     const friendDocPath = `users/${currentUser.uid}/friends/${friend.uid}`;
     try {
       await setDoc(doc(db, 'users', currentUser.uid, 'friends', friend.uid), {
@@ -160,7 +118,7 @@ export async function removeFriend(currentUser: User | null, friendUid: string):
   const filtered = local.filter(f => f.uid !== friendUid);
   saveLocalFriends(filtered);
 
-  if (currentUser && !friendUid.startsWith('community_')) {
+  if (currentUser) {
     const friendDocPath = `users/${currentUser.uid}/friends/${friendUid}`;
     try {
       await deleteDoc(doc(db, 'users', currentUser.uid, 'friends', friendUid));
@@ -171,16 +129,11 @@ export async function removeFriend(currentUser: User | null, friendUid: string):
 }
 
 /**
- * Fetch all friends with latest live stats
+ * Fetch all friends with latest live stats from Firestore and local storage
  */
 export async function fetchFriendsWithStats(currentUser: User | null): Promise<FriendProfile[]> {
   const localFriends = getLocalFriends();
   const friendsMap = new Map<string, FriendProfile>();
-
-  // Add default community friends
-  for (const cf of COMMUNITY_FRIENDS) {
-    friendsMap.set(cf.uid, cf);
-  }
 
   // Add local friends
   for (const lf of localFriends) {

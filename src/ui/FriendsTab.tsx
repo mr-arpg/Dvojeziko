@@ -230,7 +230,7 @@ export const FriendsTab: React.FC<FriendsTabProps> = ({
           </h3>
         </div>
         <p className="text-xs text-slate-500 dark:text-zinc-400">
-          Enter your friend's code (e.g. <span className="font-mono font-bold text-emerald-600">DV-ANA1</span> or <span className="font-mono font-bold text-emerald-600">DV-LUK2</span>) to view their stats.
+          Enter your friend's code (e.g. <span className="font-mono font-bold text-emerald-600">DV-XXXX</span>) to view their stats and connect.
         </p>
 
         <form onSubmit={handleSearchFriend} className="flex gap-2">
@@ -412,7 +412,7 @@ export const FriendsTab: React.FC<FriendsTabProps> = ({
                       <span>{learner.streak}d</span>
                     </div>
 
-                    {!isMe && !learner.uid.startsWith('community_') && (
+                    {!isMe && (
                       <button
                         type="button"
                         onClick={() => handleRemoveFriend(learner)}
@@ -426,6 +426,18 @@ export const FriendsTab: React.FC<FriendsTabProps> = ({
                 </div>
               );
             })}
+
+            {friends.length === 0 && (
+              <div className="p-5 rounded-2xl bg-slate-50 dark:bg-zinc-800/40 border border-dashed border-slate-300 dark:border-zinc-700 text-center py-6 mt-3">
+                <Users size={28} className="text-slate-400 mx-auto mb-2" />
+                <p className="text-xs font-bold text-slate-700 dark:text-zinc-300">
+                  No friends connected yet
+                </p>
+                <p className="text-[11px] text-slate-400 max-w-xs mx-auto mt-0.5">
+                  Share your friend code <span className="font-mono font-bold text-emerald-600">{userProfile.friendCode}</span> to track streaks and compare progress together!
+                </p>
+              </div>
+            )}
           </div>
         )}
       </div>

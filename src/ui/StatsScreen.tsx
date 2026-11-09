@@ -134,20 +134,6 @@ export const StatsScreen: React.FC<StatsScreenProps> = ({
         />
       ) : (
         <>
-          {/* Dual-Track Language Progress Header */}
-          <div className="p-3.5 bg-white dark:bg-zinc-900 rounded-2xl border border-slate-200 dark:border-zinc-800 shadow-2xs flex items-center justify-between gap-2 text-xs">
-            <span className="font-bold text-slate-600 dark:text-zinc-400">
-              Vocabulary Tracks:
-            </span>
-            <div className="flex items-center gap-2">
-              <span className={`px-2.5 py-1 rounded-full font-bold ${activeLanguage === 'sl' ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 ring-1 ring-emerald-500/30' : 'bg-slate-100 dark:bg-zinc-800 text-slate-600 dark:text-zinc-400'}`}>
-                🇸🇮 Slovenian: <strong>{learnedCountSl}</strong> learned
-              </span>
-              <span className={`px-2.5 py-1 rounded-full font-bold ${activeLanguage === 'pt' ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 ring-1 ring-emerald-500/30' : 'bg-slate-100 dark:bg-zinc-800 text-slate-600 dark:text-zinc-400'}`}>
-                🇵🇹 Portuguese: <strong>{learnedCountPt}</strong> learned
-              </span>
-            </div>
-          </div>
       {/* Overview Cards */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         <div className="p-4 bg-white dark:bg-zinc-900 rounded-3xl border border-slate-200 dark:border-zinc-800 shadow-2xs text-center">
