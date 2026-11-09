@@ -10,12 +10,11 @@ import {
   googleProvider,
   signInWithPopup,
   signOut,
-  onAuthStateChanged,
   User,
   handleFirestoreError,
   OperationType,
 } from './firebase';
-import { WordProgress, UserStats, UserSettings } from '../data/types';
+import { WordProgress, UserStats, UserSettings, Language } from '../data/types';
 import {
   loadWordProgress,
   saveWordProgress,
@@ -23,15 +22,24 @@ import {
   saveStats,
   loadSettings,
   saveSettings,
+  loadUserProfile,
+  saveUserProfile,
+  generateFriendCode,
 } from '../data/storage';
 
 export interface CloudSyncData {
   userId: string;
-  progressJson: string;
-  statsJson: string;
+  progressJson?: string;
+  statsJson?: string;
+  progressJsonSl?: string;
+  progressJsonPt?: string;
+  statsJsonSl?: string;
+  statsJsonPt?: string;
   settingsJson?: string;
   streak: number;
   learnedCount: number;
+  learnedCountSl?: number;
+  learnedCountPt?: number;
   updatedAt: string;
   device: string;
 }
@@ -54,6 +62,20 @@ export async function loginWithGoogle(): Promise<User> {
     const result = await signInWithPopup(auth, googleProvider);
     const user = result.user;
 
+    // Get current profile or generate friend code
+    const localProfile = loadUserProfile();
+    const friendCode = localProfile.friendCode || generateFriendCode(user.email || user.displayName || user.uid);
+
+    // Save profile to local storage
+    const updatedProfile = {
+      displayName: user.displayName || localProfile.displayName || 'Learner',
+      email: user.email || localProfile.email || '',
+      photoURL: user.photoURL || localProfile.photoURL,
+      friendCode,
+      isFirebaseSynced: true,
+    };
+    saveUserProfile(updatedProfile);
+
     // Record user profile in Firestore
     const userDocPath = `users/${user.uid}`;
     try {
@@ -62,7 +84,8 @@ export async function loginWithGoogle(): Promise<User> {
         {
           uid: user.uid,
           email: user.email || '',
-          displayName: user.displayName || 'Learner',
+          displayName: user.displayName || localProfile.displayName || 'Learner',
+          friendCode,
           updatedAt: new Date().toISOString(),
         },
         { merge: true }
@@ -86,25 +109,47 @@ export async function logoutUser(): Promise<void> {
 }
 
 /**
- * Push local state to Firestore cloud
+ * Push local state to Firestore cloud (both Slovenian & Portuguese)
  */
-export async function uploadLocalToCloud(user: User): Promise<CloudSyncData> {
-  const progress = loadWordProgress();
-  const stats = loadStats();
+export async function uploadLocalToCloud(user: User, currentLang?: Language): Promise<CloudSyncData> {
   const settings = loadSettings();
+  const activeLang = currentLang || settings.language || 'sl';
 
-  let learnedCount = 0;
-  for (const p of Object.values(progress)) {
-    if (p.status === 'learned') learnedCount++;
+  // Load both languages
+  const progressSl = loadWordProgress('sl');
+  const progressPt = loadWordProgress('pt');
+  const statsSl = loadStats('sl');
+  const statsPt = loadStats('pt');
+  const userProfile = loadUserProfile();
+
+  let countSl = 0;
+  for (const p of Object.values(progressSl)) {
+    if (p.status === 'learned') countSl++;
   }
+
+  let countPt = 0;
+  for (const p of Object.values(progressPt)) {
+    if (p.status === 'learned') countPt++;
+  }
+
+  const activeStats = activeLang === 'pt' ? statsPt : statsSl;
+  const activeProgress = activeLang === 'pt' ? progressPt : progressSl;
+  const activeLearned = activeLang === 'pt' ? countPt : countSl;
 
   const payload: CloudSyncData = {
     userId: user.uid,
-    progressJson: JSON.stringify(progress),
-    statsJson: JSON.stringify(stats),
+    progressJsonSl: JSON.stringify(progressSl),
+    progressJsonPt: JSON.stringify(progressPt),
+    statsJsonSl: JSON.stringify(statsSl),
+    statsJsonPt: JSON.stringify(statsPt),
+    // Backward compatibility fields
+    progressJson: JSON.stringify(activeProgress),
+    statsJson: JSON.stringify(activeStats),
     settingsJson: JSON.stringify(settings),
-    streak: stats.streak || 0,
-    learnedCount,
+    streak: activeStats.streak || 0,
+    learnedCount: activeLearned,
+    learnedCountSl: countSl,
+    learnedCountPt: countPt,
     updatedAt: new Date().toISOString(),
     device: getDeviceName(),
   };
@@ -113,6 +158,26 @@ export async function uploadLocalToCloud(user: User): Promise<CloudSyncData> {
   try {
     await setDoc(doc(db, 'users', user.uid, 'sync', 'state'), payload);
     localStorage.setItem('beseda_last_synced_at', payload.updatedAt);
+
+    // Also update Public Profile for Friend discovery & Leaderboard
+    const friendCode = userProfile.friendCode || generateFriendCode(user.email || user.displayName || user.uid);
+    const publicProfileDoc = {
+      uid: user.uid,
+      displayName: user.displayName || userProfile.displayName || 'Learner',
+      photoURL: user.photoURL || userProfile.photoURL || '',
+      friendCode,
+      streak: Math.max(statsSl.streak || 0, statsPt.streak || 0),
+      learnedCountSl: countSl,
+      learnedCountPt: countPt,
+      totalLessons: (statsSl.totalLessonsCompleted || 0) + (statsPt.totalLessonsCompleted || 0),
+      lastActiveDate: statsSl.lastActiveDate || statsPt.lastActiveDate || '',
+      updatedAt: payload.updatedAt,
+    };
+
+    setDoc(doc(db, 'publicProfiles', user.uid), publicProfileDoc, { merge: true }).catch(err => {
+      console.warn('Could not update public profile:', err);
+    });
+
     return payload;
   } catch (err) {
     handleFirestoreError(err, OperationType.WRITE, syncPath);
@@ -134,63 +199,22 @@ export async function fetchCloudState(user: User): Promise<CloudSyncData | null>
 }
 
 /**
- * Merge cloud and local data safely without losing progress
+ * Helper to merge two progress maps
  */
-export function mergeCloudAndLocal(
-  cloudData: CloudSyncData,
-  applySettings: boolean = false
-): {
-  mergedProgress: Record<number, WordProgress>;
-  mergedStats: UserStats;
-  mergedSettings?: UserSettings;
-} {
-  const localProgress = loadWordProgress();
-  const localStats = loadStats();
-
-  let cloudProgress: Record<number, WordProgress> = {};
-  let cloudStats: UserStats = {
-    streak: 0,
-    lastActiveDate: '',
-    history: {},
-    totalExercisesCompleted: 0,
-    totalLessonsCompleted: 0,
-  };
-  let cloudSettings: UserSettings | undefined;
-
-  try {
-    cloudProgress = JSON.parse(cloudData.progressJson);
-  } catch (e) {
-    console.error('Failed to parse cloud progress:', e);
-  }
-
-  try {
-    cloudStats = JSON.parse(cloudData.statsJson);
-  } catch (e) {
-    console.error('Failed to parse cloud stats:', e);
-  }
-
-  if (cloudData.settingsJson) {
-    try {
-      cloudSettings = JSON.parse(cloudData.settingsJson);
-    } catch (e) {
-      console.error('Failed to parse cloud settings:', e);
-    }
-  }
-
-  // Merge progress maps: keep highest box and max reviews for each word
-  const mergedProgress: Record<number, WordProgress> = { ...localProgress };
-
-  for (const [rankStr, cProg] of Object.entries(cloudProgress)) {
+function mergeProgressMaps(
+  local: Record<number, WordProgress>,
+  cloud: Record<number, WordProgress>
+): Record<number, WordProgress> {
+  const merged: Record<number, WordProgress> = { ...local };
+  for (const [rankStr, cProg] of Object.entries(cloud)) {
     const rank = Number(rankStr);
-    const lProg = mergedProgress[rank];
-
+    const lProg = merged[rank];
     if (!lProg) {
-      mergedProgress[rank] = cProg;
+      merged[rank] = cProg;
     } else {
-      // Pick higher box, max consecutive correct, max total reviews
       const higherBox = Math.max(lProg.box, cProg.box);
       const higherStatus = higherBox >= 3 ? 'learned' : 'learning';
-      mergedProgress[rank] = {
+      merged[rank] = {
         ...lProg,
         box: higherBox,
         status: higherStatus,
@@ -201,42 +225,127 @@ export function mergeCloudAndLocal(
           (lProg.lastReviewedDate || '') > (cProg.lastReviewedDate || '')
             ? lProg.lastReviewedDate
             : cProg.lastReviewedDate,
-        nextDueDate:
-          lProg.box >= cProg.box ? lProg.nextDueDate : cProg.nextDueDate,
+        nextDueDate: lProg.box >= cProg.box ? lProg.nextDueDate : cProg.nextDueDate,
       };
     }
   }
+  return merged;
+}
 
-  // Merge stats: keep highest streak and union dates in history
-  const mergedHistory = { ...localStats.history, ...cloudStats.history };
-  const mergedStats: UserStats = {
-    streak: Math.max(localStats.streak, cloudStats.streak),
+/**
+ * Helper to merge two user stats
+ */
+function mergeUserStats(local: UserStats, cloud: UserStats): UserStats {
+  const mergedHistory = { ...local.history, ...cloud.history };
+  return {
+    streak: Math.max(local.streak, cloud.streak),
     lastActiveDate:
-      (localStats.lastActiveDate || '') > (cloudStats.lastActiveDate || '')
-        ? localStats.lastActiveDate
-        : cloudStats.lastActiveDate,
+      (local.lastActiveDate || '') > (cloud.lastActiveDate || '')
+        ? local.lastActiveDate
+        : cloud.lastActiveDate,
     history: mergedHistory,
     totalExercisesCompleted: Math.max(
-      localStats.totalExercisesCompleted,
-      cloudStats.totalExercisesCompleted
+      local.totalExercisesCompleted,
+      cloud.totalExercisesCompleted
     ),
     totalLessonsCompleted: Math.max(
-      localStats.totalLessonsCompleted,
-      cloudStats.totalLessonsCompleted
+      local.totalLessonsCompleted,
+      cloud.totalLessonsCompleted
     ),
   };
+}
 
-  // Save merged result to local storage
-  saveWordProgress(mergedProgress);
-  saveStats(mergedStats);
+/**
+ * Merge cloud and local data safely for BOTH languages without losing any words
+ */
+export function mergeCloudAndLocal(
+  cloudData: CloudSyncData,
+  applySettings: boolean = false,
+  activeLanguage?: Language
+): {
+  mergedProgress: Record<number, WordProgress>;
+  mergedStats: UserStats;
+  mergedSettings?: UserSettings;
+} {
+  const currentLang = activeLanguage || loadSettings().language || 'sl';
 
-  if (applySettings && cloudSettings) {
-    saveSettings(cloudSettings);
+  // 1. Slovenian data
+  const localSlProgress = loadWordProgress('sl');
+  const localSlStats = loadStats('sl');
+  let cloudSlProgress: Record<number, WordProgress> = {};
+  let cloudSlStats: UserStats = { streak: 0, lastActiveDate: '', history: {}, totalExercisesCompleted: 0, totalLessonsCompleted: 0 };
+
+  // If cloudData has progressJsonSl, use it; otherwise fallback to legacy progressJson (which was Slovenian)
+  const slProgressRaw = cloudData.progressJsonSl || cloudData.progressJson;
+  if (slProgressRaw) {
+    try {
+      cloudSlProgress = JSON.parse(slProgressRaw);
+    } catch (e) {
+      console.error('Failed to parse cloud Slovenian progress:', e);
+    }
   }
 
+  const slStatsRaw = cloudData.statsJsonSl || cloudData.statsJson;
+  if (slStatsRaw) {
+    try {
+      cloudSlStats = JSON.parse(slStatsRaw);
+    } catch (e) {
+      console.error('Failed to parse cloud Slovenian stats:', e);
+    }
+  }
+
+  const mergedSlProgress = mergeProgressMaps(localSlProgress, cloudSlProgress);
+  const mergedSlStats = mergeUserStats(localSlStats, cloudSlStats);
+  saveWordProgress(mergedSlProgress, 'sl');
+  saveStats(mergedSlStats, 'sl');
+
+  // 2. Portuguese data
+  const localPtProgress = loadWordProgress('pt');
+  const localPtStats = loadStats('pt');
+  let cloudPtProgress: Record<number, WordProgress> = {};
+  let cloudPtStats: UserStats = { streak: 0, lastActiveDate: '', history: {}, totalExercisesCompleted: 0, totalLessonsCompleted: 0 };
+
+  if (cloudData.progressJsonPt) {
+    try {
+      cloudPtProgress = JSON.parse(cloudData.progressJsonPt);
+    } catch (e) {
+      console.error('Failed to parse cloud Portuguese progress:', e);
+    }
+  }
+
+  if (cloudData.statsJsonPt) {
+    try {
+      cloudPtStats = JSON.parse(cloudData.statsJsonPt);
+    } catch (e) {
+      console.error('Failed to parse cloud Portuguese stats:', e);
+    }
+  }
+
+  const mergedPtProgress = mergeProgressMaps(localPtProgress, cloudPtProgress);
+  const mergedPtStats = mergeUserStats(localPtStats, cloudPtStats);
+  saveWordProgress(mergedPtProgress, 'pt');
+  saveStats(mergedPtStats, 'pt');
+
+  // 3. Settings
+  let cloudSettings: UserSettings | undefined;
+  if (cloudData.settingsJson) {
+    try {
+      cloudSettings = JSON.parse(cloudData.settingsJson);
+      if (applySettings && cloudSettings) {
+        saveSettings(cloudSettings);
+      }
+    } catch (e) {
+      console.error('Failed to parse cloud settings:', e);
+    }
+  }
+
+  // Return the merged progress and stats for the active language
+  const returnProgress = currentLang === 'pt' ? mergedPtProgress : mergedSlProgress;
+  const returnStats = currentLang === 'pt' ? mergedPtStats : mergedSlStats;
+
   return {
-    mergedProgress,
-    mergedStats,
+    mergedProgress: returnProgress,
+    mergedStats: returnStats,
     mergedSettings: applySettings ? cloudSettings : undefined,
   };
 }

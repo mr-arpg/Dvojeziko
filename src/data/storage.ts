@@ -33,10 +33,25 @@ export const DEFAULT_STATS: UserStats = {
   totalLessonsCompleted: 0,
 };
 
+export function generateFriendCode(seedStr?: string): string {
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  let hash = 0;
+  const str = seedStr || Math.random().toString();
+  for (let i = 0; i < str.length; i++) {
+    hash = (hash * 31 + str.charCodeAt(i)) >>> 0;
+  }
+  let code = 'DV-';
+  for (let i = 0; i < 4; i++) {
+    code += chars[(hash >>> (i * 5)) % chars.length];
+  }
+  return code;
+}
+
 export const DEFAULT_USER_PROFILE: UserProfile = {
   displayName: 'Rafael Pires',
   email: 'piresrafaelarmando2002@gmail.com',
   photoURL: 'https://api.dicebear.com/9.x/initials/svg?seed=Rafael+Pires&backgroundColor=0f766e,0d9488,059669&textColor=ffffff',
+  friendCode: 'DV-RP82',
   isFirebaseSynced: false,
 };
 
@@ -44,7 +59,13 @@ export function loadUserProfile(): UserProfile {
   try {
     const raw = localStorage.getItem(PROFILE_KEY);
     if (!raw) return DEFAULT_USER_PROFILE;
-    return { ...DEFAULT_USER_PROFILE, ...JSON.parse(raw) };
+    const parsed = JSON.parse(raw);
+    const profile = { ...DEFAULT_USER_PROFILE, ...parsed };
+    if (!profile.friendCode) {
+      profile.friendCode = generateFriendCode(profile.email || profile.displayName);
+      saveUserProfile(profile);
+    }
+    return profile;
   } catch (e) {
     return DEFAULT_USER_PROFILE;
   }
@@ -52,6 +73,9 @@ export function loadUserProfile(): UserProfile {
 
 export function saveUserProfile(profile: UserProfile): void {
   try {
+    if (!profile.friendCode) {
+      profile.friendCode = generateFriendCode(profile.email || profile.displayName);
+    }
     localStorage.setItem(PROFILE_KEY, JSON.stringify(profile));
   } catch (e) {
     console.error('Failed to save user profile:', e);
@@ -161,9 +185,10 @@ export function saveSentenceToCache(sentence: SentenceItem, lang?: string): void
 export function updateStreakAndStats(
   exercisesCount: number,
   accuracy: number,
-  todayStr: string = getTodayString()
+  todayStr: string = getTodayString(),
+  lang?: string
 ): UserStats {
-  const stats = loadStats();
+  const stats = loadStats(lang);
   const lastActive = stats.lastActiveDate;
 
   let newStreak = stats.streak;
@@ -200,18 +225,30 @@ export function updateStreakAndStats(
   stats.totalLessonsCompleted += 1;
   stats.history[todayStr] = currentDayStats;
 
-  saveStats(stats);
+  saveStats(stats, lang);
   return stats;
 }
 
 export function exportUserDataAsJson(): string {
+  const settings = loadSettings();
+  const progSl = loadWordProgress('sl');
+  const progPt = loadWordProgress('pt');
+  const statsSl = loadStats('sl');
+  const statsPt = loadStats('pt');
+  const activeLang = settings.language || 'sl';
+
   const data = {
-    progress: loadWordProgress(),
-    settings: loadSettings(),
-    stats: loadStats(),
-    sentenceCache: loadSentenceCache(),
+    progressSl: progSl,
+    progressPt: progPt,
+    statsSl: statsSl,
+    statsPt: statsPt,
+    // Active language backward compatibility
+    progress: activeLang === 'pt' ? progPt : progSl,
+    stats: activeLang === 'pt' ? statsPt : statsSl,
+    settings,
+    sentenceCache: loadSentenceCache(activeLang),
     exportedAt: new Date().toISOString(),
-    version: '1.0',
+    version: '2.0',
   };
   return JSON.stringify(data, null, 2);
 }
@@ -231,11 +268,23 @@ export function inspectBackupJson(jsonStr: string): BackupPreview {
     if (!parsed || typeof parsed !== 'object') {
       return { valid: false, wordCount: 0, streak: 0, totalLessons: 0, errorMessage: 'File does not contain a valid JSON object.' };
     }
-    const wordCount = parsed.progress && typeof parsed.progress === 'object' ? Object.keys(parsed.progress).length : 0;
-    const streak = typeof parsed.stats?.streak === 'number' ? parsed.stats.streak : 0;
-    const totalLessons = typeof parsed.stats?.totalLessonsCompleted === 'number' ? parsed.stats.totalLessonsCompleted : 0;
+    const slCount = parsed.progressSl && typeof parsed.progressSl === 'object' ? Object.keys(parsed.progressSl).length : 0;
+    const ptCount = parsed.progressPt && typeof parsed.progressPt === 'object' ? Object.keys(parsed.progressPt).length : 0;
+    const legacyCount = parsed.progress && typeof parsed.progress === 'object' ? Object.keys(parsed.progress).length : 0;
+    const wordCount = slCount + ptCount > 0 ? slCount + ptCount : legacyCount;
+
+    const streak = Math.max(
+      typeof parsed.statsSl?.streak === 'number' ? parsed.statsSl.streak : 0,
+      typeof parsed.statsPt?.streak === 'number' ? parsed.statsPt.streak : 0,
+      typeof parsed.stats?.streak === 'number' ? parsed.stats.streak : 0
+    );
+    const totalLessons = Math.max(
+      typeof parsed.statsSl?.totalLessonsCompleted === 'number' ? parsed.statsSl.totalLessonsCompleted : 0,
+      typeof parsed.statsPt?.totalLessonsCompleted === 'number' ? parsed.statsPt.totalLessonsCompleted : 0,
+      typeof parsed.stats?.totalLessonsCompleted === 'number' ? parsed.stats.totalLessonsCompleted : 0
+    );
     const exportedAt = typeof parsed.exportedAt === 'string' ? parsed.exportedAt : undefined;
-    const hasValidPayload = wordCount > 0 || !!parsed.stats || !!parsed.settings || !!parsed.sentenceCache;
+    const hasValidPayload = wordCount > 0 || !!parsed.stats || !!parsed.settings || !!parsed.statsSl;
 
     if (!hasValidPayload) {
       return { valid: false, wordCount: 0, streak: 0, totalLessons: 0, errorMessage: 'File is valid JSON but does not contain Dvojeziko learning data.' };
@@ -256,9 +305,25 @@ export function inspectBackupJson(jsonStr: string): BackupPreview {
 export function importUserDataFromJson(jsonStr: string): boolean {
   try {
     const parsed = JSON.parse(jsonStr);
-    if (parsed.progress) saveWordProgress(parsed.progress);
+    if (parsed.progressSl) {
+      saveWordProgress(parsed.progressSl, 'sl');
+    } else if (parsed.progress) {
+      saveWordProgress(parsed.progress, 'sl');
+    }
+    if (parsed.progressPt) {
+      saveWordProgress(parsed.progressPt, 'pt');
+    }
+
+    if (parsed.statsSl) {
+      saveStats(parsed.statsSl, 'sl');
+    } else if (parsed.stats) {
+      saveStats(parsed.stats, 'sl');
+    }
+    if (parsed.statsPt) {
+      saveStats(parsed.statsPt, 'pt');
+    }
+
     if (parsed.settings) saveSettings(parsed.settings);
-    if (parsed.stats) saveStats(parsed.stats);
     if (parsed.sentenceCache) {
       localStorage.setItem(SENTENCES_CACHE_KEY, JSON.stringify(parsed.sentenceCache));
     }

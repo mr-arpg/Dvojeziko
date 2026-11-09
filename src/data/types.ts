@@ -160,6 +160,21 @@ export interface UserProfile {
   email: string;
   displayName: string;
   photoURL?: string;
+  friendCode?: string;
   isFirebaseSynced: boolean;
+}
+
+export interface FriendProfile {
+  uid: string;
+  displayName: string;
+  photoURL?: string;
+  friendCode: string;
+  streak: number;
+  learnedCountSl: number;
+  learnedCountPt: number;
+  totalLessons: number;
+  lastActiveDate: string; // YYYY-MM-DD
+  activeToday: boolean;
+  updatedAt: string;
 }
 

@@ -29,6 +29,7 @@ interface HomeScreenProps {
   onSelectWord: (word: Word) => void;
   onNavigateToWords: () => void;
   onOpenInstallModal?: () => void;
+  onSwitchLanguage?: (lang: 'sl' | 'pt') => void;
 }
 
 export const HomeScreen: React.FC<HomeScreenProps> = ({
@@ -47,8 +48,33 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
   onSelectWord,
   onNavigateToWords,
   onOpenInstallModal,
+  onSwitchLanguage,
 }) => {
-  // Count words by status and CEFR
+  // Compute both language totals so user clearly sees their words are safe
+  const slProg = React.useMemo(() => {
+    try {
+      const raw = localStorage.getItem('beseda_word_progress_v1');
+      return raw ? JSON.parse(raw) : {};
+    } catch (_) { return {}; }
+  }, [language, progressMap]);
+
+  const ptProg = React.useMemo(() => {
+    try {
+      const raw = localStorage.getItem('beseda_word_progress_pt_v1');
+      return raw ? JSON.parse(raw) : {};
+    } catch (_) { return {}; }
+  }, [language, progressMap]);
+
+  let slLearned = 0;
+  for (const p of Object.values(slProg) as WordProgress[]) {
+    if (p.status === 'learned') slLearned++;
+  }
+  let ptLearned = 0;
+  for (const p of Object.values(ptProg) as WordProgress[]) {
+    if (p.status === 'learned') ptLearned++;
+  }
+
+  // Count words by status and CEFR for active language
   let learnedCount = 0;
   let learningCount = 0;
   const cefrLearned: Record<CEFRLevel, number> = { A1: 0, A2: 0, B1: 0, B2: 0 };
@@ -75,6 +101,40 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
 
   return (
     <div className="space-y-6 pb-24 animate-in fade-in duration-200">
+      {/* Language Track Quick Switcher Bar */}
+      {onSwitchLanguage && (
+        <div className="flex items-center justify-between p-2 bg-white dark:bg-zinc-900 rounded-2xl border border-slate-200 dark:border-zinc-800 shadow-2xs gap-2">
+          <button
+            type="button"
+            onClick={() => onSwitchLanguage('sl')}
+            className={`flex-1 py-2 px-3 rounded-xl font-bold text-xs flex items-center justify-center gap-2 transition-all cursor-pointer ${
+              language === 'sl'
+                ? 'bg-emerald-600 text-white shadow-xs'
+                : 'text-slate-600 dark:text-zinc-400 hover:bg-slate-100 dark:hover:bg-zinc-800'
+            }`}
+          >
+            <span>🇸🇮 Slovenian</span>
+            <span className={`text-[10px] px-1.5 py-0.2 rounded-full font-extrabold ${language === 'sl' ? 'bg-white/25 text-white' : 'bg-slate-200 dark:bg-zinc-700 text-slate-700 dark:text-zinc-300'}`}>
+              {slLearned} words
+            </span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => onSwitchLanguage('pt')}
+            className={`flex-1 py-2 px-3 rounded-xl font-bold text-xs flex items-center justify-center gap-2 transition-all cursor-pointer ${
+              language === 'pt'
+                ? 'bg-emerald-600 text-white shadow-xs'
+                : 'text-slate-600 dark:text-zinc-400 hover:bg-slate-100 dark:hover:bg-zinc-800'
+            }`}
+          >
+            <span>🇵🇹 Portuguese</span>
+            <span className={`text-[10px] px-1.5 py-0.2 rounded-full font-extrabold ${language === 'pt' ? 'bg-white/25 text-white' : 'bg-slate-200 dark:bg-zinc-700 text-slate-700 dark:text-zinc-300'}`}>
+              {ptLearned} words
+            </span>
+          </button>
+        </div>
+      )}
       {/* Quick Action: Recap Mistakes (when user has challenging words) */}
       {mistakeWordsCount > 0 && onPracticeMistakes && (
         <div className="bg-amber-500/10 dark:bg-amber-950/30 rounded-3xl p-5 border border-amber-500/25 flex flex-col sm:flex-row sm:items-center justify-between gap-4">

@@ -111,9 +111,10 @@ export default function App() {
 
   // Load storage on mount
   useEffect(() => {
-    const loadedProgress = loadWordProgress();
     const loadedSettings = loadSettings();
-    const loadedStats = loadStats();
+    const activeLang = loadedSettings.language || 'sl';
+    const loadedProgress = loadWordProgress(activeLang);
+    const loadedStats = loadStats(activeLang);
     const loadedProfile = loadUserProfile();
 
     setProgressMap(loadedProgress);
@@ -133,6 +134,7 @@ export default function App() {
             displayName: user.displayName || prev.displayName,
             email: user.email || prev.email,
             photoURL: user.photoURL || prev.photoURL,
+            friendCode: prev.friendCode,
             isFirebaseSynced: true,
           };
           saveUserProfile(updated);
@@ -143,24 +145,18 @@ export default function App() {
         fetchCloudState(user)
           .then(async cloudData => {
             if (cloudData) {
-              const { mergedProgress, mergedStats, mergedSettings } = mergeCloudAndLocal(cloudData);
+              const activeLang = settings.language || 'sl';
+              const { mergedProgress, mergedStats, mergedSettings } = mergeCloudAndLocal(cloudData, false, activeLang);
               setProgressMap(mergedProgress);
               setStatsState(mergedStats);
               if (mergedSettings) setSettingsState(mergedSettings);
 
-              // If this device has words that were not in cloud, push merged state back to cloud
-              const localWordsCount = Object.keys(loadWordProgress()).length;
-              let cloudWordsCount = 0;
-              try {
-                cloudWordsCount = Object.keys(JSON.parse(cloudData.progressJson || '{}')).length;
-              } catch (_) {}
-
-              if (localWordsCount > cloudWordsCount) {
-                await uploadLocalToCloud(user);
-              }
+              // Push merged state back to cloud
+              await uploadLocalToCloud(user, activeLang);
             } else {
               // Upload initial local data to cloud
-              uploadLocalToCloud(user).catch(err => console.warn('Cloud sync initial upload:', err));
+              const activeLang = settings.language || 'sl';
+              uploadLocalToCloud(user, activeLang).catch(err => console.warn('Cloud sync initial upload:', err));
             }
           })
           .catch(err => console.warn('Cloud sync fetch error:', err));
@@ -168,7 +164,8 @@ export default function App() {
         // Realtime listener for remote updates from Android device
         const unsubCloud = subscribeToCloudSync(user, remoteData => {
           if (remoteData.device !== getDeviceName()) {
-            const { mergedProgress, mergedStats, mergedSettings } = mergeCloudAndLocal(remoteData);
+            const activeLang = settings.language || 'sl';
+            const { mergedProgress, mergedStats, mergedSettings } = mergeCloudAndLocal(remoteData, false, activeLang);
             setProgressMap(mergedProgress);
             setStatsState(mergedStats);
             if (mergedSettings) setSettingsState(mergedSettings);
@@ -184,7 +181,7 @@ export default function App() {
       }
     });
     return () => unsub();
-  }, []);
+  }, [settings.language]);
 
   // Current active language ('sl' or 'pt')
   const currentLanguage: Language = settings.language || 'sl';
@@ -378,13 +375,13 @@ export default function App() {
     }
 
     setProgressMap(finalProgress);
-    saveWordProgress(finalProgress);
+    saveWordProgress(finalProgress, currentLanguage);
 
-    const updatedStats = updateStreakAndStats(lessonExercises.length, accuracy);
+    const updatedStats = updateStreakAndStats(lessonExercises.length, accuracy, getTodayString(), currentLanguage);
     setStatsState(updatedStats);
 
     if (currentUser) {
-      uploadLocalToCloud(currentUser).catch(err => console.warn('Cloud sync lesson upload:', err));
+      uploadLocalToCloud(currentUser, currentLanguage).catch(err => console.warn('Cloud sync lesson upload:', err));
     }
 
     setIsInLesson(false);
@@ -414,9 +411,9 @@ export default function App() {
         onExit={savedProgress => {
           if (savedProgress) {
             setProgressMap(savedProgress);
-            saveWordProgress(savedProgress);
+            saveWordProgress(savedProgress, currentLanguage);
             if (currentUser) {
-              uploadLocalToCloud(currentUser).catch(err => console.warn('Cloud sync onExit upload:', err));
+              uploadLocalToCloud(currentUser, currentLanguage).catch(err => console.warn('Cloud sync onExit upload:', err));
             }
           }
           setIsInLesson(false);
@@ -535,6 +532,7 @@ export default function App() {
             onSelectWord={word => setSelectedWord(word)}
             onNavigateToWords={() => setActiveTab('words')}
             onOpenInstallModal={() => setShowInstallModal(true)}
+            onSwitchLanguage={lang => handleUpdateSettings({ ...settings, language: lang })}
           />
         )}
 
@@ -549,8 +547,12 @@ export default function App() {
           <StatsScreen
             stats={stats}
             progressMap={progressMap}
+            currentUser={currentUser}
+            userProfile={userProfile}
+            activeLanguage={currentLanguage}
             onSelectWord={word => setSelectedWord(word)}
             onPracticeMistakes={handlePracticeMistakes}
+            onOpenCloudSync={() => setShowCloudSyncModal(true)}
           />
         )}
 

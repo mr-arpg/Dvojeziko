@@ -10,23 +10,36 @@ import {
   Play,
   Sparkles,
 } from 'lucide-react';
-import { UserStats, WordProgress, Word } from '../data/types';
+import { UserStats, WordProgress, Word, UserProfile, Language } from '../data/types';
 import { WORDS } from '../data/words';
 import { AudioButton, CEFRBadge, StatusChip } from './MaterialComponents';
+import { FriendsTab } from './FriendsTab';
+import { loadWordProgress } from '../data/storage';
+import { User } from '../services/firebase';
 
 interface StatsScreenProps {
   stats: UserStats;
   progressMap: Record<number, WordProgress>;
+  currentUser?: User | null;
+  userProfile?: UserProfile;
+  activeLanguage?: Language;
   onSelectWord: (word: Word) => void;
   onPracticeMistakes?: (words: Word[]) => void;
+  onOpenCloudSync?: () => void;
 }
 
 export const StatsScreen: React.FC<StatsScreenProps> = ({
   stats,
   progressMap,
+  currentUser = null,
+  userProfile = { email: '', displayName: 'Learner', isFirebaseSynced: false, friendCode: 'DV-RP82' },
+  activeLanguage = 'sl',
   onSelectWord,
   onPracticeMistakes,
+  onOpenCloudSync = () => {},
 }) => {
+  const [activeSubTab, setActiveSubTab] = React.useState<'progress' | 'friends'>('progress');
+
   // Compute Box counts
   const boxCounts: Record<number, number> = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 };
   let totalIntroduced = 0;
@@ -38,6 +51,18 @@ export const StatsScreen: React.FC<StatsScreenProps> = ({
         boxCounts[p.box]++;
       }
     }
+  }
+
+  // Count learned words for each language
+  const slProg = loadWordProgress('sl');
+  const ptProg = loadWordProgress('pt');
+  let learnedCountSl = 0;
+  for (const p of Object.values(slProg)) {
+    if (p.status === 'learned') learnedCountSl++;
+  }
+  let learnedCountPt = 0;
+  for (const p of Object.values(ptProg)) {
+    if (p.status === 'learned') learnedCountPt++;
   }
 
   // Hardest words (sorted by failedCount descending)
@@ -68,6 +93,61 @@ export const StatsScreen: React.FC<StatsScreenProps> = ({
 
   return (
     <div className="space-y-6 pb-28 animate-in fade-in duration-200">
+      {/* Sub-navigation tabs: My Progress vs Friends & Leaderboard */}
+      <div className="grid grid-cols-2 p-1 bg-slate-200/80 dark:bg-zinc-800/80 rounded-2xl">
+        <button
+          type="button"
+          onClick={() => setActiveSubTab('progress')}
+          className={`py-2 px-3 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center justify-center gap-1.5 ${
+            activeSubTab === 'progress'
+              ? 'bg-white dark:bg-zinc-900 text-slate-900 dark:text-white shadow-xs'
+              : 'text-slate-600 dark:text-zinc-400 hover:text-slate-900'
+          }`}
+        >
+          <TrendingUp size={15} className="text-emerald-600" />
+          My Progress
+        </button>
+        <button
+          type="button"
+          onClick={() => setActiveSubTab('friends')}
+          className={`py-2 px-3 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center justify-center gap-1.5 ${
+            activeSubTab === 'friends'
+              ? 'bg-white dark:bg-zinc-900 text-slate-900 dark:text-white shadow-xs'
+              : 'text-slate-600 dark:text-zinc-400 hover:text-slate-900'
+          }`}
+        >
+          <Award size={15} className="text-amber-500" />
+          Friends & Leaderboard
+        </button>
+      </div>
+
+      {activeSubTab === 'friends' ? (
+        <FriendsTab
+          currentUser={currentUser}
+          userProfile={userProfile}
+          activeLanguage={activeLanguage}
+          userStreak={stats.streak}
+          userLearnedSl={learnedCountSl}
+          userLearnedPt={learnedCountPt}
+          userLessons={stats.totalLessonsCompleted}
+          onOpenCloudSync={onOpenCloudSync}
+        />
+      ) : (
+        <>
+          {/* Dual-Track Language Progress Header */}
+          <div className="p-3.5 bg-white dark:bg-zinc-900 rounded-2xl border border-slate-200 dark:border-zinc-800 shadow-2xs flex items-center justify-between gap-2 text-xs">
+            <span className="font-bold text-slate-600 dark:text-zinc-400">
+              Vocabulary Tracks:
+            </span>
+            <div className="flex items-center gap-2">
+              <span className={`px-2.5 py-1 rounded-full font-bold ${activeLanguage === 'sl' ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 ring-1 ring-emerald-500/30' : 'bg-slate-100 dark:bg-zinc-800 text-slate-600 dark:text-zinc-400'}`}>
+                🇸🇮 Slovenian: <strong>{learnedCountSl}</strong> learned
+              </span>
+              <span className={`px-2.5 py-1 rounded-full font-bold ${activeLanguage === 'pt' ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 ring-1 ring-emerald-500/30' : 'bg-slate-100 dark:bg-zinc-800 text-slate-600 dark:text-zinc-400'}`}>
+                🇵🇹 Portuguese: <strong>{learnedCountPt}</strong> learned
+              </span>
+            </div>
+          </div>
       {/* Overview Cards */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         <div className="p-4 bg-white dark:bg-zinc-900 rounded-3xl border border-slate-200 dark:border-zinc-800 shadow-2xs text-center">
@@ -252,6 +332,8 @@ export const StatsScreen: React.FC<StatsScreenProps> = ({
           </div>
         )}
       </div>
+        </>
+      )}
     </div>
   );
 };

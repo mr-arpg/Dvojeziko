@@ -133,38 +133,9 @@ export function getLessonReviewWords(
   const backfilled = candidatePool.slice(0, needed);
   const currentItems = [...strictlyDue, ...backfilled];
 
-  // GUARANTEE: If user has 0 words or fewer than targetReviewCount in their vocabulary,
-  // backfill from foundational core words (e.g. greetings, essentials) so EVERY session
-  // includes review exercises and reinforcement right from the start!
-  if (currentItems.length < targetReviewCount) {
-    const existingRanks = new Set(currentItems.map(i => i.word.rank));
-    const foundationalNeeded = targetReviewCount - currentItems.length;
-
-    const foundational = WORDS
-      .filter(w => !existingRanks.has(w.rank))
-      .slice(0, foundationalNeeded)
-      .map(word => {
-        const dummyProgress: WordProgress = progressMap[word.rank] || {
-          rank: word.rank,
-          box: 1,
-          status: 'learning',
-          nextDueDate: todayStr,
-          lastReviewedDate: todayStr,
-          consecutiveCorrect: 0,
-          failedCount: 0,
-          totalReviews: 0,
-        };
-        return {
-          word,
-          progress: dummyProgress,
-          overdueDays: 0,
-          isProactiveReview: true,
-        };
-      });
-
-    return [...currentItems, ...foundational];
-  }
-
+  // If user has actual words in progress, we review them.
+  // BUT if a brand new user has 0 words in their vocabulary, return an empty array []
+  // so the start lesson DOES NOT test words the user has never seen! They will learn today's new words first.
   return currentItems;
 }
 

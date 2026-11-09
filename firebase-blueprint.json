@@ -9,25 +9,63 @@
         "email": { "type": "string", "description": "User email address" },
         "displayName": { "type": "string", "description": "User display name" },
         "syncCode": { "type": "string", "description": "Short code to link mobile device to this account" },
+        "friendCode": { "type": "string", "description": "Unique code to connect with friends" },
         "updatedAt": { "type": "string", "description": "ISO timestamp of last update" }
       },
       "required": ["uid", "updatedAt"]
     },
+    "PublicProfile": {
+      "title": "Public Profile",
+      "description": "Public learner card visible to friends for leaderboard and shared stats",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "The user's UID" },
+        "displayName": { "type": "string", "description": "User display name" },
+        "photoURL": { "type": "string", "description": "Avatar photo URL" },
+        "friendCode": { "type": "string", "description": "Friend code for easy discovery" },
+        "streak": { "type": "number", "description": "Current learning streak count" },
+        "learnedCountSl": { "type": "number", "description": "Slovenian words mastered" },
+        "learnedCountPt": { "type": "number", "description": "Portuguese words mastered" },
+        "totalLessons": { "type": "number", "description": "Total lessons completed" },
+        "lastActiveDate": { "type": "string", "description": "YYYY-MM-DD date of last lesson" },
+        "updatedAt": { "type": "string", "description": "ISO timestamp of last update" }
+      },
+      "required": ["uid", "displayName", "friendCode", "updatedAt"]
+    },
+    "FriendEntry": {
+      "title": "Friend Entry",
+      "description": "Connection to another learner in the user's friends list",
+      "type": "object",
+      "properties": {
+        "friendUid": { "type": "string", "description": "UID of the added friend" },
+        "displayName": { "type": "string", "description": "Friend's display name" },
+        "photoURL": { "type": "string", "description": "Friend's avatar URL" },
+        "friendCode": { "type": "string", "description": "Friend's code" },
+        "addedAt": { "type": "string", "description": "ISO timestamp when friend was added" }
+      },
+      "required": ["friendUid", "displayName", "addedAt"]
+    },
     "SyncState": {
       "title": "User Sync State",
-      "description": "Full synchronized learning progress, stats, and settings payload",
+      "description": "Full synchronized learning progress, stats, and settings payload for both languages",
       "type": "object",
       "properties": {
         "userId": { "type": "string", "description": "Owner UID" },
         "progressJson": { "type": "string", "description": "Serialized word progress map JSON string" },
         "statsJson": { "type": "string", "description": "Serialized user stats and streak JSON string" },
+        "progressJsonSl": { "type": "string", "description": "Serialized Slovenian word progress JSON string" },
+        "progressJsonPt": { "type": "string", "description": "Serialized Portuguese word progress JSON string" },
+        "statsJsonSl": { "type": "string", "description": "Serialized Slovenian stats JSON string" },
+        "statsJsonPt": { "type": "string", "description": "Serialized Portuguese stats JSON string" },
         "settingsJson": { "type": "string", "description": "Serialized settings JSON string" },
         "streak": { "type": "number", "description": "Current learning streak count" },
         "learnedCount": { "type": "number", "description": "Number of mastered words" },
+        "learnedCountSl": { "type": "number", "description": "Number of mastered Slovenian words" },
+        "learnedCountPt": { "type": "number", "description": "Number of mastered Portuguese words" },
         "updatedAt": { "type": "string", "description": "ISO timestamp of last synchronization" },
         "device": { "type": "string", "description": "Device name or platform (e.g. PC Chrome, Android PWA)" }
       },
-      "required": ["userId", "progressJson", "statsJson", "updatedAt"]
+      "required": ["userId", "updatedAt"]
     },
     "PairingCode": {
       "title": "Device Pairing Code",
@@ -50,6 +88,14 @@
     "/users/{userId}/sync/state": {
       "schema": "SyncState",
       "description": "Synchronized vocabulary progress, stats, and settings"
+    },
+    "/users/{userId}/friends/{friendUid}": {
+      "schema": "FriendEntry",
+      "description": "Saved friends for social stats and leaderboard"
+    },
+    "/publicProfiles/{userId}": {
+      "schema": "PublicProfile",
+      "description": "Public learner profile for friend discovery and leaderboard"
     },
     "/pairingCodes/{code}": {
       "schema": "PairingCode",
