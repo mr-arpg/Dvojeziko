@@ -17,11 +17,12 @@ import {
   Word,
   WordProgress,
   TokenMapping,
+  Language,
 } from '../data/types';
 import {
   AudioButton,
   CEFRBadge,
-  SlovenianKeyboardBar,
+  SpecialCharacterBar,
 } from './MaterialComponents';
 import { WordDetailModal } from './WordDetailModal';
 import {
@@ -50,6 +51,7 @@ interface LessonScreenProps {
   onExit: (savedProgress?: Record<number, WordProgress>) => void;
   onProgressUpdate?: (updatedProgress: Record<number, WordProgress>) => void;
   isMistakePractice?: boolean;
+  language?: Language;
 }
 
 export const LessonScreen: React.FC<LessonScreenProps> = ({
@@ -59,7 +61,10 @@ export const LessonScreen: React.FC<LessonScreenProps> = ({
   onExit,
   onProgressUpdate,
   isMistakePractice = false,
+  language = 'sl',
 }) => {
+  const isPt = language === 'pt';
+  const langName = isPt ? 'Portuguese' : 'Slovenian';
   // 5:00 countdown timer in seconds = 300 seconds
   const [secondsLeft, setSecondsLeft] = useState<number>(300);
   const [exerciseQueue, setExerciseQueue] = useState<LessonExercise[]>(exercises);
@@ -147,8 +152,8 @@ export const LessonScreen: React.FC<LessonScreenProps> = ({
           </h2>
           <p className="text-sm text-slate-500 dark:text-zinc-400 mb-6">
             {isMistakePractice
-              ? "Odlično opravljeno! You've strengthened your challenging words."
-              : 'Odlično opravljeno! Great job completing your 5-minute Slovenian session.'}
+              ? (isPt ? "Muito bem! You've strengthened your challenging words." : "Odlično opravljeno! You've strengthened your challenging words.")
+              : (isPt ? 'Muito bem! Great job completing your 5-minute Portuguese session.' : 'Odlično opravljeno! Great job completing your 5-minute Slovenian session.')}
           </p>
 
           {/* Stats Grid */}
@@ -364,7 +369,7 @@ export const LessonScreen: React.FC<LessonScreenProps> = ({
             isRetry: true,
             word: missedWord,
             prompt: missedWord.en.split(';')[0].trim(),
-            acceptedAnswers: getAcceptedAnswersForWord(missedWord),
+            acceptedAnswers: getAcceptedAnswersForWord(missedWord, language),
           };
           setExerciseQueue(prev => [...prev, retryEx]);
         }
@@ -468,7 +473,7 @@ export const LessonScreen: React.FC<LessonScreenProps> = ({
             {currentExercise.phase === 'learn' && (
               <div className="pt-2.5 border-t border-slate-100 dark:border-zinc-800 space-y-3">
                 {(() => {
-                  const exampleSentence = getExampleSentenceForWord(currentExercise.word);
+                  const exampleSentence = getExampleSentenceForWord(currentExercise.word, language);
                   return (
                     <div className="p-2.5 sm:p-3 bg-emerald-50/70 dark:bg-emerald-950/40 rounded-2xl border border-emerald-200/60 dark:border-emerald-800/40 flex items-center justify-between gap-3 text-left">
                       <div>
@@ -572,12 +577,12 @@ export const LessonScreen: React.FC<LessonScreenProps> = ({
           </div>
         )}
 
-        {/* Typing Exercise (EN -> SL) with on-screen Slovenian keyboard */}
+        {/* Typing Exercise (EN -> Target Language) with on-screen keyboard */}
         {currentExercise.type === 'typing' && (
           <div className="bg-white dark:bg-zinc-900 rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-zinc-800 shadow-lg animate-in fade-in">
             <div className="flex items-center justify-between mb-2">
               <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">
-                Type in Slovenian
+                Type in {langName}
               </span>
               <CEFRBadge level={currentExercise.word.level} />
             </div>
@@ -597,7 +602,7 @@ export const LessonScreen: React.FC<LessonScreenProps> = ({
                 autoCapitalize="none"
                 autoComplete="off"
                 spellCheck="false"
-                placeholder="Type Slovenian word here..."
+                placeholder={`Type ${langName} word here...`}
                 disabled={isAnswerChecked}
                 value={typedInput}
                 onChange={e => setTypedInput(e.target.value)}
@@ -610,9 +615,10 @@ export const LessonScreen: React.FC<LessonScreenProps> = ({
               />
             </div>
 
-            {/* On-screen Slovenian character row: č, š, ž, dž */}
+            {/* On-screen character row */}
             {!isAnswerChecked && (
-              <SlovenianKeyboardBar
+              <SpecialCharacterBar
+                language={language}
                 onInsertChar={char => {
                   setTypedInput(prev => prev + char);
                   inputRef.current?.focus();
@@ -627,7 +633,7 @@ export const LessonScreen: React.FC<LessonScreenProps> = ({
           <div className="bg-white dark:bg-zinc-900 rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-zinc-800 shadow-lg animate-in fade-in">
             <div className="flex items-center justify-between mb-2">
               <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">
-                Build Slovenian Sentence
+                Build {langName} Sentence
               </span>
               <AudioButton text={currentExercise.sentence.sl} size="sm" />
             </div>
@@ -937,6 +943,7 @@ export const LessonScreen: React.FC<LessonScreenProps> = ({
         word={activeWordForDetail}
         progress={activeWordForDetail ? currentProgressMap[activeWordForDetail.rank] : undefined}
         onClose={() => setActiveWordForDetail(null)}
+        language={language}
       />
     </div>
   );

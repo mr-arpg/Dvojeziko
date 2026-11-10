@@ -310,7 +310,7 @@ export default function App() {
       const pool = targetWords.length > 0 ? targetWords : activeWords.slice(0, 10);
 
       // Fetch or generate sentences with 2s max timeout so UI never hangs
-      const sentencesPromise = getPracticeSentences(pool, allowedWords, 3);
+      const sentencesPromise = getPracticeSentences(pool, allowedWords, 3, currentLanguage);
       const timeoutPromise = new Promise<import('./data/types').SentenceItem[]>(resolve =>
         setTimeout(() => resolve([]), 2000)
       );
@@ -320,17 +320,17 @@ export default function App() {
       targetWords.forEach(w => allowedLemmas.add(w.sl.toLowerCase()));
 
       // Build mixed queue: Review -> Learn -> Sentences with knownWords distractors & mixed sequencing
-      let exercises = buildLessonExercises(lessonReviewItems, todayNewWords, sentences, allowedLemmas, allowedWords);
+      let exercises = buildLessonExercises(lessonReviewItems, todayNewWords, sentences, allowedLemmas, allowedWords, currentLanguage);
       if (exercises.length === 0) {
         // Fallback safety: always ensure at least today's new words are tested
-        exercises = buildLessonExercises([], activeWords.slice(0, 3), [], allowedLemmas, allowedWords);
+        exercises = buildLessonExercises([], activeWords.slice(0, 3), [], allowedLemmas, allowedWords, currentLanguage);
       }
       setLessonExercises(exercises);
       setIsInLesson(true);
     } catch (e) {
       console.error('Error starting lesson:', e);
       // Emergency fallback
-      const fallbackExercises = buildLessonExercises([], todayNewWords.length > 0 ? todayNewWords : activeWords.slice(0, 3), [], new Set(), []);
+      const fallbackExercises = buildLessonExercises([], todayNewWords.length > 0 ? todayNewWords : activeWords.slice(0, 3), [], new Set(), [], currentLanguage);
       setLessonExercises(fallbackExercises);
       setIsInLesson(true);
     } finally {
@@ -351,7 +351,7 @@ export default function App() {
     // If user has few or 0 known words, use foundational starter words
     const pool = knownWords.length >= 3 ? knownWords : activeWords.slice(0, 10);
     const count = Math.min(12, Math.max(6, pool.length));
-    const exercises = buildKnownWordsPracticeExercises(pool, count);
+    const exercises = buildKnownWordsPracticeExercises(pool, count, currentLanguage);
     setLessonExercises(exercises);
     setIsInLesson(true);
   };
@@ -401,7 +401,7 @@ export default function App() {
   // Practice Weak Words (Recap Mistakes)
   const handlePracticeMistakes = (words: Word[]) => {
     if (words.length === 0) return;
-    const exercises = buildWeakWordsPracticeExercises(words.slice(0, 8));
+    const exercises = buildWeakWordsPracticeExercises(words.slice(0, 8), currentLanguage);
     setLessonExercises(exercises);
     setIsMistakePractice(true);
     setIsInLesson(true);
@@ -413,6 +413,7 @@ export default function App() {
       <LessonScreen
         exercises={lessonExercises}
         progressMap={progressMap}
+        language={currentLanguage}
         onCompleteLesson={handleCompleteLesson}
         onProgressUpdate={liveProgress => {
           setProgressMap(liveProgress);
@@ -548,6 +549,7 @@ export default function App() {
           <WordListScreen
             progressMap={progressMap}
             onSelectWord={word => setSelectedWord(word)}
+            language={currentLanguage}
           />
         )}
 
@@ -599,6 +601,7 @@ export default function App() {
         word={selectedWord}
         progress={selectedWord ? progressMap[selectedWord.rank] : undefined}
         onClose={() => setSelectedWord(null)}
+        language={currentLanguage}
       />
 
       {/* Android Kotlin Source Code Modal */}

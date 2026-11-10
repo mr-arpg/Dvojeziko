@@ -4,8 +4,9 @@ import {
   WordProgress,
   SentenceItem,
   TokenMapping,
+  Language,
 } from '../data/types';
-import { WORDS } from '../data/words';
+import { getWordsForLanguage } from '../data/words';
 import { analyzeSentenceTokens } from '../sentences/engine';
 
 /**
@@ -18,7 +19,8 @@ import { analyzeSentenceTokens } from '../sentences/engine';
 export function getDistractors(
   targetWord: Word,
   mode: 'en' | 'sl',
-  knownWords?: Word[]
+  knownWords?: Word[],
+  lang: Language = 'sl'
 ): string[] {
   const targetId = targetWord.rank;
 
@@ -35,9 +37,10 @@ export function getDistractors(
     const candidateKnown = sameLevelKnown.length >= 3 ? sameLevelKnown : availableKnown;
     pool = [...candidateKnown].sort(() => 0.5 - Math.random());
   } else {
-    // For beginners with < 4 known words, combine available known words with top foundational words (ranks 1-25)
+    // For beginners with < 4 known words, combine available known words with top foundational words (ranks 1-30)
     // rather than advanced random vocabulary
-    const foundational = WORDS.slice(0, 30).filter(w => w.rank !== targetId);
+    const langWords = getWordsForLanguage(lang);
+    const foundational = langWords.slice(0, 30).filter(w => w.rank !== targetId);
     const combined = [
       ...availableKnown,
       ...foundational.filter(f => !availableKnown.some(k => k.rank === f.rank))
@@ -84,47 +87,83 @@ function ensureStrictSeparation(queue: LessonExercise[]): LessonExercise[] {
 }
 
 /**
- * Returns all accepted Slovenian answers for a typing prompt,
- * including valid synonyms and overlapping translations (e.g. ko / kdaj for "when",
- * zdaj / sedaj for "now", le / samo for "only", tu / tukaj for "here").
+ * Returns all accepted answers for a typing prompt in the given language,
+ * including valid synonyms and overlapping translations.
  */
-export function getAcceptedAnswersForWord(word: Word): string[] {
+export function getAcceptedAnswersForWord(word: Word, lang: Language = 'sl'): string[] {
   const answers = new Set<string>();
   const wordSl = word.sl.toLowerCase();
   answers.add(wordSl);
 
-  // Common Slovenian semantic twins and synonyms
-  const commonSynonyms: Record<string, string[]> = {
-    'ko': ['kdaj'],
-    'kdaj': ['ko'],
-    'zdaj': ['sedaj'],
-    'sedaj': ['zdaj'],
-    'le': ['samo'],
-    'samo': ['le'],
-    'tu': ['tukaj'],
-    'tukaj': ['tu'],
-    'tam': ['tja'],
-    'tja': ['tam'],
-    'tudi': ['prav tako'],
-    'vedno': ['vselej'],
-    'vselej': ['vedno'],
-    'zelo': ['prav', 'nadvse'],
-    'res': ['zares'],
-    'zares': ['res'],
-    'morda': ['mogoče'],
-    'mogoče': ['morda'],
-  };
+  if (lang === 'pt') {
+    // Portuguese synonyms, accents variations and colloquial twins
+    const ptSynonyms: Record<string, string[]> = {
+      'está': ['ta', 'esta'],
+      'não': ['nao'],
+      'você': ['tu'],
+      'tu': ['você', 'voce'],
+      'também': ['tambem'],
+      'já': ['ja'],
+      'só': ['so', 'apenas'],
+      'apenas': ['só', 'so'],
+      'agora': ['já'],
+      'aqui': ['cá', 'ca'],
+      'cá': ['aqui'],
+      'ali': ['lá', 'la'],
+      'lá': ['ali'],
+      'depois': ['logo'],
+      'muito': ['bastante'],
+      'bastante': ['muito'],
+      'óptimo': ['ótimo', 'bom'],
+      'ótimo': ['óptimo', 'bom'],
+      'bom': ['boa'],
+      'obrigado': ['agradecido'],
+      'pequeno-almoço': ['pequeno almoco', 'café da manhã'],
+      'autocarro': ['ônibus', 'onibus'],
+      'comboio': ['trem'],
+      'telemóvel': ['celular', 'telemovel'],
+    };
 
-  if (commonSynonyms[wordSl]) {
-    for (const syn of commonSynonyms[wordSl]) {
-      answers.add(syn.toLowerCase());
+    if (ptSynonyms[wordSl]) {
+      for (const syn of ptSynonyms[wordSl]) {
+        answers.add(syn.toLowerCase());
+      }
+    }
+  } else {
+    // Common Slovenian semantic twins and synonyms
+    const slSynonyms: Record<string, string[]> = {
+      'ko': ['kdaj'],
+      'kdaj': ['ko'],
+      'zdaj': ['sedaj'],
+      'sedaj': ['zdaj'],
+      'le': ['samo'],
+      'samo': ['le'],
+      'tu': ['tukaj'],
+      'tukaj': ['tu'],
+      'tam': ['tja'],
+      'tja': ['tam'],
+      'tudi': ['prav tako'],
+      'vedno': ['vselej'],
+      'vselej': ['vedno'],
+      'zelo': ['prav', 'nadvse'],
+      'res': ['zares'],
+      'zares': ['res'],
+      'morda': ['mogoče'],
+      'mogoče': ['morda'],
+    };
+
+    if (slSynonyms[wordSl]) {
+      for (const syn of slSynonyms[wordSl]) {
+        answers.add(syn.toLowerCase());
+      }
     }
   }
 
-  // Also collect words in WORDS that share the exact same primary English meaning
+  // Also collect words in current vocabulary that share the exact same primary English meaning
   const primaryEn = word.en.split(';')[0].replace(/\([^)]*\)/g, '').trim().toLowerCase();
   if (primaryEn.length > 1) {
-    for (const w of WORDS) {
+    const langWords = getWordsForLanguage(lang);
+    for (const w of langWords) {
       const otherPrimaryEn = w.en.split(';')[0].replace(/\([^)]*\)/g, '').trim().toLowerCase();
       if (otherPrimaryEn === primaryEn) {
         answers.add(w.sl.toLowerCase());
@@ -142,14 +181,15 @@ export function getAcceptedAnswersForWord(word: Word): string[] {
  * 1. Mixing: A new word is NEVER tested immediately after its intro card.
  *    Review exercises, other words, or sentences are interleaved in between.
  * 2. Distractors: Once user has 4+ words, multiple-choice & fill-in options are
- *    chosen from words the user has already learnt.
+ *    chosen from words the user has already learnt in the active language.
  */
 export function buildLessonExercises(
   dueWords: { word: Word; progress: WordProgress }[],
   newWords: Word[],
   sentences: SentenceItem[],
   allowedLemmas: Set<string>,
-  knownWords: Word[] = []
+  knownWords: Word[] = [],
+  lang: Language = 'sl'
 ): LessonExercise[] {
   // Combine all known words with new words for options as the lesson progresses
   const allAvailableKnown = [...knownWords];
@@ -158,6 +198,8 @@ export function buildLessonExercises(
       allAvailableKnown.push(w);
     }
   });
+
+  const langWords = getWordsForLanguage(lang);
 
   // --- 1. REVIEW EXERCISES ---
   const sessionDueWords = dueWords.slice(0, 10);
@@ -169,7 +211,7 @@ export function buildLessonExercises(
     const exId = `rev_${word.rank}_${idx}`;
 
     if (exerciseType === 'mc_sl_to_en') {
-      const distractors = getDistractors(word, 'en', allAvailableKnown);
+      const distractors = getDistractors(word, 'en', allAvailableKnown, lang);
       const correctAnswer = word.en.split(';')[0].trim();
       const options = [correctAnswer, ...distractors].sort(() => 0.5 - Math.random());
       reviewExercises.push({
@@ -182,7 +224,7 @@ export function buildLessonExercises(
         correctAnswer,
       });
     } else if (exerciseType === 'mc_en_to_sl') {
-      const distractors = getDistractors(word, 'sl', allAvailableKnown);
+      const distractors = getDistractors(word, 'sl', allAvailableKnown, lang);
       const correctAnswer = word.sl;
       const options = [correctAnswer, ...distractors].sort(() => 0.5 - Math.random());
       reviewExercises.push({
@@ -195,7 +237,7 @@ export function buildLessonExercises(
         correctAnswer,
       });
     } else if (exerciseType === 'listening') {
-      const distractors = getDistractors(word, 'sl', allAvailableKnown);
+      const distractors = getDistractors(word, 'sl', allAvailableKnown, lang);
       const correctAnswer = word.sl;
       const options = [correctAnswer, ...distractors].sort(() => 0.5 - Math.random());
       reviewExercises.push({
@@ -214,7 +256,7 @@ export function buildLessonExercises(
         phase: 'review',
         word,
         prompt: word.en.split(';')[0].trim(),
-        acceptedAnswers: getAcceptedAnswersForWord(word),
+        acceptedAnswers: getAcceptedAnswersForWord(word, lang),
       });
     } else {
       reviewExercises.push({
@@ -243,7 +285,7 @@ export function buildLessonExercises(
 
     // B. Quiz: Listening or Multiple Choice with distractors from known words
     if (!isHighVolume || idx % 2 !== 0) {
-      const slDistractors = getDistractors(word, 'sl', allAvailableKnown);
+      const slDistractors = getDistractors(word, 'sl', allAvailableKnown, lang);
       const slOptions = [word.sl, ...slDistractors].sort(() => 0.5 - Math.random());
       quizzes.push({
         id: `learn_listen_${word.rank}_${idx}`,
@@ -255,7 +297,7 @@ export function buildLessonExercises(
         correctAnswer: word.sl,
       });
     } else {
-      const enDistractors = getDistractors(word, 'en', allAvailableKnown);
+      const enDistractors = getDistractors(word, 'en', allAvailableKnown, lang);
       const enCorrect = word.en.split(';')[0].trim();
       const enOptions = [enCorrect, ...enDistractors].sort(() => 0.5 - Math.random());
       quizzes.push({
@@ -276,14 +318,14 @@ export function buildLessonExercises(
       phase: 'learn',
       word,
       prompt: word.en.split(';')[0].trim(),
-      acceptedAnswers: getAcceptedAnswersForWord(word),
+      acceptedAnswers: getAcceptedAnswersForWord(word, lang),
     });
   });
 
   // --- 3. SENTENCE EXERCISES ---
   const sentenceExercises: LessonExercise[] = [];
   sentences.forEach((sentence, idx) => {
-    const tokens = analyzeSentenceTokens(sentence.sl, allowedLemmas);
+    const tokens = analyzeSentenceTokens(sentence.sl, allowedLemmas, lang);
     const mode = idx % 3;
 
     if (mode === 0) {
@@ -293,10 +335,10 @@ export function buildLessonExercises(
         .split(/\s+/)
         .filter(Boolean);
 
-      // Distractor chips chosen from known words or foundational words
+      // Distractor chips chosen from known words or foundational words in active language
       const availableChipsPool = (allAvailableKnown.length >= 4)
         ? allAvailableKnown.filter(w => !cleanTokens.includes(w.sl.toLowerCase()))
-        : WORDS.slice(0, 25).filter(w => !cleanTokens.includes(w.sl.toLowerCase()));
+        : langWords.slice(0, 25).filter(w => !cleanTokens.includes(w.sl.toLowerCase()));
       const shuffledChips = [...availableChipsPool].sort(() => 0.5 - Math.random());
       const distractors = shuffledChips.slice(0, 2).map(w => w.sl);
       const chips = [...cleanTokens, ...distractors].sort(() => 0.5 - Math.random());
@@ -316,9 +358,9 @@ export function buildLessonExercises(
       const gapToken = tokens.find(t => t.lemma && t.isKnown) || tokens[0];
       const gapIndex = tokens.indexOf(gapToken);
       const correctAnswer = gapToken ? gapToken.cleanToken : tokens[0].cleanToken;
-      const targetWord = gapToken?.lemma ? WORDS.find(w => w.sl === gapToken.lemma) || WORDS[0] : WORDS[0];
+      const targetWord = gapToken?.lemma ? langWords.find(w => w.sl.toLowerCase() === gapToken.lemma?.toLowerCase()) || langWords[0] : langWords[0];
 
-      const distractors = getDistractors(targetWord, 'sl', allAvailableKnown);
+      const distractors = getDistractors(targetWord, 'sl', allAvailableKnown, lang);
       const options = [correctAnswer, ...distractors].sort(() => 0.5 - Math.random());
 
       const displaySentence = tokens
@@ -443,7 +485,8 @@ export function buildLessonExercises(
  */
 export function buildKnownWordsPracticeExercises(
   knownWords: Word[],
-  count: number = 10
+  count: number = 10,
+  lang: Language = 'sl'
 ): LessonExercise[] {
   const exercises: LessonExercise[] = [];
   if (knownWords.length === 0) return exercises;
@@ -459,7 +502,7 @@ export function buildKnownWordsPracticeExercises(
     const exId = `practice_${word.rank}_${idx}_${Date.now()}`;
 
     if (type === 'listening') {
-      const slDistractors = getDistractors(word, 'sl', knownWords);
+      const slDistractors = getDistractors(word, 'sl', knownWords, lang);
       const options = [word.sl, ...slDistractors].sort(() => 0.5 - Math.random());
       exercises.push({
         id: exId,
@@ -471,7 +514,7 @@ export function buildKnownWordsPracticeExercises(
         correctAnswer: word.sl,
       });
     } else if (type === 'mc_sl_to_en') {
-      const enDistractors = getDistractors(word, 'en', knownWords);
+      const enDistractors = getDistractors(word, 'en', knownWords, lang);
       const enCorrect = word.en.split(';')[0].trim();
       const options = [enCorrect, ...enDistractors].sort(() => 0.5 - Math.random());
       exercises.push({
@@ -484,7 +527,7 @@ export function buildKnownWordsPracticeExercises(
         correctAnswer: enCorrect,
       });
     } else if (type === 'mc_en_to_sl') {
-      const slDistractors = getDistractors(word, 'sl', knownWords);
+      const slDistractors = getDistractors(word, 'sl', knownWords, lang);
       const options = [word.sl, ...slDistractors].sort(() => 0.5 - Math.random());
       exercises.push({
         id: exId,
@@ -502,7 +545,7 @@ export function buildKnownWordsPracticeExercises(
         phase: 'review',
         word,
         prompt: word.en.split(';')[0].trim(),
-        acceptedAnswers: getAcceptedAnswersForWord(word),
+        acceptedAnswers: getAcceptedAnswersForWord(word, lang),
       });
     } else {
       exercises.push({
@@ -520,12 +563,15 @@ export function buildKnownWordsPracticeExercises(
 /**
  * Build a focused practice queue specifically targeting difficult/errored words
  */
-export function buildWeakWordsPracticeExercises(words: Word[]): LessonExercise[] {
+export function buildWeakWordsPracticeExercises(
+  words: Word[],
+  lang: Language = 'sl'
+): LessonExercise[] {
   const exercises: LessonExercise[] = [];
 
   words.forEach((word, idx) => {
     // 1. Audio Listening recognition
-    const slDistractors = getDistractors(word, 'sl', words);
+    const slDistractors = getDistractors(word, 'sl', words, lang);
     const slOptions = [word.sl, ...slDistractors].sort(() => 0.5 - Math.random());
     exercises.push({
       id: `weak_listen_${word.rank}_${idx}`,
@@ -538,7 +584,7 @@ export function buildWeakWordsPracticeExercises(words: Word[]): LessonExercise[]
     });
 
     // 2. Multiple choice SL -> EN
-    const enDistractors = getDistractors(word, 'en', words);
+    const enDistractors = getDistractors(word, 'en', words, lang);
     const enCorrect = word.en.split(';')[0].trim();
     const enOptions = [enCorrect, ...enDistractors].sort(() => 0.5 - Math.random());
     exercises.push({
@@ -558,7 +604,7 @@ export function buildWeakWordsPracticeExercises(words: Word[]): LessonExercise[]
       phase: 'review',
       word,
       prompt: word.en.split(';')[0].trim(),
-      acceptedAnswers: getAcceptedAnswersForWord(word),
+      acceptedAnswers: getAcceptedAnswersForWord(word, lang),
     });
   });
 

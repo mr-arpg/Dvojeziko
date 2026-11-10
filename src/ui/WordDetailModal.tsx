@@ -1,8 +1,9 @@
 import React from 'react';
 import { X, Calendar, Award, BookOpen, Clock, AlertCircle, ExternalLink } from 'lucide-react';
-import { Word, WordProgress } from '../data/types';
+import { Word, WordProgress, Language } from '../data/types';
 import { AudioButton, CEFRBadge, StatusChip } from './MaterialComponents';
 import { SAMPLE_SENTENCES } from '../data/sampleSentences';
+import { SAMPLE_SENTENCES_PT } from '../data/sampleSentencesPt';
 import { loadSentenceCache } from '../data/storage';
 import { getExampleSentenceForWord } from '../data/exampleSentences';
 
@@ -10,26 +11,30 @@ interface WordDetailModalProps {
   word: Word | null;
   progress?: WordProgress;
   onClose: () => void;
+  language?: Language;
 }
 
 export const WordDetailModal: React.FC<WordDetailModalProps> = ({
   word,
   progress,
   onClose,
+  language = 'sl',
 }) => {
   if (!word) return null;
 
+  const isPt = language === 'pt';
+
   // Find sentences containing this word (using exact whole-word boundary matching)
-  const allSentences = [...loadSentenceCache(), ...SAMPLE_SENTENCES];
+  const allSentences = isPt ? SAMPLE_SENTENCES_PT : [...loadSentenceCache(), ...SAMPLE_SENTENCES];
   const wordSl = word.sl.toLowerCase();
-  const wordRegex = new RegExp(`\\b${wordSl}\\b`, 'i');
+  const wordRegex = new RegExp(`(^|[\\s.,!?:;"'»«])${wordSl}([\\s.,!?:;"'»«]|$)`, 'i');
   let relevantSentences = allSentences.filter(s =>
     s.targets.map(t => t.toLowerCase()).includes(wordSl) ||
     wordRegex.test(s.sl)
   ).slice(0, 3);
 
   if (relevantSentences.length === 0) {
-    const fallbackEx = getExampleSentenceForWord(word);
+    const fallbackEx = getExampleSentenceForWord(word, language);
     relevantSentences = [{
       id: `ex_${word.rank}`,
       sl: fallbackEx.sl,
@@ -148,13 +153,13 @@ export const WordDetailModal: React.FC<WordDetailModalProps> = ({
           )}
         </div>
 
-        {/* Authentic Slovenian Examples on Glosbe */}
+        {/* Authentic Bilingual Examples on Glosbe */}
         <div className="mt-4 pt-3 border-t border-slate-100 dark:border-zinc-800 flex items-center justify-between text-xs">
           <span className="text-slate-500 dark:text-zinc-400">
             Real bilingual examples:
           </span>
           <a
-            href={`https://glosbe.com/sl/en/${encodeURIComponent(word.sl)}`}
+            href={`https://glosbe.com/${isPt ? 'pt' : 'sl'}/en/${encodeURIComponent(word.sl)}`}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1 font-bold text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 hover:underline"

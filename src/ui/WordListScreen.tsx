@@ -1,17 +1,19 @@
 import React, { useState, useMemo } from 'react';
 import { Search, Filter, Volume2, Award, ChevronRight, Check } from 'lucide-react';
-import { Word, WordProgress, CEFRLevel, WordStatus } from '../data/types';
-import { WORDS } from '../data/words';
+import { Word, WordProgress, CEFRLevel, WordStatus, Language } from '../data/types';
+import { getWordsForLanguage } from '../data/words';
 import { AudioButton, CEFRBadge, StatusChip } from './MaterialComponents';
 
 interface WordListScreenProps {
   progressMap: Record<number, WordProgress>;
   onSelectWord: (word: Word) => void;
+  language?: Language;
 }
 
 export const WordListScreen: React.FC<WordListScreenProps> = ({
   progressMap,
   onSelectWord,
+  language = 'sl',
 }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [levelFilter, setLevelFilter] = useState<CEFRLevel | 'ALL'>('ALL');
@@ -19,10 +21,12 @@ export const WordListScreen: React.FC<WordListScreenProps> = ({
   const [page, setPage] = useState(1);
   const pageSize = 50;
 
+  const words = useMemo(() => getWordsForLanguage(language), [language]);
+
   const filteredWords = useMemo(() => {
     const q = searchQuery.toLowerCase().trim();
 
-    return WORDS.filter(word => {
+    return words.filter(word => {
       // Search match
       const matchesSearch =
         !q ||
@@ -40,7 +44,7 @@ export const WordListScreen: React.FC<WordListScreenProps> = ({
 
       return matchesSearch && matchesLevel && matchesStatus;
     });
-  }, [searchQuery, levelFilter, statusFilter, progressMap]);
+  }, [searchQuery, levelFilter, statusFilter, progressMap, words]);
 
   const pagedWords = useMemo(() => {
     return filteredWords.slice(0, page * pageSize);
@@ -54,7 +58,7 @@ export const WordListScreen: React.FC<WordListScreenProps> = ({
           <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
           <input
             type="text"
-            placeholder="Search all 1,000 words (Slovenian or English)..."
+            placeholder={`Search all 1,000 words (${language === 'pt' ? 'Portuguese' : 'Slovenian'} or English)...`}
             value={searchQuery}
             onChange={e => {
               setSearchQuery(e.target.value);

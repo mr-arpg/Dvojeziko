@@ -150,24 +150,28 @@ export const ProgressRing: React.FC<{
 };
 
 /**
- * On-screen Slovenian Special Character Bar (č, š, ž, dž)
+ * On-screen Special Character Bar (Slovenian: č, š, ž, dž; Portuguese: ã, õ, ç, á, é, í, ó, ú, à, ê)
  */
-export const SlovenianKeyboardBar: React.FC<{
+export const SpecialCharacterBar: React.FC<{
   onInsertChar: (char: string) => void;
-}> = ({ onInsertChar }) => {
-  const specialChars = ['č', 'š', 'ž', 'dž'];
+  language?: 'sl' | 'pt';
+}> = ({ onInsertChar, language = 'sl' }) => {
+  const isPt = language === 'pt';
+  const specialChars = isPt
+    ? ['ã', 'õ', 'ç', 'á', 'é', 'í', 'ó', 'ú', 'à', 'ê']
+    : ['č', 'š', 'ž', 'dž'];
 
   return (
-    <div className="flex items-center justify-center gap-2 py-1.5 px-3 bg-slate-100 dark:bg-zinc-800/80 rounded-2xl border border-slate-200 dark:border-zinc-700/60 shadow-xs">
+    <div className="flex flex-wrap items-center justify-center gap-1.5 py-1.5 px-3 bg-slate-100 dark:bg-zinc-800/80 rounded-2xl border border-slate-200 dark:border-zinc-700/60 shadow-xs">
       <span className="text-xs font-semibold text-slate-500 dark:text-zinc-400 mr-1 select-none">
-        Slovenian keys:
+        {isPt ? 'Portuguese keys:' : 'Slovenian keys:'}
       </span>
       {specialChars.map(char => (
         <button
           key={char}
           type="button"
           onClick={() => onInsertChar(char)}
-          className="w-10 h-10 flex items-center justify-center bg-white dark:bg-zinc-700 hover:bg-emerald-50 dark:hover:bg-zinc-600 text-slate-900 dark:text-white font-bold text-lg rounded-xl shadow-xs border border-slate-300 dark:border-zinc-600 active:scale-90 transition-all cursor-pointer"
+          className="min-w-[34px] h-9 px-2 flex items-center justify-center bg-white dark:bg-zinc-700 hover:bg-emerald-50 dark:hover:bg-zinc-600 text-slate-900 dark:text-white font-bold text-base rounded-xl shadow-xs border border-slate-300 dark:border-zinc-600 active:scale-90 transition-all cursor-pointer"
         >
           {char}
         </button>
@@ -175,3 +179,5 @@ export const SlovenianKeyboardBar: React.FC<{
     </div>
   );
 };
+
+export const SlovenianKeyboardBar = SpecialCharacterBar;

@@ -1,5 +1,6 @@
-import { Word } from './types';
+import { Word, Language } from './types';
 import { SAMPLE_SENTENCES } from './sampleSentences';
+import { SAMPLE_SENTENCES_PT } from './sampleSentencesPt';
 import { loadSentenceCache } from './storage';
 
 /**
@@ -102,20 +103,89 @@ const CURATED_EXAMPLES: Record<number, { sl: string; en: string }> = {
 };
 
 /**
- * Returns a natural, grammatically correct Slovenian sentence with English translation for a word.
+ * Curated, authentic European Portuguese (Portugal) example sentences for high-frequency vocabulary.
  */
-export function getExampleSentenceForWord(word: Word): { sl: string; en: string } {
+const CURATED_PT_EXAMPLES: Record<number, { sl: string; en: string }> = {
+  1: { sl: 'Eu venho de Portugal.', en: 'I come from Portugal.' },
+  2: { sl: 'A casa é muito bonita.', en: 'The house is very pretty.' },
+  3: { sl: 'O dia está solarengo.', en: 'The day is sunny.' },
+  4: { sl: 'O que queres fazer hoje?', en: 'What do you want to do today?' },
+  5: { sl: 'O cão e o gato brincam no jardim.', en: 'The dog and cat play in the garden.' },
+  6: { sl: 'A chave do carro está na mesa.', en: 'The car key is on the table.' },
+  7: { sl: 'A janela da sala está aberta.', en: 'The living room window is open.' },
+  8: { sl: 'Nós estamos em Lisboa.', en: 'We are in Lisbon.' },
+  9: { sl: 'Eu quero um café quente.', en: 'I want a hot coffee.' },
+  10: { sl: 'Isto é para ti com carinho.', en: 'This is for you with care.' },
+  11: { sl: 'Hoje é um ótimo dia.', en: 'Today is a great day.' },
+  12: { sl: 'Eu vou com os meus amigos.', en: 'I am going with my friends.' },
+  13: { sl: 'Eu não sei a resposta certa.', en: 'I do not know the right answer.' },
+  14: { sl: 'Ela comprou uma maçã vermelha.', en: 'She bought a red apple.' },
+  15: { sl: 'Os livros estão na estante.', en: 'The books are on the bookshelf.' },
+  16: { sl: 'O almoço está no forno.', en: 'Lunch is in the oven.' },
+  17: { sl: 'Ele senta-se no banco da praça.', en: 'He sits on the bench in the square.' },
+  18: { sl: 'Nós estamos na praia agora.', en: 'We are at the beach now.' },
+  19: { sl: 'Obrigado por tudo o que fizeste.', en: 'Thank you for everything you did.' },
+  20: { sl: 'Quero saber mais sobre este assunto.', en: 'I want to know more about this matter.' },
+  21: { sl: 'As crianças brincam felizes no parque.', en: 'The children play happily in the park.' },
+  22: { sl: 'A opinião dos especialistas é clara.', en: 'The opinion of the specialists is clear.' },
+  23: { sl: 'Como estás hoje meu amigo?', en: 'How are you today my friend?' },
+  24: { sl: 'Eu queria ir, mas tenho de trabalhar.', en: 'I wanted to go, but I have to work.' },
+  25: { sl: 'Vamos ao cinema ver um filme novo.', en: 'Let us go to the cinema to see a new film.' },
+  26: { sl: 'Ele é uma pessoa muito generosa.', en: 'He is a very generous person.' },
+  27: { sl: 'O cheiro das flores é maravilhoso.', en: 'The smell of the flowers is wonderful.' },
+  28: { sl: 'Nós vamos à pastelaria tomar café.', en: 'We are going to the pastry shop to have coffee.' },
+  29: { sl: 'O seu trabalho é muito importante.', en: 'Your work is very important.' },
+  30: { sl: 'A sua dedicação é exemplar.', en: 'Her dedication is exemplary.' },
+  31: { sl: 'Queres chá ou café com leite?', en: 'Do you want tea or coffee with milk?' },
+  32: { sl: 'Ser feliz é o mais importante.', en: 'Being happy is the most important thing.' },
+  33: { sl: 'Quando chegas a casa hoje?', en: 'When do you arrive home today?' },
+  34: { sl: 'Muito obrigado pela tua paciência.', en: 'Thank you very much for your patience.' },
+  35: { sl: 'Ele deu-nos uma excelente notícia.', en: 'He gave us excellent news.' },
+  36: { sl: 'Eu já terminei a tarefa diária.', en: 'I have already finished the daily task.' },
+  37: { sl: 'O tempo está muito agradável.', en: 'The weather is very pleasant.' },
+  38: { sl: 'Eu gosto de aprender coisas novas.', en: 'I like learning new things.' },
+  39: { sl: 'Ele também vem connosco ao teatro.', en: 'He is also coming with us to the theatre.' },
+  40: { sl: 'Só preciso de cinco minutos.', en: 'I only need five minutes.' },
+  41: { sl: 'Ele caminha pelo calçadão.', en: 'He walks along the boardwalk.' },
+  42: { sl: 'Nós passamos pela ponte antiga.', en: 'We crossed the old bridge.' },
+  43: { sl: 'Fica aqui até amanhã de manhã.', en: 'Stay here until tomorrow morning.' },
+  44: { sl: 'Isto é o que nós precisávamos.', en: 'This is what we needed.' },
+  45: { sl: 'Ela fala português muito bem.', en: 'She speaks Portuguese very well.' },
+  46: { sl: 'Há uma grande amizade entre nós.', en: 'There is a great friendship between us.' },
+  47: { sl: 'Depois do almoço vamos passear.', en: 'After lunch we are going for a walk.' },
+  48: { sl: 'Não saias de casa sem casaco.', en: 'Do not leave the house without a coat.' },
+  49: { sl: 'Mesmo cansado, ele continuou.', en: 'Even though tired, he continued.' },
+  50: { sl: 'Tens aos teus pés o mundo inteiro.', en: 'You have the whole world at your feet.' },
+};
+
+/**
+ * Returns a natural, grammatically correct sentence with English translation for a word
+ * in the selected target language ('sl' for Slovenian, 'pt' for Portuguese).
+ */
+export function getExampleSentenceForWord(
+  word: Word,
+  lang: Language = 'sl'
+): { sl: string; en: string } {
+  const isPt = lang === 'pt';
+
   // 1. Direct curated match
-  if (CURATED_EXAMPLES[word.rank]) {
-    return CURATED_EXAMPLES[word.rank];
+  if (isPt) {
+    if (CURATED_PT_EXAMPLES[word.rank]) {
+      return CURATED_PT_EXAMPLES[word.rank];
+    }
+  } else {
+    if (CURATED_EXAMPLES[word.rank]) {
+      return CURATED_EXAMPLES[word.rank];
+    }
   }
 
   // 2. Search local cached & sample sentences using exact whole-word matching
-  const allSentences = [...loadSentenceCache(), ...SAMPLE_SENTENCES];
-  const wordSl = word.sl.toLowerCase();
-  const wordRegex = new RegExp(`\\b${wordSl}\\b`, 'i');
-  const found = allSentences.find(s =>
-    s.targets.map(t => t.toLowerCase()).includes(wordSl) ||
+  const sentencePool = isPt ? SAMPLE_SENTENCES_PT : [...loadSentenceCache(), ...SAMPLE_SENTENCES];
+  const targetWord = word.sl.toLowerCase();
+  const wordRegex = new RegExp(`(^|[\\s.,!?:;"'»«])${targetWord}([\\s.,!?:;"'»«]|$)`, 'i');
+  
+  const found = sentencePool.find(s =>
+    s.targets.map(t => t.toLowerCase()).includes(targetWord) ||
     wordRegex.test(s.sl)
   );
 
@@ -123,9 +193,34 @@ export function getExampleSentenceForWord(word: Word): { sl: string; en: string 
     return { sl: found.sl, en: found.en };
   }
 
-  // 3. Fallback based on part of speech:
+  // 3. Fallback based on target language:
   const firstMeaning = word.en.split(';')[0].replace(/\([^)]*\)/g, '').trim().toLowerCase();
 
+  if (isPt) {
+    // European Portuguese fallbacks
+    if (word.sl.endsWith('ar') || word.sl.endsWith('er') || word.sl.endsWith('ir')) {
+      // Infinitive verb
+      return {
+        sl: `Eu quero ${word.sl} agora.`,
+        en: `I want to ${firstMeaning} now.`,
+      };
+    }
+
+    if (word.isGrammarWord) {
+      return {
+        sl: `Isto é muito importante para nós.`,
+        en: `This is very important for us.`,
+      };
+    }
+
+    // Concrete noun or adjective
+    return {
+      sl: `Onde está ${word.sl}?`,
+      en: `Where is the ${firstMeaning}?`,
+    };
+  }
+
+  // Slovenian fallbacks
   if (word.sl.endsWith('ti') || word.sl.endsWith('či')) {
     // Infinitive verb
     return {
