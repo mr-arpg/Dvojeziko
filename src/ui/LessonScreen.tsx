@@ -32,7 +32,7 @@ import {
   playFailureThud,
 } from '../tts/audioService';
 import { calculateNextProgress, ReviewGrade } from '../srs/scheduler';
-import { WORDS, WORDS_BY_LEMMA } from '../data/words';
+import { getWordByLemma, getWordsForLanguage } from '../data/words';
 import { getExampleSentenceForWord } from '../data/exampleSentences';
 import { getAcceptedAnswersForWord } from '../srs/exerciseBuilder';
 import { saveWordProgress } from '../data/storage';
@@ -96,6 +96,43 @@ export const LessonScreen: React.FC<LessonScreenProps> = ({
   const [isTimeUp, setIsTimeUp] = useState<boolean>(false);
 
   const inputRef = useRef<HTMLInputElement>(null);
+
+  // Inspector handler for any word token in a sentence exercise
+  const handleTokenClick = (tm: TokenMapping) => {
+    const lemmaKey = (tm.lemma || tm.cleanToken || '').toLowerCase();
+    const cleanKey = (tm.cleanToken || '').toLowerCase();
+
+    // 1. Check lemma in active language
+    let foundWord = lemmaKey ? getWordByLemma(lemmaKey, language) : undefined;
+    // 2. Check clean token in active language
+    if (!foundWord && cleanKey) {
+      foundWord = getWordByLemma(cleanKey, language);
+    }
+    // 3. Fallback scan list for active language
+    if (!foundWord) {
+      const langList = getWordsForLanguage(language);
+      foundWord = langList.find(
+        w => w.sl.toLowerCase() === lemmaKey || w.sl.toLowerCase() === cleanKey
+      );
+    }
+
+    if (foundWord) {
+      setActiveWordForDetail(foundWord);
+      return;
+    }
+
+    // 4. Guaranteed fallback: synthesize Word so user ALWAYS sees translation, audio & details
+    const cleanSl = tm.token.replace(/[.,?!:;"'»«]/g, '').trim() || tm.cleanToken;
+    setActiveWordForDetail({
+      rank: 0,
+      sl: cleanSl,
+      en: tm.meaning || (isPt ? 'Palavra de contexto' : 'Context word'),
+      level: 'A1',
+      meanings: tm.meaning ? [tm.meaning] : [],
+      isGrammarWord: false,
+      isReflexive: false,
+    });
+  };
 
   // Timer effect: counts down 5:00 minutes without abruptly interrupting user mid-exercise
   useEffect(() => {
@@ -708,9 +745,28 @@ export const LessonScreen: React.FC<LessonScreenProps> = ({
 
             {/* Sentence with Blank */}
             <div className="my-6 text-center">
-              <p className="text-2xl font-extrabold text-slate-900 dark:text-white leading-relaxed">
-                {currentExercise.displaySentence}
-              </p>
+              <div className="text-2xl font-extrabold text-slate-900 dark:text-white leading-relaxed flex flex-wrap justify-center items-center gap-1.5">
+                {currentExercise.tokenMappings.map((t, i) => (
+                  i === currentExercise.gapIndex ? (
+                    <span
+                      key={i}
+                      className="px-3 py-1 rounded-xl bg-emerald-100/90 dark:bg-emerald-950/90 border border-emerald-400 text-emerald-900 dark:text-emerald-200 font-black inline-block"
+                    >
+                      _____
+                    </span>
+                  ) : (
+                    <button
+                      key={i}
+                      type="button"
+                      onClick={() => handleTokenClick(t)}
+                      className="cursor-pointer transition-all active:scale-95 px-1 py-0.5 rounded-md hover:bg-emerald-50 dark:hover:bg-zinc-800 border-b-2 border-dotted border-slate-300 dark:border-zinc-600 text-slate-900 dark:text-white inline-block"
+                      title={t.meaning ? `${t.lemma || t.cleanToken}: ${t.meaning}` : (isPt ? 'Tocar para ver significado' : 'Tap to inspect meaning')}
+                    >
+                      {t.token}
+                    </button>
+                  )
+                ))}
+              </div>
               <p className="text-sm font-medium text-slate-500 dark:text-zinc-400 mt-2 italic">
                 "{currentExercise.sentence.en}"
               </p>
@@ -760,27 +816,25 @@ export const LessonScreen: React.FC<LessonScreenProps> = ({
               <AudioButton text={currentExercise.sentence.sl} size="sm" />
             </div>
 
-            {/* Slovenian sentence with tap-to-translate tokens */}
+            {/* Sentence with tap-to-translate tokens */}
             <div className="my-4 p-4 bg-slate-50 dark:bg-zinc-800/50 rounded-2xl border border-slate-200/80 dark:border-zinc-700/60 text-center">
-              <div className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white flex flex-wrap justify-center gap-1.5">
+              <div className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white flex flex-wrap justify-center gap-2 items-center">
                 {currentExercise.tokenMappings.map((tm, idx) => (
-                  <span
+                  <button
                     key={idx}
-                    onClick={() => {
-                      if (tm.lemma) {
-                        const word = WORDS_BY_LEMMA.get(tm.lemma.toLowerCase());
-                        if (word) setActiveWordForDetail(word);
-                      }
-                    }}
-                    className={`cursor-pointer transition-colors ${tm.lemma ? 'hover:text-emerald-600 border-b-2 border-dotted border-emerald-500/70' : 'border-b-2 border-dotted border-amber-500/70'}`}
-                    title={tm.meaning ? `${tm.lemma}: ${tm.meaning}` : 'Unknown word (tap to view)'}
+                    type="button"
+                    onClick={() => handleTokenClick(tm)}
+                    className="cursor-pointer transition-all active:scale-95 px-1.5 py-1 rounded-xl bg-white dark:bg-zinc-800 hover:bg-emerald-50 dark:hover:bg-emerald-950/80 border-b-2 border-dotted border-emerald-500/80 text-slate-900 dark:text-white shadow-xs"
+                    title={tm.meaning ? `${tm.lemma || tm.cleanToken}: ${tm.meaning}` : (isPt ? 'Tocar para ver significado' : 'Tap to inspect meaning')}
                   >
                     {tm.token}
-                  </span>
+                  </button>
                 ))}
               </div>
-              <span className="block text-[11px] font-medium text-slate-400 dark:text-zinc-500 mt-2">
-                Tip: Tap any underlined word to view its base form & meaning!
+              <span className="block text-xs font-semibold text-emerald-700 dark:text-emerald-400 mt-3">
+                {isPt
+                  ? '💡 Dica: Clica em qualquer palavra sublinhada para ver a tradução e detalhes!'
+                  : '💡 Tip: Tap any underlined word to view its base form & meaning!'}
               </span>
             </div>
 

@@ -63,9 +63,15 @@ export const WordDetailModal: React.FC<WordDetailModalProps> = ({
           <div>
             <div className="flex items-center gap-2 mb-1">
               <CEFRBadge level={word.level} />
-              <span className="text-xs font-semibold text-slate-500 dark:text-zinc-400">
-                Rank #{word.rank}
-              </span>
+              {word.rank > 0 ? (
+                <span className="text-xs font-semibold text-slate-500 dark:text-zinc-400">
+                  Rank #{word.rank}
+                </span>
+              ) : (
+                <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400">
+                  {isPt ? 'Palavra do texto' : 'Context word'}
+                </span>
+              )}
               {word.isGrammarWord && (
                 <span className="text-xs px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-700 dark:text-amber-300">
                   Grammar
@@ -101,25 +107,27 @@ export const WordDetailModal: React.FC<WordDetailModalProps> = ({
           )}
         </div>
 
-        {/* Spaced Repetition Leitner Status */}
-        <div className="grid grid-cols-2 gap-3 mb-4">
-          <div className="p-3 bg-slate-50 dark:bg-zinc-800/60 rounded-xl border border-slate-200 dark:border-zinc-700">
-            <span className="text-xs text-slate-500 dark:text-zinc-400 flex items-center gap-1">
-              <Award size={13} /> Leitner Box
-            </span>
-            <div className="mt-1 flex items-center gap-2">
-              <StatusChip status={status} box={box} />
+        {/* Spaced Repetition Leitner Status (for vocabulary list words) */}
+        {word.rank > 0 && (
+          <div className="grid grid-cols-2 gap-3 mb-4">
+            <div className="p-3 bg-slate-50 dark:bg-zinc-800/60 rounded-xl border border-slate-200 dark:border-zinc-700">
+              <span className="text-xs text-slate-500 dark:text-zinc-400 flex items-center gap-1">
+                <Award size={13} /> Leitner Box
+              </span>
+              <div className="mt-1 flex items-center gap-2">
+                <StatusChip status={status} box={box} />
+              </div>
+            </div>
+            <div className="p-3 bg-slate-50 dark:bg-zinc-800/60 rounded-xl border border-slate-200 dark:border-zinc-700">
+              <span className="text-xs text-slate-500 dark:text-zinc-400 flex items-center gap-1">
+                <Clock size={13} /> Next Review
+              </span>
+              <span className="text-sm font-bold text-slate-800 dark:text-zinc-200 block mt-1">
+                {progress?.nextDueDate ? progress.nextDueDate : 'Not yet due'}
+              </span>
             </div>
           </div>
-          <div className="p-3 bg-slate-50 dark:bg-zinc-800/60 rounded-xl border border-slate-200 dark:border-zinc-700">
-            <span className="text-xs text-slate-500 dark:text-zinc-400 flex items-center gap-1">
-              <Clock size={13} /> Next Review
-            </span>
-            <span className="text-sm font-bold text-slate-800 dark:text-zinc-200 block mt-1">
-              {progress?.nextDueDate ? progress.nextDueDate : 'Not yet due'}
-            </span>
-          </div>
-        </div>
+        )}
 
         {/* Example Sentences */}
         <div>
