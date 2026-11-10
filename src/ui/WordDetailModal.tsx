@@ -24,24 +24,28 @@ export const WordDetailModal: React.FC<WordDetailModalProps> = ({
 
   const isPt = language === 'pt';
 
-  // Find sentences containing this word (using exact whole-word boundary matching)
+  // 1. Tailored primary example sentence for this word
+  const primaryEx = getExampleSentenceForWord(word, language);
+
+  // 2. Find any additional sample/cached sentences containing this word
   const allSentences = isPt ? SAMPLE_SENTENCES_PT : [...loadSentenceCache(), ...SAMPLE_SENTENCES];
   const wordSl = word.sl.toLowerCase();
   const wordRegex = new RegExp(`(^|[\\s.,!?:;"'»«])${wordSl}([\\s.,!?:;"'»«]|$)`, 'i');
-  let relevantSentences = allSentences.filter(s =>
-    s.targets.map(t => t.toLowerCase()).includes(wordSl) ||
-    wordRegex.test(s.sl)
-  ).slice(0, 3);
 
-  if (relevantSentences.length === 0) {
-    const fallbackEx = getExampleSentenceForWord(word, language);
-    relevantSentences = [{
-      id: `ex_${word.rank}`,
-      sl: fallbackEx.sl,
-      en: fallbackEx.en,
+  const additional = allSentences.filter(s =>
+    s.sl !== primaryEx.sl &&
+    (s.targets.map(t => t.toLowerCase()).includes(wordSl) || wordRegex.test(s.sl))
+  );
+
+  const relevantSentences = [
+    {
+      id: `primary_${word.rank}_${word.sl}`,
+      sl: primaryEx.sl,
+      en: primaryEx.en,
       targets: [word.sl],
-    }];
-  }
+    },
+    ...additional,
+  ].slice(0, 3);
 
   const status = progress ? progress.status : 'new';
   const box = progress ? progress.box : 0;
@@ -161,20 +165,71 @@ export const WordDetailModal: React.FC<WordDetailModalProps> = ({
           )}
         </div>
 
-        {/* Authentic Bilingual Examples on Glosbe */}
-        <div className="mt-4 pt-3 border-t border-slate-100 dark:border-zinc-800 flex items-center justify-between text-xs">
-          <span className="text-slate-500 dark:text-zinc-400">
-            Real bilingual examples:
+        {/* Reference Dictionaries & Contextual Sentences */}
+        <div className="mt-4 pt-3 border-t border-slate-100 dark:border-zinc-800 flex flex-wrap items-center justify-between gap-2 text-xs">
+          <span className="text-slate-500 dark:text-zinc-400 font-medium">
+            {isPt ? 'Dicionários de referência:' : 'Bilingual references:'}
           </span>
-          <a
-            href={`https://glosbe.com/${isPt ? 'pt' : 'sl'}/en/${encodeURIComponent(word.sl)}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 font-bold text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 hover:underline"
-          >
-            <span>Glosbe Sentences</span>
-            <ExternalLink size={12} />
-          </a>
+          <div className="flex items-center gap-3">
+            {isPt ? (
+              <>
+                <a
+                  href={`https://www.linguee.pt/portugues-ingles/search?source=auto&query=${encodeURIComponent(word.sl)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 font-bold text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 hover:underline"
+                  title="Linguee (Exemplos bilingues e contexto real)"
+                >
+                  <span>Linguee</span>
+                  <ExternalLink size={12} />
+                </a>
+                <span className="text-slate-300 dark:text-zinc-700">•</span>
+                <a
+                  href={`https://www.infopedia.pt/dicionarios/portugues-ingles/${encodeURIComponent(word.sl)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 font-bold text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 hover:underline"
+                  title="Infopédia (Porto Editora - Portugal)"
+                >
+                  <span>Infopédia</span>
+                  <ExternalLink size={12} />
+                </a>
+                <span className="text-slate-300 dark:text-zinc-700">•</span>
+                <a
+                  href={`https://dicionario.priberam.org/${encodeURIComponent(word.sl)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 font-bold text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 hover:underline"
+                  title="Dicionário Priberam da Língua Portuguesa"
+                >
+                  <span>Priberam</span>
+                  <ExternalLink size={12} />
+                </a>
+              </>
+            ) : (
+              <>
+                <a
+                  href={`https://glosbe.com/sl/en/${encodeURIComponent(word.sl)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 font-bold text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 hover:underline"
+                >
+                  <span>Glosbe</span>
+                  <ExternalLink size={12} />
+                </a>
+                <span className="text-slate-300 dark:text-zinc-700">•</span>
+                <a
+                  href={`https://fran.si/iskanje?View=1&Query=${encodeURIComponent(word.sl)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 font-bold text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 hover:underline"
+                >
+                  <span>Fran.si</span>
+                  <ExternalLink size={12} />
+                </a>
+              </>
+            )}
+          </div>
         </div>
 
         {/* Close Button */}

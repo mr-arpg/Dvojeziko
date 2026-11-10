@@ -51,6 +51,7 @@ export const PORTUGUESE_WORDS: Word[] = (wordsPtRaw as any[]).map(raw => {
     sl: raw.pt || raw.sl, // Used as target word across exercises
     en: raw.en,
     level: raw.level as CEFRLevel,
+    pos: raw.pos,
     isGrammarWord: isGrammar,
     meanings,
     isReflexive,

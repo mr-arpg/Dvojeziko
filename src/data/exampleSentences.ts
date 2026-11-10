@@ -185,6 +185,17 @@ const CURATED_PT_BY_WORD: Record<string, { sl: string; en: string }> = {
   'só': { sl: 'Eu só preciso de cinco minutos.', en: 'I only need five minutes.' },
   'aqui': { sl: 'Nós vivemos aqui há muitos anos.', en: 'We have lived here for many years.' },
   'bem': { sl: 'Ela fala português muito bem.', en: 'She speaks Portuguese very well.' },
+  'jardim': { sl: 'A casa tem um belo jardim com muitas flores.', en: 'The house has a beautiful garden with many flowers.' },
+  'belo': { sl: 'Hoje está um belo dia de sol para passear.', en: 'Today is a beautiful sunny day for a walk.' },
+  'bela': { sl: 'Lisboa é uma cidade muito bela e acolhedora.', en: 'Lisbon is a very beautiful and welcoming city.' },
+  'bonito': { sl: 'O casaco novo é muito bonito e elegante.', en: 'The new coat is very pretty and elegant.' },
+  'bonita': { sl: 'A praia da vila é muito bonita e calma.', en: 'The village beach is very pretty and calm.' },
+  'bom': { sl: 'Este restaurante serve pão fresco e bom vinho.', en: 'This restaurant serves fresh bread and good wine.' },
+  'boa': { sl: 'Ele deu-nos uma boa notícia sobre a viagem.', en: 'He gave us good news about the trip.' },
+  'novo': { sl: 'Ele comprou um telemóvel novo ontem.', en: 'He bought a new mobile phone yesterday.' },
+  'nova': { sl: 'Esta livraria nova tem muitos livros.', en: 'This new bookstore has many books.' },
+  'grande': { sl: 'A praça central é muito grande e espaçosa.', en: 'The central square is very big and spacious.' },
+  'pequeno': { sl: 'Tomamos um pequeno café antes de sair.', en: 'We have a small coffee before leaving.' },
 };
 
 /**
@@ -212,8 +223,25 @@ export function getExampleSentenceForWord(
     }
   }
 
-  // 2. Search local cached & sample sentences using exact whole-word matching
-  const sentencePool = isPt ? SAMPLE_SENTENCES_PT : [...loadSentenceCache(), ...SAMPLE_SENTENCES];
+  // 2. Search local cached, sample sentences AND curated sentence pool using exact whole-word matching
+  const curatedItems = isPt
+    ? Object.values(CURATED_PT_EXAMPLES).map(item => ({
+        id: `cur_pt_${item.sl}`,
+        sl: item.sl,
+        en: item.en,
+        targets: item.sl.toLowerCase().replace(/[.,?!:;"'»«]/g, '').split(/\s+/),
+      }))
+    : Object.values(CURATED_EXAMPLES).map(item => ({
+        id: `cur_sl_${item.sl}`,
+        sl: item.sl,
+        en: item.en,
+        targets: item.sl.toLowerCase().replace(/[.,?!:;"'»«]/g, '').split(/\s+/),
+      }));
+
+  const sentencePool = isPt
+    ? [...SAMPLE_SENTENCES_PT, ...curatedItems]
+    : [...loadSentenceCache(), ...SAMPLE_SENTENCES, ...curatedItems];
+
   const targetWord = word.sl.toLowerCase();
   const wordRegex = new RegExp(`(^|[\\s.,!?:;"'»«])${targetWord}([\\s.,!?:;"'»«]|$)`, 'i');
   
@@ -230,12 +258,35 @@ export function getExampleSentenceForWord(
   const firstMeaning = word.en.split(';')[0].replace(/\([^)]*\)/g, '').trim().toLowerCase();
 
   if (isPt) {
-    // European Portuguese fallbacks
+    const pos = (word as any).pos;
+    const isAdj =
+      pos === 'adjective' ||
+      word.sl.endsWith('oso') ||
+      word.sl.endsWith('osa') ||
+      word.sl.endsWith('vel') ||
+      word.sl.endsWith('al') ||
+      ['belo', 'bela', 'bom', 'boa', 'mau', 'má', 'novo', 'nova', 'velho', 'velha', 'grande', 'pequeno', 'pequena', 'fácil', 'difícil', 'rápido', 'rápida', 'lento', 'lenta', 'claro', 'clara', 'escuro', 'escura', 'forte', 'fraco', 'fraca', 'quente', 'frio', 'fria', 'feliz', 'triste'].includes(word.sl.toLowerCase());
+
+    // European Portuguese smart fallbacks
+    if (isAdj) {
+      return {
+        sl: `Isto é muito ${word.sl} e agradável.`,
+        en: `This is very ${firstMeaning} and pleasant.`,
+      };
+    }
+
     if (word.sl.endsWith('ar') || word.sl.endsWith('er') || word.sl.endsWith('ir')) {
       // Infinitive verb
       return {
         sl: `Eu quero ${word.sl} agora.`,
         en: `I want to ${firstMeaning} now.`,
+      };
+    }
+
+    if (pos === 'adverb' || word.sl.endsWith('mente')) {
+      return {
+        sl: `Ela faz tudo muito ${word.sl}.`,
+        en: `She does everything very ${firstMeaning}.`,
       };
     }
 
@@ -246,9 +297,17 @@ export function getExampleSentenceForWord(
       };
     }
 
-    // Concrete noun or adjective
+    // Concrete noun with proper grammatical article
+    const isFem =
+      word.sl.endsWith('a') ||
+      word.sl.endsWith('ção') ||
+      word.sl.endsWith('são') ||
+      word.sl.endsWith('dade') ||
+      word.sl.endsWith('gem');
+    const article = isFem ? 'a' : 'o';
+
     return {
-      sl: `Onde está ${word.sl}?`,
+      sl: `Onde fica ${article} ${word.sl}?`,
       en: `Where is the ${firstMeaning}?`,
     };
   }

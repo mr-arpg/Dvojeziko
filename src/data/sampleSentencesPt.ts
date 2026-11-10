@@ -316,5 +316,23 @@ export const SAMPLE_SENTENCES_PT: SentenceItem[] = [
     sl: 'Eu quero ter mais tempo livre.',
     en: 'I want to have more free time.',
     targets: ['eu', 'querer', 'ter', 'mais', 'tempo', 'livre']
+  },
+  {
+    id: 's_pt_53',
+    sl: 'A casa tem um belo jardim com muitas flores.',
+    en: 'The house has a beautiful garden with many flowers.',
+    targets: ['a', 'casa', 'ter', 'tem', 'um', 'belo', 'jardim', 'com', 'muito', 'muitas', 'flor', 'flores']
+  },
+  {
+    id: 's_pt_54',
+    sl: 'Hoje está um belo dia para passear no jardim.',
+    en: 'Today is a beautiful day to walk in the garden.',
+    targets: ['hoje', 'estar', 'está', 'um', 'belo', 'dia', 'para', 'passear', 'em', 'no', 'jardim']
+  },
+  {
+    id: 's_pt_55',
+    sl: 'As crianças brincam alegremente no jardim.',
+    en: 'The children play happily in the garden.',
+    targets: ['o', 'as', 'criança', 'crianças', 'brincar', 'brincam', 'alegremente', 'em', 'no', 'jardim']
   }
 ];

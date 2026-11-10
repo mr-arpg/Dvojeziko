@@ -9,6 +9,7 @@ export interface RawWord {
   sl: string;
   en: string;
   level: CEFRLevel;
+  pos?: string;
 }
 
 export interface Word extends RawWord {
