@@ -304,5 +304,17 @@ export const SAMPLE_SENTENCES_PT: SentenceItem[] = [
     sl: 'Amanhã vai ser um dia fantástico.',
     en: 'Tomorrow will be a fantastic day.',
     targets: ['amanhã', 'ir', 'vai', 'ser', 'um', 'dia', 'fantástico']
+  },
+  {
+    id: 's_pt_51',
+    sl: 'É muito importante ter bons amigos.',
+    en: 'It is very important to have good friends.',
+    targets: ['ser', 'é', 'muito', 'importante', 'ter', 'bom', 'bons', 'amigo', 'amigos']
+  },
+  {
+    id: 's_pt_52',
+    sl: 'Eu quero ter mais tempo livre.',
+    en: 'I want to have more free time.',
+    targets: ['eu', 'querer', 'ter', 'mais', 'tempo', 'livre']
   }
 ];

@@ -104,58 +104,87 @@ const CURATED_EXAMPLES: Record<number, { sl: string; en: string }> = {
 
 /**
  * Curated, authentic European Portuguese (Portugal) example sentences for high-frequency vocabulary.
+ * Mapped both by rank and by lemma word string to guarantee exact correspondence.
  */
 const CURATED_PT_EXAMPLES: Record<number, { sl: string; en: string }> = {
-  1: { sl: 'Eu venho de Portugal.', en: 'I come from Portugal.' },
-  2: { sl: 'A casa é muito bonita.', en: 'The house is very pretty.' },
-  3: { sl: 'O dia está solarengo.', en: 'The day is sunny.' },
-  4: { sl: 'O que queres fazer hoje?', en: 'What do you want to do today?' },
-  5: { sl: 'O cão e o gato brincam no jardim.', en: 'The dog and cat play in the garden.' },
-  6: { sl: 'A chave do carro está na mesa.', en: 'The car key is on the table.' },
-  7: { sl: 'A janela da sala está aberta.', en: 'The living room window is open.' },
-  8: { sl: 'Nós estamos em Lisboa.', en: 'We are in Lisbon.' },
-  9: { sl: 'Eu quero um café quente.', en: 'I want a hot coffee.' },
-  10: { sl: 'Isto é para ti com carinho.', en: 'This is for you with care.' },
-  11: { sl: 'Hoje é um ótimo dia.', en: 'Today is a great day.' },
-  12: { sl: 'Eu vou com os meus amigos.', en: 'I am going with my friends.' },
-  13: { sl: 'Eu não sei a resposta certa.', en: 'I do not know the right answer.' },
-  14: { sl: 'Ela comprou uma maçã vermelha.', en: 'She bought a red apple.' },
-  15: { sl: 'Os livros estão na estante.', en: 'The books are on the bookshelf.' },
-  16: { sl: 'O almoço está no forno.', en: 'Lunch is in the oven.' },
-  17: { sl: 'Ele senta-se no banco da praça.', en: 'He sits on the bench in the square.' },
-  18: { sl: 'Nós estamos na praia agora.', en: 'We are at the beach now.' },
-  19: { sl: 'Obrigado por tudo o que fizeste.', en: 'Thank you for everything you did.' },
-  20: { sl: 'Quero saber mais sobre este assunto.', en: 'I want to know more about this matter.' },
-  21: { sl: 'As crianças brincam felizes no parque.', en: 'The children play happily in the park.' },
-  22: { sl: 'A opinião dos especialistas é clara.', en: 'The opinion of the specialists is clear.' },
-  23: { sl: 'Como estás hoje meu amigo?', en: 'How are you today my friend?' },
-  24: { sl: 'Eu queria ir, mas tenho de trabalhar.', en: 'I wanted to go, but I have to work.' },
-  25: { sl: 'Vamos ao cinema ver um filme novo.', en: 'Let us go to the cinema to see a new film.' },
-  26: { sl: 'Ele é uma pessoa muito generosa.', en: 'He is a very generous person.' },
-  27: { sl: 'O cheiro das flores é maravilhoso.', en: 'The smell of the flowers is wonderful.' },
-  28: { sl: 'Nós vamos à pastelaria tomar café.', en: 'We are going to the pastry shop to have coffee.' },
-  29: { sl: 'O seu trabalho é muito importante.', en: 'Your work is very important.' },
-  30: { sl: 'A sua dedicação é exemplar.', en: 'Her dedication is exemplary.' },
-  31: { sl: 'Queres chá ou café com leite?', en: 'Do you want tea or coffee with milk?' },
-  32: { sl: 'Ser feliz é o mais importante.', en: 'Being happy is the most important thing.' },
-  33: { sl: 'Quando chegas a casa hoje?', en: 'When do you arrive home today?' },
-  34: { sl: 'Muito obrigado pela tua paciência.', en: 'Thank you very much for your patience.' },
-  35: { sl: 'Ele deu-nos uma excelente notícia.', en: 'He gave us excellent news.' },
-  36: { sl: 'Eu já terminei a tarefa diária.', en: 'I have already finished the daily task.' },
-  37: { sl: 'O tempo está muito agradável.', en: 'The weather is very pleasant.' },
-  38: { sl: 'Eu gosto de aprender coisas novas.', en: 'I like learning new things.' },
-  39: { sl: 'Ele também vem connosco ao teatro.', en: 'He is also coming with us to the theatre.' },
-  40: { sl: 'Só preciso de cinco minutos.', en: 'I only need five minutes.' },
-  41: { sl: 'Ele caminha pelo calçadão.', en: 'He walks along the boardwalk.' },
-  42: { sl: 'Nós passamos pela ponte antiga.', en: 'We crossed the old bridge.' },
-  43: { sl: 'Fica aqui até amanhã de manhã.', en: 'Stay here until tomorrow morning.' },
-  44: { sl: 'Isto é o que nós precisávamos.', en: 'This is what we needed.' },
-  45: { sl: 'Ela fala português muito bem.', en: 'She speaks Portuguese very well.' },
-  46: { sl: 'Há uma grande amizade entre nós.', en: 'There is a great friendship between us.' },
-  47: { sl: 'Depois do almoço vamos passear.', en: 'After lunch we are going for a walk.' },
-  48: { sl: 'Não saias de casa sem casaco.', en: 'Do not leave the house without a coat.' },
-  49: { sl: 'Mesmo cansado, ele continuou.', en: 'Even though tired, he continued.' },
-  50: { sl: 'Tens aos teus pés o mundo inteiro.', en: 'You have the whole world at your feet.' },
+  1: { sl: 'Eu venho de Portugal.', en: 'I come from Portugal.' }, // de
+  2: { sl: 'A casa tem um belo jardim.', en: 'The house has a beautiful garden.' }, // a
+  3: { sl: 'O dia está solarengo.', en: 'The day is sunny.' }, // o
+  4: { sl: 'O que queres fazer hoje?', en: 'What do you want to do today?' }, // que
+  5: { sl: 'O cão e o gato brincam no jardim.', en: 'The dog and cat play in the garden.' }, // e
+  6: { sl: 'A chave do carro está aqui.', en: 'The car key is here.' }, // do
+  7: { sl: 'A porta da sala está aberta.', en: 'The living room door is open.' }, // da
+  8: { sl: 'Nós estamos em Lisboa.', en: 'We are in Lisbon.' }, // em
+  9: { sl: 'Eu quero um café quente.', en: 'I want a hot coffee.' }, // um
+  10: { sl: 'Isto é para ti com carinho.', en: 'This is for you with care.' }, // para
+  11: { sl: 'Hoje é um ótimo dia.', en: 'Today is a great day.' }, // é
+  12: { sl: 'Eu vou com os meus amigos.', en: 'I am going with my friends.' }, // com
+  13: { sl: 'Eu não sei a resposta certa.', en: 'I do not know the right answer.' }, // não
+  14: { sl: 'Ela comprou uma maçã vermelha.', en: 'She bought a red apple.' }, // uma
+  15: { sl: 'Os livros estão na estante.', en: 'The books are on the bookshelf.' }, // os
+  16: { sl: 'O almoço está no forno.', en: 'Lunch is in the oven.' }, // no
+  17: { sl: 'Ele senta-se no banco da praça.', en: 'He sits on the bench in the square.' }, // se
+  18: { sl: 'Nós estamos na praia agora.', en: 'We are at the beach now.' }, // na
+  19: { sl: 'Obrigado por toda a tua ajuda.', en: 'Thank you for all your help.' }, // por
+  20: { sl: 'Quero saber mais sobre este assunto.', en: 'I want to know more about this matter.' }, // mais
+  21: { sl: 'As crianças brincam felizes no parque.', en: 'The children play happily in the park.' }, // as
+  22: { sl: 'A casa dos meus pais é acolhedora.', en: 'My parents\' house is cosy.' }, // dos
+  23: { sl: 'Como estás hoje, meu amigo?', en: 'How are you today, my friend?' }, // como
+  24: { sl: 'Eu queria ir, mas tenho de trabalhar.', en: 'I wanted to go, but I have to work.' }, // mas
+  25: { sl: 'Vamos ao cinema ver um filme novo.', en: 'Let us go to the cinema to see a new film.' }, // ao
+  26: { sl: 'Ele é uma pessoa muito generosa.', en: 'He is a very generous person.' }, // ele
+  27: { sl: 'O aroma das flores é maravilhoso.', en: 'The aroma of the flowers is wonderful.' }, // das
+  28: { sl: 'Nós vamos à pastelaria tomar café.', en: 'We are going to the pastry shop to have coffee.' }, // à
+  29: { sl: 'O seu casaco ficou no carro.', en: 'Your coat stayed in the car.' }, // seu
+  30: { sl: 'A sua mãe telefonou hoje de manhã.', en: 'Your mother called this morning.' }, // sua
+  31: { sl: 'Queres chá ou café com leite?', en: 'Do you want tea or coffee with milk?' }, // ou
+  32: { sl: 'Quando chegas a casa hoje?', en: 'When do you arrive home today?' }, // quando
+  33: { sl: 'Muito obrigado pela tua paciência.', en: 'Thank you very much for your patience.' }, // muito
+  34: { sl: 'Ele deu-nos uma excelente notícia.', en: 'He gave us excellent news.' }, // nos
+  35: { sl: 'Eu já terminei o meu trabalho.', en: 'I have already finished my work.' }, // já
+  36: { sl: 'Eu moro perto do centro histórico.', en: 'I live near the historic center.' }, // eu
+  37: { sl: 'Ele também vem connosco ao teatro.', en: 'He is also coming with us to the theatre.' }, // também
+  38: { sl: 'Ser feliz é o mais importante na vida.', en: 'Being happy is the most important thing in life.' }, // ser
+  39: { sl: 'É muito importante ter bons amigos.', en: 'It is very important to have good friends.' }, // ter
+  40: { sl: 'Você prefere sentar aqui ou ali?', en: 'Do you prefer to sit here or there?' }, // você
+  41: { sl: 'Podes dar-me um copo de água?', en: 'Can you give me a glass of water?' }, // me
+  42: { sl: 'É muito bom estar aqui em Portugal.', en: 'It is very good to be here in Portugal.' }, // estar
+  43: { sl: 'Eu só preciso de cinco minutos.', en: 'I only need five minutes.' }, // só
+  44: { sl: 'Isso é uma ótima ideia para nós.', en: 'That is a great idea for us.' }, // isso
+  45: { sl: 'Ela fala português muito bem.', en: 'She speaks Portuguese very well.' }, // bem
+  46: { sl: 'Ele passeia pelo parque à tarde.', en: 'He walks through the park in the afternoon.' }, // pelo
+  47: { sl: 'Nós vivemos aqui há muitos anos.', en: 'We have lived here for many years.' }, // aqui
+  48: { sl: 'O que vamos fazer para o jantar?', en: 'What are we going to make for dinner?' }, // fazer
+  49: { sl: 'Ele leu todo o livro de uma vez.', en: 'He read the whole book at once.' }, // todo
+  50: { sl: 'Vamos ir à praia este fim de semana.', en: 'Let us go to the beach this weekend.' }, // ir
+  51: { sl: 'Ela trabalha num hospital da cidade.', en: 'She works in a city hospital.' }, // ela
+  52: { sl: 'Este café com leite está muito bom.', en: 'This coffee with milk is very good.' }, // este
+  53: { sl: 'O meu irmão mais velho vive no Porto.', en: 'My older brother lives in Porto.' }, // meu
+  54: { sl: 'A aula começa às nove horas da manhã.', en: 'The class starts at nine o\'clock in the morning.' }, // às
+  55: { sl: 'Esse casaco azul fica-te muito bem.', en: 'That blue coat looks very good on you.' }, // esse
+  56: { sl: 'Alguém bateu à porta de entrada.', en: 'Someone knocked on the front door.' }, // alguém
+  57: { sl: 'A minha família reuniu-se no domingo.', en: 'My family gathered on Sunday.' }, // minha
+  58: { sl: 'Até amanhã à mesma hora.', en: 'See you tomorrow at the same time.' }, // até
+  59: { sl: 'Fomos ver o pôr do sol no miradouro.', en: 'We went to see the sunset at the viewpoint.' }, // ver
+  60: { sl: 'Nós vamos poder viajar no próximo mês.', en: 'We will be able to travel next month.' }, // poder
+};
+
+// Word-keyed index for absolute safety against rank mismatches
+const CURATED_PT_BY_WORD: Record<string, { sl: string; en: string }> = {
+  'ter': { sl: 'É muito importante ter bons amigos.', en: 'It is very important to have good friends.' },
+  'ser': { sl: 'Ser feliz é o mais importante na vida.', en: 'Being happy is the most important thing in life.' },
+  'estar': { sl: 'É muito bom estar aqui em Portugal.', en: 'It is very good to be here in Portugal.' },
+  'fazer': { sl: 'O que vamos fazer para o jantar?', en: 'What are we going to make for dinner?' },
+  'ir': { sl: 'Vamos ir à praia este fim de semana.', en: 'Let us go to the beach this weekend.' },
+  'ver': { sl: 'Fomos ver o pôr do sol no miradouro.', en: 'We went to see the sunset at the viewpoint.' },
+  'poder': { sl: 'Nós vamos poder viajar no próximo mês.', en: 'We will be able to travel next month.' },
+  'também': { sl: 'Ele também vem connosco ao teatro.', en: 'He is also coming with us to the theatre.' },
+  'quando': { sl: 'Quando chegas a casa hoje?', en: 'When do you arrive home today?' },
+  'muito': { sl: 'Muito obrigado pela tua paciência.', en: 'Thank you very much for your patience.' },
+  'já': { sl: 'Eu já terminei o meu trabalho.', en: 'I have already finished my work.' },
+  'só': { sl: 'Eu só preciso de cinco minutos.', en: 'I only need five minutes.' },
+  'aqui': { sl: 'Nós vivemos aqui há muitos anos.', en: 'We have lived here for many years.' },
+  'bem': { sl: 'Ela fala português muito bem.', en: 'She speaks Portuguese very well.' },
 };
 
 /**
@@ -170,6 +199,10 @@ export function getExampleSentenceForWord(
 
   // 1. Direct curated match
   if (isPt) {
+    const lemma = word.sl.toLowerCase();
+    if (CURATED_PT_BY_WORD[lemma]) {
+      return CURATED_PT_BY_WORD[lemma];
+    }
     if (CURATED_PT_EXAMPLES[word.rank]) {
       return CURATED_PT_EXAMPLES[word.rank];
     }
