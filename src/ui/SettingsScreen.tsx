@@ -38,7 +38,7 @@ import {
   inspectBackupJson,
   BackupPreview,
 } from '../data/storage';
-import { playSlovenianAudio } from '../tts/audioService';
+import { playAudio, playSlovenianAudio } from '../tts/audioService';
 
 interface SettingsScreenProps {
   settings: UserSettings;
@@ -170,14 +170,14 @@ export const SettingsScreen: React.FC<SettingsScreenProps> = ({
   const handleTestNotification = () => {
     setNotificationSent(true);
     if ('Notification' in window && Notification.permission === 'granted') {
-      new Notification('Dvojeziko - Slovenian Daily Lesson', {
+      new Notification('Dvojeziko - Daily Lesson', {
         body: 'Your 5-minute daily lesson is ready! 3 new words waiting for you.',
         icon: '/favicon.ico',
       });
     } else if ('Notification' in window && Notification.permission !== 'denied') {
       Notification.requestPermission().then(permission => {
         if (permission === 'granted') {
-          new Notification('Dvojeziko - Slovenian Daily Lesson', {
+          new Notification('Dvojeziko - Daily Lesson', {
             body: 'Your 5-minute daily lesson is ready! 3 new words waiting for you.',
           });
         }
@@ -416,7 +416,7 @@ export const SettingsScreen: React.FC<SettingsScreenProps> = ({
             <span className="text-xs text-slate-400 block mt-0.5">
               {settings.enableAiSentences !== false
                 ? 'Server-generated natural practice sentences (0 cost to your phone)'
-                : '100% Offline Mode (uses curated pre-cached Slovenian sentences, 0 network calls)'}
+                : '100% Offline Mode (uses curated pre-cached sentences, 0 network calls)'}
             </span>
           </div>
           <button
@@ -487,7 +487,7 @@ export const SettingsScreen: React.FC<SettingsScreenProps> = ({
               Audio & Pronunciation
             </span>
             <span className="text-xs text-slate-400">
-              Speaks Slovenian words and example sentences
+              Speaks words and example sentences aloud
             </span>
           </div>
           <button
@@ -510,10 +510,13 @@ export const SettingsScreen: React.FC<SettingsScreenProps> = ({
         <div className="pt-2">
           <button
             type="button"
-            onClick={() => playSlovenianAudio('Dober dan! Kako ste?')}
+            onClick={() => {
+              const testPhrase = settings.language === 'pt' ? 'Olá! Como estás?' : 'Dober dan! Kako ste?';
+              playAudio(testPhrase, settings.language || 'sl');
+            }}
             className="text-xs font-bold text-emerald-600 hover:text-emerald-700 flex items-center gap-1.5 cursor-pointer"
           >
-            <Volume2 size={14} /> Test Slovenian Voice ("Dober dan! Kako ste?")
+            <Volume2 size={14} /> Test Voice ({settings.language === 'pt' ? '"Olá! Como estás?"' : '"Dober dan! Kako ste?"'})
           </button>
         </div>
 

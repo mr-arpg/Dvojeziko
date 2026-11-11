@@ -159,11 +159,11 @@ export const FriendsTab: React.FC<FriendsTabProps> = ({
     updatedAt: new Date().toISOString(),
   };
 
-  // Sort leaderboard by active language learned words, then streak
+  // Sort leaderboard by total words learned across both languages, then streak
   const allLearners = [myLeaderboardEntry, ...friends].sort((a, b) => {
-    const aLearned = activeLanguage === 'pt' ? a.learnedCountPt : a.learnedCountSl;
-    const bLearned = activeLanguage === 'pt' ? b.learnedCountPt : b.learnedCountSl;
-    if (bLearned !== aLearned) return bLearned - aLearned;
+    const aTotalLearned = (a.learnedCountSl || 0) + (a.learnedCountPt || 0);
+    const bTotalLearned = (b.learnedCountSl || 0) + (b.learnedCountPt || 0);
+    if (bTotalLearned !== aTotalLearned) return bTotalLearned - aTotalLearned;
     return b.streak - a.streak;
   });
 
@@ -319,13 +319,10 @@ export const FriendsTab: React.FC<FriendsTabProps> = ({
               Shared Leaderboard
             </h3>
           </div>
-          <span className="text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full bg-slate-100 dark:bg-zinc-800 text-slate-600 dark:text-zinc-300">
-            {activeLanguage === 'pt' ? '🇵🇹 Portuguese' : '🇸🇮 Slovenian'}
-          </span>
         </div>
 
         <p className="text-xs text-slate-500 dark:text-zinc-400">
-          Ranked by words learned and active daily streaks. See who practiced today!
+          Ranked by total words learned and active daily streaks. See who practiced today!
         </p>
 
         {loading ? (
@@ -336,7 +333,7 @@ export const FriendsTab: React.FC<FriendsTabProps> = ({
           <div className="space-y-2.5">
             {allLearners.map((learner, idx) => {
               const isMe = learner.uid === currentUser?.uid || learner.uid === 'me';
-              const learnedInTrack = activeLanguage === 'pt' ? learner.learnedCountPt : learner.learnedCountSl;
+              const totalLearned = (learner.learnedCountSl || 0) + (learner.learnedCountPt || 0);
 
               return (
                 <div
@@ -399,7 +396,7 @@ export const FriendsTab: React.FC<FriendsTabProps> = ({
                         </span>
                         <span>•</span>
                         <span className="text-xs font-semibold text-emerald-700 dark:text-emerald-400">
-                          {learnedInTrack} words
+                          {totalLearned} words
                         </span>
                       </div>
                     </div>
