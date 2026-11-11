@@ -173,6 +173,7 @@ export interface FriendProfile {
   streak: number;
   learnedCountSl: number;
   learnedCountPt: number;
+  targetLanguage?: Language;
   totalLessons: number;
   lastActiveDate: string; // YYYY-MM-DD
   activeToday: boolean;

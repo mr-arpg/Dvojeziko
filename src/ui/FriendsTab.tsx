@@ -153,6 +153,7 @@ export const FriendsTab: React.FC<FriendsTabProps> = ({
     streak: userStreak,
     learnedCountSl: userLearnedSl,
     learnedCountPt: userLearnedPt,
+    targetLanguage: activeLanguage,
     totalLessons: userLessons,
     lastActiveDate: new Date().toISOString().split('T')[0],
     activeToday: true,
@@ -279,12 +280,15 @@ export const FriendsTab: React.FC<FriendsTabProps> = ({
                 crossOrigin="anonymous"
               />
               <div className="min-w-0">
-                <div className="flex items-center gap-1.5">
+                <div className="flex items-center gap-1.5 flex-wrap">
                   <h4 className="text-sm font-bold text-slate-900 dark:text-white truncate">
                     {searchResult.displayName}
                   </h4>
                   <span className="text-[10px] font-mono font-bold text-emerald-700 dark:text-emerald-300 bg-white/80 dark:bg-zinc-800 px-1.5 py-0.5 rounded-md">
                     {searchResult.friendCode}
+                  </span>
+                  <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-md bg-emerald-100 dark:bg-emerald-900/60 text-emerald-800 dark:text-emerald-300">
+                    Studying {searchResult.targetLanguage === 'pt' ? '🇵🇹 Portuguese' : '🇸🇮 Slovenian'}
                   </span>
                 </div>
                 <div className="flex items-center gap-2 text-[11px] text-slate-600 dark:text-zinc-400 mt-0.5">
@@ -380,7 +384,7 @@ export const FriendsTab: React.FC<FriendsTabProps> = ({
 
                     {/* Info */}
                     <div className="min-w-0">
-                      <div className="flex items-center gap-1.5">
+                      <div className="flex items-center gap-1.5 flex-wrap">
                         <span className="text-sm font-bold text-slate-900 dark:text-white truncate">
                           {learner.displayName}
                         </span>
@@ -389,6 +393,13 @@ export const FriendsTab: React.FC<FriendsTabProps> = ({
                             You
                           </span>
                         )}
+                        {/* Studying language indicator */}
+                        <span
+                          className="text-[10px] font-extrabold px-1.5 py-0.5 rounded-md bg-slate-100 dark:bg-zinc-800 text-slate-600 dark:text-zinc-300 flex items-center gap-1"
+                          title={`Studying ${learner.targetLanguage === 'pt' ? 'Portuguese' : 'Slovenian'}`}
+                        >
+                          {learner.targetLanguage === 'pt' ? '🇵🇹 PT' : '🇸🇮 SI'}
+                        </span>
                       </div>
                       <div className="flex items-center gap-2 text-[11px] text-slate-500 dark:text-zinc-400 mt-0.5">
                         <span className="font-mono text-[10px] text-slate-400">

@@ -44,7 +44,7 @@ service cloud.firestore {
       return data.keys().hasAll(['uid', 'displayName', 'friendCode', 'updatedAt'])
         && data.keys().hasOnly([
             'uid', 'displayName', 'photoURL', 'friendCode',
-            'streak', 'learnedCountSl', 'learnedCountPt', 'totalLessons',
+            'streak', 'learnedCountSl', 'learnedCountPt', 'targetLanguage', 'totalLessons',
             'lastActiveDate', 'updatedAt'
           ])
         && data.uid == userId

@@ -26,6 +26,7 @@
         "streak": { "type": "number", "description": "Current learning streak count" },
         "learnedCountSl": { "type": "number", "description": "Slovenian words mastered" },
         "learnedCountPt": { "type": "number", "description": "Portuguese words mastered" },
+        "targetLanguage": { "type": "string", "description": "Active language the learner is currently studying ('sl' or 'pt')" },
         "totalLessons": { "type": "number", "description": "Total lessons completed" },
         "lastActiveDate": { "type": "string", "description": "YYYY-MM-DD date of last lesson" },
         "updatedAt": { "type": "string", "description": "ISO timestamp of last update" }

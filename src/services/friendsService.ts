@@ -49,8 +49,12 @@ export function saveLocalFriends(friends: FriendProfile[]): void {
  * Search user in Firestore by Friend Code (e.g. "DV-RP82")
  */
 export async function searchUserByFriendCode(code: string): Promise<FriendProfile | null> {
-  const cleanCode = code.trim().toUpperCase();
+  let cleanCode = code.trim().toUpperCase();
   if (!cleanCode) return null;
+  // If user typed '2SFL' without 'DV-', normalize to 'DV-2SFL'
+  if (!cleanCode.startsWith('DV-') && cleanCode.length <= 6) {
+    cleanCode = `DV-${cleanCode}`;
+  }
 
   try {
     const q = query(
@@ -71,6 +75,7 @@ export async function searchUserByFriendCode(code: string): Promise<FriendProfil
       streak: data.streak || 0,
       learnedCountSl: data.learnedCountSl || 0,
       learnedCountPt: data.learnedCountPt || 0,
+      targetLanguage: data.targetLanguage || (data.learnedCountPt > data.learnedCountSl ? 'pt' : 'sl'),
       totalLessons: data.totalLessons || 0,
       lastActiveDate: data.lastActiveDate || '',
       activeToday: data.lastActiveDate === today,
@@ -159,6 +164,7 @@ export async function fetchFriendsWithStats(currentUser: User | null): Promise<F
               streak: p.streak || 0,
               learnedCountSl: p.learnedCountSl || 0,
               learnedCountPt: p.learnedCountPt || 0,
+              targetLanguage: p.targetLanguage || (p.learnedCountPt > p.learnedCountSl ? 'pt' : 'sl'),
               totalLessons: p.totalLessons || 0,
               lastActiveDate: p.lastActiveDate || '',
               activeToday: p.lastActiveDate === today,

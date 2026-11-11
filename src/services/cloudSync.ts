@@ -199,6 +199,7 @@ export async function uploadLocalToCloud(user: User, currentLang?: Language): Pr
       streak: Math.max(statsSl.streak || 0, statsPt.streak || 0),
       learnedCountSl: countSl,
       learnedCountPt: countPt,
+      targetLanguage: activeLang,
       totalLessons: (statsSl.totalLessonsCompleted || 0) + (statsPt.totalLessonsCompleted || 0),
       lastActiveDate: statsSl.lastActiveDate || statsPt.lastActiveDate || '',
       updatedAt: payload.updatedAt,

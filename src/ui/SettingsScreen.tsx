@@ -267,15 +267,15 @@ export const SettingsScreen: React.FC<SettingsScreenProps> = ({
             </div>
             <div>
               <h3 className="text-base font-bold text-slate-900 dark:text-white">
-                Target Language
+                What Language Are You Learning?
               </h3>
               <p className="text-xs text-slate-500 dark:text-zinc-400">
-                Choose the 1,000 most common words vocabulary track
+                Choose your active vocabulary track. Both tracks are saved and count toward your shared leaderboard!
               </p>
             </div>
           </div>
           <span className="text-[11px] font-extrabold uppercase px-2.5 py-1 rounded-full bg-teal-500/10 text-teal-700 dark:text-teal-300 border border-teal-500/20">
-            {settings.language === 'pt' ? 'Portuguese (PT)' : 'Slovenian (SI)'}
+            {settings.language === 'pt' ? '🇵🇹 Portuguese' : '🇸🇮 Slovenian'}
           </span>
         </div>
 
