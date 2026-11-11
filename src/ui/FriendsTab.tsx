@@ -109,10 +109,15 @@ export const FriendsTab: React.FC<FriendsTabProps> = ({
           setSearchResult(found);
         }
       } else {
-        setSearchError(`No learner found with code "${searchCode.trim().toUpperCase()}". Try checking with your friend!`);
+        const queryCode = searchCode.trim().toUpperCase().startsWith('DV-')
+          ? searchCode.trim().toUpperCase()
+          : `DV-${searchCode.trim().toUpperCase()}`;
+        setSearchError(
+          `No learner found with code "${queryCode}". Your friend needs to tap "Sign In / Cloud Sync" with their Google account once so their code is published to the cloud!`
+        );
       }
     } catch (err) {
-      setSearchError('Error looking up friend code. Please try again.');
+      setSearchError('Error looking up friend code. Please make sure you are online and try again.');
     } finally {
       setIsSearching(false);
     }
